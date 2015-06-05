@@ -1,0 +1,10 @@
+@import 'bootstrap-sprockets';
+@import "bootstrap";
+//@import "bootstrap/mixins/panels";
+//@import "bootstrap/panels";
+@import "bootstrap/theme";
+
+//$panel-bg: #E87E04;
+//$panel-heading-bg: #E87E04;
+
+.btn-toolbar > .btn {margin: 5px;}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Alter - Admin Panel: <%= I18n.t :sign_in %></title>
+  <%= stylesheet_link_tag 'admin', media: 'all' %>
+  <%= javascript_include_tag 'admin' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= my_gflash %>
+<div class="panel panel-default" style="width: 400px; height: 300px; margin: auto; position: absolute; top: 0px; bottom: 20%; left: 0px; right: 0px">
+  <div class="panel-heading"><h3 class="panel-title"><%= I18n.t :sign_in %></h3></div>
+  <div class="panel-body">
+    <%= simple_form_for @admin_session, url: admin_session_create_path do |f| %>
+        <%= text_field_tag(:return_path, @return_path, hidden: true) unless @return_path.nil? %>
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.input_field :email, autofocus: true, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password %>
+          <%= f.input_field :password, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.input_field :remember_me, as: :boolean %>
+          <%= f.label :remember_me, required: false, boolean_style: true %>
+        </div>
+        <%= f.button :submit, I18n.t(:sign_in_button), class: 'pull-right' %>
+    <% end %>
+  </div>
+</div>
+</body>
+</html>

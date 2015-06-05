@@ -1,0 +1,23 @@
+<div class="panel-body" role="tabpanel">
+
+  <%= simple_form_for [:admin, @menu_item] do |f| %>
+
+      <%= f.input :type_id, collection: Page::TYPES, autofocus: true %>
+      <%= f.association :page %>
+      <%= f.input :weight %>
+
+      <% Globalize.with_locale :ru do %>
+          <div class="form-group">
+            <%= f.label :title_ru, class: 'control-label', for: 'menu_item_ru_title' %>
+            <%= f.input_field :title, class: 'form-control', name: 'menu_item[ru][title]' %>
+          </div>
+      <% end %>
+      <% Globalize.with_locale :en do %>
+          <div class="form-group">
+            <%= f.label :title_en, class: 'control-label', for: 'menu_item_en_title' %>
+            <%= f.input_field :title, class: 'form-control', name: 'menu_item[en][title]' %>
+          </div>
+      <% end %>
+      <div class="btn-group pull-right"><%= link_to I18n.t(:back), admin_menu_items_path, class: 'btn btn-default', role: 'button' %><%= f.button :submit, I18n.t(:create) %></div>
+  <% end %>
+</div>

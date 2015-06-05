@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Megatrader - Admin Panel</title>
+  <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'admin', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= my_gflash %>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to 'Admin Panel', admin_root_path, class: 'navbar-brand' %>
+      <!--<a class="navbar-brand" href="#">Admin Panel</a>-->
+    </div>
+    <!--<div class="collapse navbar-collapse" id="admins-navbar">-->
+    <%= render_navigation(context: :admin, expand_all: true, renderer: :bootstrap3) %>
+    <%= render_navigation(context: :adminr, expand_all: true, renderer: :bootstrap3) %>
+    <p class="navbar-text pull-right"><%= "#{current_user.first_name} #{current_user.last_name}" %></p>
+    <!--</div>-->
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <ol class="breadcrumb"><%= render_breadcrumbs tag: :li, separator: '' %></ol>
+  <%= yield %>
+</div>
+</body>
+</html>

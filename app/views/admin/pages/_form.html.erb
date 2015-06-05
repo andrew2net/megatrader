@@ -1,0 +1,73 @@
+<div class="panel-body" role="tabpanel">
+
+  <%= tinymce_assets %>
+
+  <%= simple_form_for [:admin, @page] do |f| %>
+      <div class="form-horizontal">
+        <div class="form-group col-xs-3" style="margin-bottom: 0px">
+          <%= f.label :type_id, class: 'col-xs-2 control-label' %>
+          <div class="col-xs-2">
+            <%= f.input_field :type_id, collection: Page::TYPES, class: 'form-control', style: 'width: 100px' %>
+          </div>
+        </div>
+
+        <ul class="nav nav-tabs" role="tablist" id="pageTab">
+          <li role="presentation" class="active">
+            <a href="#ru-content" aria-controls="ru-content" role="tab" data-toggle="tab">RU</a>
+          </li>
+          <li role="presentation">
+            <a href="#en-content" aria-controls="en-content" role="tab" data-toggle="tab">EN</a>
+          </li>
+        </ul>
+
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="ru-content">
+            <% Globalize.with_locale :ru do %>
+
+                <div class="row" style="margin-top: 15px">
+                  <div class="form-group col-xs-6">
+                    <%= f.label :title, class: 'control-label col-xs-3', for: 'page_ru_title' %>
+                    <div class="col-xs-9">
+                      <%= f.input_field :title, autofocus: true, class: 'form-control', name: 'page[ru][title]', id: 'page_ru_title' %>
+                    </div>
+                  </div>
+                  <div class="form-group col-xs-6">
+                    <%= f.label :url, class: 'control-label col-xs-2', for: 'page_ru_url' %>
+                    <div class="col-xs-10">
+                      <%= f.input_field :url, class: 'form-control', name: 'page[ru][url]', id: 'page_ru_url' %>
+                    </div>
+                  </div>
+                </div>
+
+                <%= f.input :text, as: :text, input_html: {class: 'tinymce', rows: 15, id: 'page_ru_text', name: 'page[ru][text]'} %>
+
+            <% end %>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="en-content">
+            <% Globalize.with_locale :en do %>
+
+                <div class="row" style="margin-top: 15px">
+                  <div class="form-group col-xs-6">
+                    <%= f.label :title, class: 'control-label col-xs-3', for: 'page_en_title' %>
+                    <div class="col-xs-9">
+                      <%= f.input_field :title, autofocus: true, class: 'form-control', name: 'page[en][title]', id: 'page_en_title' %>
+                    </div>
+                  </div>
+                  <div class="form-group col-xs-6">
+                    <%= f.label :url, class: 'control-label col-xs-2', for: 'page_en_url' %>
+                    <div class="col-xs-10">
+                      <%= f.input_field :url, class: 'form-control', name: 'page[en][url]', id: 'page_en_url' %>
+                    </div>
+                  </div>
+                </div>
+
+                <%= f.input :text, as: :text, input_html: {class: 'tinymce', rows: 15, id: 'page_en_text', name: 'page[en][text]'} %>
+
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="btn-group pull-right"><%= link_to I18n.t(:back), admin_pages_path, class: 'btn btn-default', role: 'button' %><%= f.button :submit, I18n.t(:create) %></div>
+  <% end %>
+  <%= tinymce height:300, uploadimage_hint: "pages/#{@page.new_record? ? "new_#{current_user.id}" : @page.id}", content_css: asset_path('application/application.css') %>
+</div>

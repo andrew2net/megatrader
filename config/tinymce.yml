@@ -1,0 +1,24 @@
+default:
+  toolbar1: undo redo | cut copy paste | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link unlink | uploadimage image | code fullscreen
+  toolbar2: visualblocks | formatselect fontselect fontsizeselect | bold italic underline strikethrough subscript superscript blockquote removeformat | forecolor backcolor
+  relative_urls: false
+  image_advtab: true
+  browser_spellcheck : true
+  plugins:
+    - image
+    - link
+    - table
+    - fullscreen
+    - uploadimage
+    - code
+    - textcolor
+    - hr
+    - charmap
+    - advlist
+    - visualblocks
+
+alternate:
+  selector: textarea.table-editor
+  toolbar: styleselect | bold italic | undo redo | table
+  plugins:
+    - table

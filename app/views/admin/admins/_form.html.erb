@@ -1,0 +1,18 @@
+<div class="panel-body">
+  <%= simple_form_for [:admin, @admin], html: {autocomplete: "off"} do |f| %>
+
+    <%= f.input :first_name, autofocus: true %>
+
+    <%= f.input :last_name %>
+
+    <%= f.input :email %>
+
+    <%= f.input :password, autocomplete: "off" %>
+
+    <%= f.input :password_confirmation, autocomplete: "off" %>
+
+    <%= f.association :roles, as: :check_boxes, label_method: lambda{ |role| I18n.t role.name } %>
+
+    <div class="btn-group pull-right"><%= link_to I18n.t(:back), admin_admins_path, class: 'btn btn-default', role: 'button' %><%= f.button :submit, I18n.t(:create) %></div>
+<% end %>
+</div>

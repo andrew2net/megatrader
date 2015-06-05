@@ -1,0 +1,18 @@
+<div class="panel panel-default">
+  <div class="panel-heading"><%= Setting.model_name.human %></div>
+  <div class="panel-body">
+    <%= form_tag admin_setting_path, method: :put, class: 'form-horizontal' do %>
+        <!--<table class="table">-->
+          <% @settings.each do |option| %>
+              <%= simple_fields_for 'options[]', option do |f| %>
+                  <div class="form-group">
+                    <%= f.label I18n.t(f.object.name), class: "col-xs-3 control-label" %>
+                    <%= f.input :value, label: false, wrapper_html: {class: 'col-xs-9'} %>
+                  </div>
+              <% end %>
+          <% end %>
+        <!--</table>-->
+        <%= submit_tag I18n.t(:create), class: 'btn btn-default pull-right' %>
+    <% end %>
+  </div>
+</div>

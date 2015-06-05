@@ -1,0 +1,19 @@
+<%= content_tag('div',(link_to I18n.t(:new), new_admin_admin_path, class: 'btn btn-default', role: 'button'), class: 'btn-toolbar') if can? :create, @admin %>
+<%= grid(@admins_grid, show_filters: :when_filtered) do |g|
+
+  # g.blank_slate do
+  #   'Нет ни одного пользователя'
+  # end
+
+  g.column name: Admin.human_attribute_name(:first_name), attribute: 'first_name'
+
+  g.column name: Admin.human_attribute_name(:last_name), attribute: 'last_name'
+
+  g.column name: Admin.human_attribute_name(:email), attribute: 'email'
+
+  g.column do |admin|
+    link_to((I18n.t :edit_link), edit_admin_admin_path(admin)) << ' | ' <<
+            link_to(I18n.t(:delete_link), admin_admin_path(admin), method: :delete, data: {confirm: I18n.t(:are_you_sure)})
+  end if can? [:update, :destroy], @admin
+
+end %>

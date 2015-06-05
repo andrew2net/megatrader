@@ -1,0 +1,23 @@
+<%= content_tag('div', (link_to I18n.t(:new), new_admin_page_path, class: 'btn btn-default', role: 'button', data: {no_turbolink: true}), class: 'btn-toolbar') if can? :create, @page %>
+<%= grid(@pages_grid, show_filters: :when_filtered) do |g|
+  # g.blank_slate do
+  #   'Нет ни одного пользователя'
+  # end
+
+  # g.column do |user|
+  #   user.id
+  # end
+
+  g.column name: Page.human_attribute_name(:title), attribute: 'title', model: Page::Translation
+
+  g.column name: Page.human_attribute_name(:url), attribute: 'url', model: Page::Translation
+
+  g.column name: Page.human_attribute_name(:type_id), attribute: 'type_id' do |page|
+    Page::TYPES.key(page.type_id)
+  end
+
+  g.column do |page|
+    link_to((I18n.t :edit_link), edit_admin_page_path(page), data: {no_turbolink: true}) << ' | ' <<
+            link_to(I18n.t(:delete_link), admin_page_path(page), method: :delete, data: {confirm: I18n.t(:are_you_sure)})
+  end if can? [:update, :destroy], @page
+end %>

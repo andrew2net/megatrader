@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Megatrader</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<header class="container">
+  <div class="row"><%= image_tag 'logo.png' %>
+    <div class="col-md-4"></div>
+  </div>
+</header>
+
+<nav>
+
+</nav>
+
+<div class="container">
+  <%= yield %>
+</div>
+
+<footer>
+
+</footer>
+
+</body>
+</html>

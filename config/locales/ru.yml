@@ -1,0 +1,87 @@
+ru:
+  required: Обязательно
+  new: Добавить
+  edit: Изменение
+  edit_link: Изменить
+  delete_link: Удалить
+  are_you_sure: Вы уверенны?
+  back: Назад
+  sign_in: Вход
+  sign_in_button: Войти
+  sign_in_false: Неверный емайл или пароль
+  sign_in_success: Вход выполнен
+  sign_out: Выход
+  sign_out_success: Вы вышли из системы
+  create: Записать
+  administartion: Администрирование
+  admin: Администратор
+  editor: Редактор
+  notify_email: Адрес email для получения заявок
+  products: Продукты
+  gflash:
+    titles:
+      error: Ошибка
+      notice: Уведомление
+      success: Выполненно
+      warning: "Warning"
+      progress: "Progress"
+    defaults:
+      success: Операция выполненна успешно
+      error: Ошибка операции
+    users:
+      update:
+        success: Данные пользователя успешно обновленны
+        notice: Данные пользователя обновленны
+        error: Ошибка записи
+  activerecord:
+    models:
+      admin: Администраторы
+      role: Роли
+      setting: Настройки
+      page: Содержимое
+      menu_item: Меню
+    attributes:
+      admin:
+        first_name: Имя
+        last_name: Фамилия
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+        remember_me: Запомнить меня
+      page:
+        title: Заголовок
+        url: url
+        text: Содержимое
+        type_id: Тип
+      menu_item:
+        title: Заголовок
+        type_id: Тип
+        weight: Вес
+    errors:
+      messages:
+        blank: Значение не должно быть пустым
+        invalid: Неверный формат
+        confirmation: Пароли должны совпадать
+        too_short: Слишком короткое значение, должно быть не менее %{count} символов
+        too_long: Слишком длиное значение, должно быть не более %{count} символов
+        not_a_number: Значение должно быть числом
+      models:
+        admin:
+          attributes:
+            email:
+              taken: Этот email уже занят
+  authlogic:
+    error_messages:
+      email_invalid: Значение должно быть email адресом
+      no_authentication_details: You did not provide any details for authentication
+      general_credentials_error: Login/Password combination is not valid
+    attributes:
+      admin_session:
+        password: Пароль
+        remember_me: Запомнить меня
+  simple_form:
+    required:
+      text: 'Обязательное поле'
+      mark: '*'
+    labels:
+      admin:
+        roles: Роли
