@@ -19,7 +19,8 @@ if defined?(Wice::Defaults)
   Wice::Defaults::CUSTOM_FILTER_ALL_LABEL = '--'
 
   # A list of classes for the table tag of the grid
-  Wice::Defaults::DEFAULT_TABLE_CLASSES = ['table', 'table-bordered', 'table-striped']
+  # Wice::Defaults::DEFAULT_TABLE_CLASSES = ['table', 'table-bordered', 'table-striped']
+  Wice::Defaults::DEFAULT_TABLE_CLASSES = ['table', 'table-striped']
 
   # Allow switching between a single and multiple selection modes in custom filters (dropdown boxes)
   Wice::Defaults::ALLOW_MULTIPLE_SELECTION = true
