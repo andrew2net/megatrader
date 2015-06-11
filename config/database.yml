@@ -82,5 +82,5 @@ test:
 production:
   <<: *default
   database: megatrader_production
-  username: megatrader
+  username: postgres
   password: <%= ENV['MEGATRADER_DATABASE_PASSWORD'] %>
