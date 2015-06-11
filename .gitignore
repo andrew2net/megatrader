@@ -12,3 +12,6 @@
 !/log/.keep
 /tmp
 tags
+/Procfile
+/config/deploy/
+/shared/
