@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_admin_session, :current_user
   before_action :authenticate
 
-  def default_url_options options={}
+  def default_url_options (options={})
     {locale: I18n.locale}.merge options
   end
 

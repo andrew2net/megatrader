@@ -33,6 +33,7 @@ class Admin::MenuItemsController < ApplicationController
 
   def update
     @menu_item = MenuItem.find params[:id]
+    @menu_item.attributes = menu_params
     locale_attrs
     if @menu_item.save
       gflash :success

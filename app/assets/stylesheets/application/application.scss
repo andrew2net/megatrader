@@ -1,2 +1,176 @@
+$grid-float-breakpoint: 1200px;
+$grid-float-breakpoint-max: $grid-float-breakpoint - 1px;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+$orange-color: #f98617;
+$green-color: #83b46b;
+$gray-color: #545151;
+$gray-light-color: #bfbfbf;
+
+.background-orange {
+  background: $orange-color;
+  color: white;
+}
+
+.color-green{
+  color: $green-color;
+}
+
+.color-gary{
+  color: $gray-color;
+}
+
+.nopadding {
+  padding: 0 !important;
+}
+
+.col-centered {
+  float: none;
+  margin: 0 auto;
+}
+
+.banners {
+  margin: 50px auto;
+  max-width: 960px;
+  > div {
+    width: 320px;
+    height: 125px;
+    color: white;
+    text-align: center;
+    > div {
+      position: relative;
+      top: 55px;
+      span {
+        text-decoration: underline;
+        font-size: 8pt;
+      }
+    }
+  }
+  > div:nth-child(1) {
+    background-image: image-url("1.png");
+  }
+  > div:nth-child(2) {
+    background-image: image-url("2.png");
+  }
+  > div:nth-child(3) {
+    background-image: image-url("3.png");
+  }
+}
+
+#main-menu-navbar-collapse {
+  ul {
+    margin-top: 7px;
+  }
+  a {
+    color: $gray-color;
+    font-size: 12pt;
+    &.selected {
+      font-weight: bold;
+      color: $orange-color;
+    }
+  }
+}
+
+.hline {
+  border-top: solid 1px;
+  border-color: $gray-light-color;
+}
+
+.slider {
+  position: relative;
+  > div {
+    position: absolute;
+    right: 15%;
+    bottom: 10%;
+    p {
+      font-weight: bold;
+      font-size: 120%;
+    }
+    @media all and (min-width: 1201px) {
+      font-size: 1.4em;
+    }
+    @media all and (max-width: 1200px) {
+      font-size: 1.2em;
+    }
+    @media all and (max-width: 1000px) {
+      font-size: 1em;
+    }
+    @media all and (max-width: 800px) {
+      font-size: 0.8em;
+    }
+    @media all and (max-width: 600px) {
+      font-size: 0.6em;
+    }
+  }
+}
+
+.navbar .navbar-toggle {
+  border-color: #ddd;
+  .icon-bar {
+    background-color: #888;
+  }
+}
+
+ol.orange-num {
+  counter-reset: item;
+  li {
+    position: relative;
+    display: block;
+    margin-bottom: 10px;
+    &:before {
+      position: absolute;
+      left: -20px;
+      top: 0px;
+      content: counter(item);
+      counter-increment: item;
+      color: $orange-color;
+      font-weight: bold;
+      font-size: 12pt;
+    }
+  }
+}
+
+ul.orange-bullet {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  li {
+    padding-left: 1em;
+    text-indent: -0.7em;
+    &:before {
+      content: "\0025AA";
+      color: $orange-color;
+      padding-right: 0.3em;
+    }
+  }
+}
+
+.columns-2{
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  li{
+    margin: 10px;
+  }
+}
+
+.question-form{
+  font-size: 12pt;
+  > div{
+    margin: 10px;
+    input, textarea{
+      padding: 5px;
+    }
+    input{
+      width: 238px;
+      &[type="submit"]{
+        background: $orange-color;
+        color: white;
+        border: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+<h4 class="color-green" style="font-weight: bold; padding: 40px 0 10px;">НОВОСТИ</h4>
+<div class="row" style="padding-bottom: 40px;">
+  <div class="col-xs-1 col-sm-2 col-md-2"></div>
+  <div class="col-xs-10 col-sm-8 col-md-8">
+    <ul class="orange-bullet columns-2 color-gary visible-lg visible-md">
+      <% @news.each do |n| %>
+          <li><%= n.title %></li>
+      <% end %>
+    </ul>
+    <ul class="orange-bullet color-gary hidden-lg hidden-md center-block">
+      <% @news.each do |n| %>
+          <li><%= n.title %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-xs-1 col-sm-2 col-md-2"></div>
+</div>

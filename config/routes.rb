@@ -1,31 +1,11 @@
 Rails.application.routes.draw do
 
-  namespace :admins do
-  get 'menu_items/index'
-  end
-
-  namespace :admins do
-  get 'menu_items/new'
-  end
-
-  namespace :admins do
-  get 'menu_items/create'
-  end
-
-  namespace :admins do
-  get 'menu_items/edit'
-  end
-
-  namespace :admins do
-  get 'menu_items/update'
-  end
-
-  filter :locale, exclude: /^\/admins/
+  filter :locale, exclude: /^(\/admins|\/tinymce_assets)/
 
   post 'admin_session/create'
   delete 'admin_session/destroy'
 
-  scope module: 'admins' do
+  scope module: :admin do
     post '/tinymce_assets' => 'tinymce_assets#create'
   end
 
@@ -33,6 +13,11 @@ Rails.application.routes.draw do
     root 'main#index'
     match '/:locale' => 'main#index', locale: /#{I18n.available_locales.join('|')}/, via: [:get, :post]
     post '/', to: 'main#index'
+    get 'news/index'
+    get 'news/page'
+    get 'news/block'
+    get 'question/new'
+    post 'question/send'
   end
 
   namespace :admin do

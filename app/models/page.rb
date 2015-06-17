@@ -1,5 +1,6 @@
 class Page < ActiveRecord::Base
-  validates :title, :url, presence: true, length: {maximum: 255}
+  validates :title, presence: true, length: {maximum: 255}
+  validates :url, uniqueness: true
   validates :type_id, numericality: {only_integer: true, allow_blank: true}
   translates :title, :url, :text
 
@@ -7,5 +8,9 @@ class Page < ActiveRecord::Base
 
   def self.menu_items
     where('weight > 0').reorder(:weight)
+  end
+
+  def self.news
+    where(type_id: 3).reorder(created_at: :desc)
   end
 end
