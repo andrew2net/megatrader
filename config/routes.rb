@@ -9,6 +9,14 @@ Rails.application.routes.draw do
     post '/tinymce_assets' => 'tinymce_assets#create'
   end
 
+  namespace :admin do
+    root 'main#index'
+    resources :menu_items
+    resources :admins
+    resources :pages
+    resource :setting, only: [:edit, :update]
+  end
+
   scope module: :application do
     root 'main#index'
     match '/:locale' => 'main#index', locale: /#{I18n.available_locales.join('|')}/, via: [:get, :post]
@@ -18,14 +26,7 @@ Rails.application.routes.draw do
     get 'news/block'
     get 'question/new'
     post 'question/send'
-  end
-
-  namespace :admin do
-    root 'main#index'
-    resources :menu_items
-    resources :admins
-    resources :pages
-    resource :setting, only: [:edit, :update]
+    get ':url' => 'main#index'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
