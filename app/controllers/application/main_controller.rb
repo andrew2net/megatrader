@@ -5,5 +5,6 @@ class Application::MainController < ApplicationController
     @news = Page.news.page(params[:page]).per(6)
     @text = page.text.sub(/\[news_block\]/, render_to_string('application/news/block', layout: false))
     @text.sub!(/\[question_block\]/, render_to_string('application/question/new', layout: false))
+    @text.sub!(/\[tester_block\]/, render_to_string('tester_block', layout: false))
   end
 end

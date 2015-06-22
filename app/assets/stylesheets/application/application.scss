@@ -14,12 +14,16 @@ $gray-light-color: #bfbfbf;
   color: white;
 }
 
-.color-green{
+.color-green {
   color: $green-color;
 }
 
-.color-gary{
+.color-gary {
   color: $gray-color;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 .nopadding {
@@ -82,7 +86,7 @@ $gray-light-color: #bfbfbf;
   position: relative;
   > div {
     position: absolute;
-    right: 15%;
+    left: 50%;
     bottom: 10%;
     p {
       font-weight: bold;
@@ -148,29 +152,57 @@ ul.orange-bullet {
   }
 }
 
-.columns-2{
+.columns-2 {
   columns: 2;
   -webkit-columns: 2;
   -moz-columns: 2;
-  li{
+  li {
     margin: 10px;
   }
 }
 
-.question-form{
+.question-form {
   font-size: 12pt;
-  > div{
+  > div {
     margin: 10px;
-    input, textarea{
+    input, textarea {
       padding: 5px;
-    }
-    input{
       width: 238px;
-      &[type="submit"]{
+    }
+    input {
+      &[type="submit"] {
         background: $orange-color;
         color: white;
         border: none;
       }
     }
   }
+}
+
+.calc-background {
+  background: image-url("autocalc.png") repeat-x;
+  height: 50px;
+}
+
+.tester-thumbs {
+  > div {
+    height: 154px;
+    > div {
+      &:first-child{
+        width: 218px;
+      }
+      img{
+        width: 200px;
+      }
+    }
+  }
+}
+
+.border-orange{
+  border: 5px solid $orange-color;
+}
+
+.tester_img {
+  width: 420px;
+  margin-bottom: 20px;
 }
