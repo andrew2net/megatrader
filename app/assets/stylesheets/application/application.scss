@@ -6,6 +6,7 @@ $grid-float-breakpoint-max: $grid-float-breakpoint - 1px;
 
 $orange-color: #f98617;
 $green-color: #83b46b;
+$green-light-color: #eaefe7;
 $gray-color: #545151;
 $gray-light-color: #bfbfbf;
 
@@ -20,6 +21,10 @@ $gray-light-color: #bfbfbf;
 
 .color-gary {
   color: $gray-color;
+}
+
+.color-light-gary{
+  color: $gray-light-color;
 }
 
 .bold {
@@ -152,6 +157,39 @@ ul.orange-bullet {
   }
 }
 
+ul.about {
+  &, > ul {
+    list-style: none;
+  }
+  li {
+    &:before {
+      color: $green-color;
+      padding-right: 0.5em;
+    }
+  }
+  > li {
+    text-indent: -1.3em;
+    &:before {
+      content: "\0025E6";
+      font-size: 16pt;
+      font-weight: bold;
+    }
+  }
+  > ul {
+    margin: 2em;
+    padding: 1em;
+    background: $green-light-color;
+    > li {
+      padding-left: 1em;
+      text-indent: -1em;
+      &:before {
+        content: "\002022";
+        font-size: 14pt;
+      }
+    }
+  }
+}
+
 .columns-2 {
   columns: 2;
   -webkit-columns: 2;
@@ -188,21 +226,62 @@ ul.orange-bullet {
   > div {
     height: 154px;
     > div {
-      &:first-child{
+      &:first-child {
         width: 218px;
       }
-      img{
+      img {
         width: 200px;
       }
     }
   }
 }
 
-.border-orange{
+.border-orange {
   border: 5px solid $orange-color;
 }
 
 .tester_img {
   width: 420px;
   margin-bottom: 20px;
+}
+
+.video-stub{
+  background: image-url("video-stub.png") no-repeat;
+  width: 460px;
+  height: 333px;
+  text-align: center;
+  cursor: pointer;
+  div{
+    font-weight: bold;
+    position: relative;
+    color: white;
+    width: 410px;
+    top: 205px;
+    left: 25px;
+  }
+}
+
+.video-popup{
+  display: none;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  outline: 0;
+  position: fixed;
+  background: rgba($gray-light-color, 0.7);
+  z-index: 1000;
+  > div {
+    position: absolute;
+    max-height: 532px;
+    max-width: 947px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background: white;
+    opacity: 1;
+    z-index: 1001;
+  }
 }

@@ -11,6 +11,23 @@ $ () ->
     ths.addClass 'border-orange'
     href = ths.attr 'href'
     image.attr 'href', href
+
     image.animate {opacity: 0}, 300, () ->
       image.attr 'src', ths.attr('src')
+      return false
+
     image.animate {opacity: 1}, 300
+    return false
+
+  video_stub = $ '.video-stub'
+  video_popup = $ '.video-popup'
+
+  video_stub.click () ->
+    video_popup.find('iframe').attr('src', $(this).attr('data-url'))
+    video_popup.show()
+    return false
+
+  video_popup.click () ->
+    video_popup.hide()
+    video_popup.find('iframe').attr 'src', ''
+    return false
