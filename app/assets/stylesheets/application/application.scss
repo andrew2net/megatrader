@@ -272,7 +272,7 @@ ul.about {
   background: rgba($gray-light-color, 0.7);
   z-index: 1000;
   > div {
-    position: absolute;
+    position: relative;
     max-width: 900px;
     //top: 0;
     //bottom: 0;
