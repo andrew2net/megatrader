@@ -23,3 +23,21 @@ en:
   new: New
   edit: Edit
   users: Users
+  slider:
+    li1: Automatic trader sistems
+    li2: Historical data backtesting
+    li3: Order execution delay emulation
+    li4: MetaTrader and SaxoTrader support
+    li5: Spread chart analysis
+    li6: Easy manual trading
+    li7: One-click spread by/sel
+  banners:
+    b1: Direct exchange data from<br>CQG<br><span>read more</span>
+    b2: MegaClicker MT4 manual<br>trading emulator<br><span>read more</sapn>
+    b3: How to profit from bitcoin<br>arbitrage?<br><span>read more</span>
+  risk_disclosure: 'Risk Disclosure: Trading financial instruments carries a high risk and can lead to loss of all investments. Using the information and software products presented on this website, you agree on acting at your own risk and holding liability for any losses. Megatrader Ltd will not be liable for any losses incurred by the use of software products or software addons provided. All information on this website is provided solely for informational and/or educational purposes and should not be the basis for investment decisions. All examples presented on the website site are symbolic and do not imply a promise of return in the future. You understand that past performance is not a guarantee of future returns. Before you start trading, you should assess the risks using your experience and knowledge and understand them.'
+  news: NEWS
+  still_have_questions: STILL HAVE QUESTIONS?
+  name: Name
+  question: Question
+  ask: Ask
