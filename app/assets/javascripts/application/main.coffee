@@ -31,3 +31,14 @@ $ () ->
     video_popup.hide()
     video_popup.find('iframe').attr 'src', ''
     return false
+
+  $(document).on 'click', '.locale-btn', () ->
+    locale_sw = $ '.locale-sw'
+    top = locale_sw.css('top')
+    if locale_sw.css('top') != '0px'
+      locale_sw.animate {top: '0'}
+    else
+      locale_sw.animate {top: '28px'}
+    return false
+
+  return false

@@ -18,9 +18,16 @@
         <%= mail_to 'info@megatrader.org', 'info@megatrader.org', style: 'color: white;' %>
       </span>
 
-      <div class="pull-right" style="margin-right: 10px">
-        <span class="caret" style="position: relative; top: 2px;"></span>
-        <span style="font-weight: bold"><%= I18n.locale %></span>
+      <div class="pull-right" style="margin-right: 10px; position: relative;">
+        <div class="locale-btn">
+          <span class="caret" style="position: relative; top: 2px;"></span>
+          <span style="font-weight: bold"><%= I18n.locale %></span>
+        </div>
+        <div class="locale-sw">
+          <%= link_to self.send(@locale_sw[:method], @locale_sw[:params]) do %>
+              <div><%= @locale_sw[:params][:locale] %></div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
@@ -50,13 +57,13 @@
         <div>
           <p>MegaTrader</p>
           <ul class="orange-bullet">
-            <li>Автоматические торговые системы</li>
-            <li>Тестирование на исторических данных</li>
-            <li>Учет задержек при исполнении сделок</li>
-            <li>Одновременная работа с Quick и MetaTrader</li>
-            <li>Работа с графиком спреда</li>
-            <li>Простая и удобная ручная торговля</li>
-            <li>Покупка/продажа спреда одной кнопкой</li>
+            <li><%= t :li1, scope: :slider %></li>
+            <li><%= t :li2, scope: :slider %></li>
+            <li><%= t :li3, scope: :slider %></li>
+            <li><%= t :li4, scope: :slider %></li>
+            <li><%= t :li5, scope: :slider %></li>
+            <li><%= t :li6, scope: :slider %></li>
+            <li><%= t :li7, scope: :slider %></li>
           </ul>
         </div>
       </div>
@@ -65,25 +72,25 @@
 
 <div class="row banners visible-xs visible-sm">
   <div class="col-xs-12 col-sm-12 col-centered">
-    <div>Прямые рыночные котировки от<br>CQG<br><span>подробнее</span></div>
+    <div><%= (t :b1, scope: :banners).html_safe %></div>
   </div>
   <div class="col-xs-12 col-sm-12 col-centered">
-    <div>MegaClicker имитатор ручной торговли для<br>MT4<br><span>подробнее</span></div>
+    <div><%= (t :b2, scope: :banners).html_safe %></div>
   </div>
   <div class="col-xs-12 col-sm-12 col-centered">
-    <div>Бесплатный вебинар<br><br><span>подробнее</span></div>
+    <div><%= (t :b3, scope: :banners).html_safe %></div>
   </div>
 </div>
 
 <div class="row banners hidden-xs hidden-sm center-block">
   <div class="col-md-3 col-lg-3 nopadding">
-    <div>Прямые рыночные котировки от<br>CQG<br><span>подробнее</span></div>
+    <div><%= (t :b1, scope: :banners).html_safe %></div>
   </div>
   <div class="col-md-3 col-lg-3 nopadding">
-    <div>MegaClicker имитатор ручной торговли для<br>MT4<br><span>подробнее</span></div>
+    <div><%= (t :b2, scope: :banners).html_safe %></div>
   </div>
   <div class="col-md-3 col-lg-3 nopadding">
-    <div>Бесплатный вебинар<br><br><span>подробнее</span></div>
+    <div><%= (t :b3, scope: :banners).html_safe %></div>
   </div>
 </div>
 
@@ -93,20 +100,10 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-1"></div>
-      <div class="col-md-8" style="margin: 20px; color: #9f9f9f; font-size: 8pt">Уведомление о рисках: Торговля
-        финансовыми инструментами несет в себе высокий уровень риска
-        и может привести к потере всех вложений. Используя информацию и программные продукты, представленные на сайте,
-        вы соглашаетесь с тем, что действуете на свой страх и риск и принимаете на себя всю ответственность за возможные
-        убытки и потери. Megatrader Ltd не несет ответственности за любые убытки, понесенные по причине использования
-        представленных программных продуктов или дополнений к ним. Вся информация на сайте приведена исключительно в
-        ознакомительных целях и не является основанием для принятия инвестиционных решений. Все примеры, указанные на
-        сайте, носят демонстрационный характер и не означают обещания доходности в будущем. Вы должны понимать, что
-        доходы, полученные в прошлые периоды, не могут быть гарантией получения доходов в будущем. Перед началом
-        торговли убедитесь, что вы осознаете все возможные риски с учетом вашего опыта и знаний.
-      </div>
+      <div class="col-md-8" style="margin: 20px; color: #9f9f9f; font-size: 8pt"><%= t :risk_disclosure %></div>
       <div class="col-md-2" style="margin: 20px 0">
-        <div style="margin-bottom: 15px;"><%= image_tag '88x31_wm_blue_on_transparent_ru.png', class: 'center-block' %></div>
-        <div><%= image_tag '88x31_wm_v_blue_on_white_ru.png', class: 'center-block' %></div>
+        <div style="margin-bottom: 15px;"><%= image_tag "88x31_wm_blue_on_transparent_#{locale}.png", class: 'center-block' %></div>
+        <div><%= image_tag "88x31_wm_v_blue_on_white_#{locale}.png", class: 'center-block' %></div>
       </div>
     </div>
   </div>

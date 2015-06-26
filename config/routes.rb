@@ -26,7 +26,9 @@ Rails.application.routes.draw do
     get 'news/block'
     get 'question/new'
     post 'question/send'
-    get ':url' => 'main#index'
+    get 'poleznaja-informacija', to: 'main#articles', constraints: {locale: /ru/}, as: :articles_ru
+    get 'poleznaja-informacija-en', to: 'main#articles', constraints: {locale: /en/}, as: :articles_en
+    get ':url' => 'main#index', as: :page
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
