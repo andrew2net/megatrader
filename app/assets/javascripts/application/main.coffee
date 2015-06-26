@@ -3,9 +3,9 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ () ->
-  images = $ '.tester-thumbs img'
-  image = $ '.tester_img'
-  images.click () ->
+  $(document).on 'click', '.tester-thumbs img', () ->
+    images = $ '.tester-thumbs img'
+    image = $ '.tester_img'
     images.removeClass 'border-orange'
     ths = $(this)
     ths.addClass 'border-orange'
@@ -19,10 +19,9 @@ $ () ->
     image.animate {opacity: 1}, 300
     return false
 
-  video_stub = $ '.video-stub'
-  video_popup = $ '.video-popup'
 
-  video_stub.click () ->
+  $(document).on 'click', '.video-stub', () ->
+    video_popup = $ '.video-popup'
     video_popup.find('iframe').attr('src', $(this).attr('data-url'))
     video_popup.show()
     return false
