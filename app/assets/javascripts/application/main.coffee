@@ -26,7 +26,8 @@ $ () ->
     video_popup.show()
     return false
 
-  video_popup.click () ->
+  $(document).on 'click', '.video-popup', () ->
+    video_popup = $ this
     video_popup.hide()
     video_popup.find('iframe').attr 'src', ''
     return false
