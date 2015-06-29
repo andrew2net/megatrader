@@ -47,7 +47,8 @@ $ ->
       $(window).on 'scroll', ->
         more_articles_url = $('.pagination a[rel=next]').attr 'href'
         if more_articles_url && $(window).scrollTop() > $(document).height() - $(window).height() - 60
-          $('.pagination').html('<img src="/assets/ajax-loader.gif" alt="Loading..." title="Loading..." />')
+          loading_img = $('.articles-pager').attr 'data-loading-img'
+          $('.pagination').html('<img src="' + loading_img + '" alt="Loading..." title="Loading..." />')
           $('.articles-pager').show()
           $.getScript more_articles_url
         return
