@@ -9,13 +9,23 @@ $green-color: #83b46b;
 $green-light-color: #eaefe7;
 $gray-color: #545151;
 $gray-light-color: #bfbfbf;
+$gray-superlight-color: #f6f6f5;
 
 .background-orange {
   background: $orange-color;
   color: white;
 }
 
-.color-green {
+.background-gray-light{
+  background: $gray-superlight-color;
+}
+
+.article-teaser{
+  padding: 20px 20px 50px;
+  margin-bottom: 20px;
+}
+
+.color-green, .header {
   color: $green-color;
 }
 
@@ -27,8 +37,24 @@ $gray-light-color: #bfbfbf;
   color: $gray-light-color;
 }
 
-.bold {
+.bold, .header {
   font-weight: bold;
+}
+
+.btn-default{
+  background: $orange-color;
+  color: $gray-superlight-color;
+  border: none;
+  border-radius: 0;
+  &:hover{
+    color: $gray-superlight-color;
+    background: #EE8016;
+  }
+}
+
+.header{
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .nopadding {
@@ -41,7 +67,7 @@ $gray-light-color: #bfbfbf;
 }
 
 .banners {
-  margin: 50px auto;
+  margin: 40px auto;
   max-width: 960px;
   > div {
     width: 320px;
@@ -216,13 +242,6 @@ ul.about {
     input, textarea {
       padding: 5px;
       width: 238px;
-    }
-    input {
-      &[type="submit"] {
-        background: $orange-color;
-        color: white;
-        border: none;
-      }
     }
   }
 }

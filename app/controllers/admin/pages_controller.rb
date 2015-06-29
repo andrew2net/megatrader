@@ -12,11 +12,13 @@ class Admin::PagesController < ApplicationController
   def new
     add_breadcrumb t :new, :new_admin_pages_path
     @page = Page.new
+    session[:return_to] ||= request.referer
   end
 
   def edit
     add_breadcrumb t :edit, edit_admin_page_path: params[:id]
     @page = Page.with_translations(:ru).find params[:id]
+    session[:return_to] ||= request.referer
   end
 
   def update
@@ -35,7 +37,7 @@ class Admin::PagesController < ApplicationController
         File.delete file unless rgx === ru_text or rgx === en_text
       }
       gflash :success
-      redirect_to admin_pages_path
+      redirect_to session.delete(:return_to) || admin_pages_path
     else
       gflash :error
       render 'edit'
@@ -57,7 +59,7 @@ class Admin::PagesController < ApplicationController
       @page.text.gsub! file_name_replace, '\1' << @page.id.to_s
       @page.save
       gflash :success
-      redirect_to admin_pages_path
+      redirect_to session.delete(:return_to) || admin_pages_path
     else
       gflash :error
       render 'new'

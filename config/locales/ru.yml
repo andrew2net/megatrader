@@ -18,6 +18,7 @@ ru:
   editor: Редактор
   notify_email: Адрес email для получения заявок
 #  products: Продукты
+  title_suff: MegaTrader - торговля спредом, парный трейдинг, арбитраж
   slider:
     li1: Автоматические торговые системы
     li2: Тестирование на исторических данных
@@ -36,6 +37,14 @@ ru:
   name: Имя
   question: Вопрос
   ask: Спросить
+  useful_info: Полезная информация
+  read_more: Подробнее
+  views:
+    pagination:
+      first: "&laquo; Перв."
+      last: "Посл. &raquo;"
+      previous: "Пред. &lsaquo;"
+      next: "След. &rsaquo;"
   gflash:
     titles:
       error: Ошибка

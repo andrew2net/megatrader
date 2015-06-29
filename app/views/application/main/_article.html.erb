@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="background-gray-light article-teaser">
+      <h4><%= article.title %></h4>
+      <%= article.text[/<p.*/].html_safe %>
+      <%= link_to t(:read_more), '#', class: 'btn btn-default pull-right', role: 'button' %>
+    </div>
+  </div>
+</div>

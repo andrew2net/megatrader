@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Megatrader</title>
+  <title><%=  full_title yield(:title) %></title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -96,14 +96,19 @@
 
 <%= yield %>
 
-<footer>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-1"></div>
-      <div class="col-md-8" style="margin: 20px; color: #9f9f9f; font-size: 8pt"><%= t :risk_disclosure %></div>
-      <div class="col-md-2" style="margin: 20px 0">
-        <div style="margin-bottom: 15px;"><%= image_tag "88x31_wm_blue_on_transparent_#{locale}.png", class: 'center-block' %></div>
-        <div><%= image_tag "88x31_wm_v_blue_on_white_#{locale}.png", class: 'center-block' %></div>
+<footer class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-1" style="margin-top: 20px; color: #9f9f9f; font-size: 8pt"><%= t :risk_disclosure %></div>
+    <div class="col-md-2 hidden-sm hidden-xs" style="margin: 20px 0">
+      <div style="margin-bottom: 15px;"><%= image_tag "88x31_wm_blue_on_transparent_#{locale}.png", class: 'pull-right' %></div>
+      <div><%= image_tag "88x31_wm_v_blue_on_white_#{locale}.png", class: 'pull-right' %></div>
+    </div>
+    <div class="visible-sm visible-xs" style="margin: 20px 0">
+      <div class="col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3">
+        <div style="margin-bottom: 15px;">
+          <%= image_tag "88x31_wm_blue_on_transparent_#{locale}.png" %>
+          <%= image_tag "88x31_wm_v_blue_on_white_#{locale}.png" %>
+        </div>
       </div>
     </div>
   </div>

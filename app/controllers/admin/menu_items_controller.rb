@@ -12,6 +12,7 @@ class Admin::MenuItemsController < ApplicationController
   def new
     add_breadcrumb t :new, :new_admin_menu_items_path
     @menu_item = MenuItem.new
+    session[:return_to] ||= request.referer
   end
 
   def create
@@ -19,7 +20,7 @@ class Admin::MenuItemsController < ApplicationController
     locale_attrs
     if @menu_item.save
       gflash :success
-      redirect_to admin_menu_items_path
+      redirect_to session.delete(:return_to) || admin_menu_items_path
     else
       gflash :error
       render 'new'
@@ -29,6 +30,7 @@ class Admin::MenuItemsController < ApplicationController
   def edit
     add_breadcrumb t :edit, :edit_admin_menu_items_path
     @menu_item = MenuItem.find params[:id]
+    session[:return_to] ||= request.referer
   end
 
   def update
@@ -37,7 +39,7 @@ class Admin::MenuItemsController < ApplicationController
     locale_attrs
     if @menu_item.save
       gflash :success
-      redirect_to admin_menu_items_path
+      redirect_to session.delete(:return_to) || admin_menu_items_path
     else
       gflash :error
       render 'edit'

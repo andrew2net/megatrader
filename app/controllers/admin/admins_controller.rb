@@ -12,11 +12,13 @@ class Admin::AdminsController < ApplicationController
   def new
     add_breadcrumb t :new, :new_admin_admin_path
     @admin = Admin.new
+    session[:return_to] ||= request.referer
   end
 
   def edit
     add_breadcrumb t :edit, edit_admin_admin_path: params[:id]
     @admin = Admin.find(params[:id])
+    session[:return_to] ||= request.referer
   end
 
   def update
@@ -32,7 +34,7 @@ class Admin::AdminsController < ApplicationController
     if result
       @admin.role_ids = params[:admin][:role_ids]
       gflash success: true
-      redirect_to admin_admins_path
+      redirect_to session.delete(:return_to) || admin_admins_path
     else
       gflash :error
       render 'edit'
@@ -44,7 +46,7 @@ class Admin::AdminsController < ApplicationController
     if @admin.save
       @admin.role_ids = params[:admin][:role_ids]
       gflash :success
-      redirect_to admin_admins_path
+      redirect_to session.delete(:return_to) || admin_admins_path
     else
       gflash :error
       render 'new'

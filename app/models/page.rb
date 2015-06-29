@@ -13,4 +13,8 @@ class Page < ActiveRecord::Base
   def self.news
     where(type_id: 3).reorder(created_at: :desc)
   end
+
+  def self.articles
+    where(type_id: 2).reorder(created_at: :desc)
+  end
 end

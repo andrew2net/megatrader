@@ -13,6 +13,6 @@
 
     <%= f.association :roles, as: :check_boxes, label_method: lambda{ |role| I18n.t role.name } %>
 
-    <div class="btn-group pull-right"><%= link_to I18n.t(:back), admin_admins_path, class: 'btn btn-default', role: 'button' %><%= f.button :submit, I18n.t(:create) %></div>
+    <div class="btn-group pull-right"><%= link_to I18n.t(:back), session[:return_to], class: 'btn btn-default', role: 'button' %><%= f.button :submit, I18n.t(:create) %></div>
 <% end %>
 </div>

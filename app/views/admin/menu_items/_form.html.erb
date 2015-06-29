@@ -18,6 +18,6 @@
             <%= f.input_field :title, class: 'form-control', name: 'menu_item[en][title]' %>
           </div>
       <% end %>
-      <div class="btn-group pull-right"><%= link_to I18n.t(:back), admin_menu_items_path, class: 'btn btn-default', role: 'button' %><%= f.button :submit, I18n.t(:create) %></div>
+      <div class="btn-group pull-right"><%= link_to I18n.t(:back), session[:return_to], class: 'btn btn-default', role: 'button' %><%= f.button :submit, I18n.t(:create) %></div>
   <% end %>
 </div>

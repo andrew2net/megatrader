@@ -1,0 +1,16 @@
+<% provide :title, t(:useful_info) %>
+<div class="container">
+  <h3 class="header" style="margin: 0 0 30px;"><%= t :useful_info %></h3>
+
+  <div class="infinite-page">
+    <%= render partial: 'article', collection: @articles %>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="text-center articles-pager">
+        <%= paginate @articles %>
+      </div>
+    </div>
+  </div>
+</div>

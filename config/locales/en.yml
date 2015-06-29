@@ -23,6 +23,7 @@ en:
   new: New
   edit: Edit
   users: Users
+  title_suff: MegaTrader - spread trading, pair trading, arbitrage
   slider:
     li1: Automatic trader sistems
     li2: Historical data backtesting
@@ -41,3 +42,5 @@ en:
   name: Name
   question: Question
   ask: Ask
+  useful_info: Articles
+  read_more: Read more

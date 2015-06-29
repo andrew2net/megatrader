@@ -1,0 +1,8 @@
+$('.infinite-page').append('<%= j render partial: "article", collection: @articles %>');
+$('.articles-pager').hide()
+<% if @articles.next_page %>
+    $('.pagination').replaceWith('<%= j paginate @articles %>');
+<% else %>
+    $(window).off('scroll');
+    $('.pagination').remove();
+<% end %>
