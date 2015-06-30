@@ -1,7 +1,2 @@
 <h4  class="color-green" style="font-weight: bold; padding-top: 40px;"><%= t :still_have_questions %></h4>
-<%= form_tag question_send_path, class: 'question-form', style: 'padding-bottom: 30px;' do %>
-    <div><%= text_field_tag :name, nil, placeholder: t(:name) %></div>
-    <div><%= text_field_tag :email, nil, placeholder: 'Email' %></div>
-    <div><%= text_area_tag :question, nil, rows: 5, cols: 30, placeholder: t(:question) %></div>
-    <div><%= submit_tag t(:ask), class: 'btn btn-default' %></div>
-<% end %>
+<%= render partial: 'application/question/form' %>

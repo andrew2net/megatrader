@@ -11,5 +11,6 @@
  * file per style scope.
  *
  *= require_tree ./application
+ *= require jquery-ui/accordion
  *= require_self
  */

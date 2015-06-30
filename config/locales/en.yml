@@ -41,6 +41,8 @@ en:
   still_have_questions: STILL HAVE QUESTIONS?
   name: Name
   question: Question
+  how_to_pay: How to pay?
+  pay_question_hint: Please leave a message to get the payment credentials or futher information
   ask: Ask
   useful_info: Articles
   read_more: Read more

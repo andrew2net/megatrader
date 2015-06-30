@@ -53,6 +53,12 @@ $ ->
           $.getScript more_articles_url
         return
       return
+
+    $('.price-accord').accordion(
+      heightStyle: "content",
+      icons: {header: 'price-accord-icon-s', activeHeader: 'price-accord-icon-e'}
+    );
+
     return
 
   $(document).on 'ready page:load', pageLoaded
