@@ -57,6 +57,14 @@ $gray-superlight-color: #f6f6f5;
   }
 }
 
+.arrow-dl{
+  background: image-url('arrow-dl.png') no-repeat center;
+  height: 21px;
+  width: 20px;
+  display: inline-block;
+  margin-left: 10px;
+}
+
 .header {
   text-align: center;
   text-transform: uppercase;
