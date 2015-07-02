@@ -46,6 +46,14 @@ $gray-superlight-color: #f6f6f5;
   font-weight: bold;
 }
 
+.icon-envelope{
+  background: image-url('envelope-orange.png') no-repeat;
+  width: 28px;
+  display: inline-block;
+  top: 2px;
+  position: relative;
+}
+
 .btn-default {
   background: $orange-color;
   color: $gray-superlight-color;
@@ -250,11 +258,12 @@ ul.about {
 
 .question-form {
   font-size: 12pt;
-  > div {
-    margin: 10px;
+  div.input-grp {
+    margin: 10px 0;
     input, textarea {
       padding: 5px;
-      width: 238px;
+      width: 100%;
+      max-width: 360px;
     }
   }
 }

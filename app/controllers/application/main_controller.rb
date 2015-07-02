@@ -9,6 +9,7 @@ class Application::MainController < ApplicationController
     @text.sub!(/\[how_to_pay_block\]/, render_to_string('application/question/pay', layout: false))
     @text.sub!(/\[tester_block\]/, render_to_string('tester_block', layout: false))
     @text.sub!(/\[popup_video\]/, render_to_string('popup_video', layout: false))
+    @text.sub!(/\[contact_form\]/, render_to_string('contact_form', layout: false))
 
     @locale_sw = locale_sw(
         {
