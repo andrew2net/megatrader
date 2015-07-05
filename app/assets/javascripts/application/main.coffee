@@ -52,7 +52,20 @@ $ ->
           $('.articles-pager').show()
           $.getScript more_articles_url
         return
+
+    $(document).on('ajax:success', '#question-form', (e, data, status, xhr) ->
+      $('#question-form').append(hxr.responseText).show()
       return
+    ).on('ajax:before', '#question-form', ->
+      $('#question-form').hide()
+      $('.loading-form').show()
+      return
+    ).on('ajax:complete', '#question-form', ->
+      $('.loading-form').hide();
+      return
+    )
+
+    return
 
     $('.price-accord').accordion(
       heightStyle: "content",

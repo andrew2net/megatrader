@@ -1,4 +1,4 @@
-<%= form_tag question_send_path, class: 'question-form', style: 'padding-bottom: 30px;' do %>
+<%= form_tag question_send_message_path, id: 'question-form', style: 'padding-bottom: 30px;' do %>
     <div class="row">
       <div class="col-md-6 col-sm-6">
         <div class="input-grp"><%= text_field_tag :name, nil, placeholder: t(:name) %></div>

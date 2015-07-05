@@ -41,6 +41,8 @@ en:
   still_have_questions: STILL HAVE QUESTIONS?
   name: Name
   question: Question
+  email_invalid: Email is invalid
+  question_emty: Question should not be empty
   phone: Phone
   subject: Topic
   how_to_pay: How to pay?

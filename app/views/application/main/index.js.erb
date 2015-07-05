@@ -1,0 +1,2 @@
+//$('a[rel=next]').html('<%= j link_to_next_page @news, '', remote: true  %>')
+$('#news-block').replaceWith('<%= j @news_html %>')

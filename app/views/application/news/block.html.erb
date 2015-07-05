@@ -1,17 +1,24 @@
-<h4 class="color-green" style="font-weight: bold; padding: 40px 0 10px;"><%= t :news %></h4>
-<div class="row" style="padding-bottom: 40px;">
-  <div class="col-xs-1 col-sm-2 col-md-2"></div>
-  <div class="col-xs-10 col-sm-8 col-md-8">
-    <ul class="orange-bullet columns-2 color-gray visible-lg visible-md">
-      <% @news.each do |n| %>
-          <li><%= n.title %></li>
-      <% end %>
-    </ul>
-    <ul class="orange-bullet color-gray hidden-lg hidden-md center-block">
-      <% @news.each do |n| %>
-          <li><%= n.title %></li>
-      <% end %>
-    </ul>
+<div id="news-block">
+  <h4 class="color-green" style="font-weight: bold; padding: 40px 0 10px;"><%= t :news %></h4>
+
+  <div class="row" style="padding-bottom: 40px;">
+    <div class="col-xs-2 col-sm-2 col-md-2">
+      <div class="angle-btn prev-page"><%= link_to_previous_page @news, '', remote: true %></div>
+    </div>
+    <div class="col-xs-8 col-sm-8 col-md-8">
+      <ul class="orange-bullet columns-2 color-gray visible-lg visible-md">
+        <% @news.each do |n| %>
+            <li><%= n.title %></li>
+        <% end %>
+      </ul>
+      <ul class="orange-bullet color-gray hidden-lg hidden-md center-block">
+        <% @news.each do |n| %>
+            <li><%= n.title %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-xs-2 col-sm-2 col-md-2">
+      <div class="angle-btn next-page"><%= link_to_next_page @news, '', remote: true %></div>
+    </div>
   </div>
-  <div class="col-xs-1 col-sm-2 col-md-2"></div>
 </div>

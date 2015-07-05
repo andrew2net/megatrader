@@ -4,7 +4,9 @@ class Application::MainController < ApplicationController
   def index
     @page = Page.find_by url: request.env['PATH_INFO'].sub(/^\//, '')
     @news = Page.news.page(params[:page]).per(6)
-    @text = @page.text.sub(/\[news_block\]/, render_to_string('application/news/block', layout: false))
+    @news_html = render_to_string('application/news/block', layout: false)
+    @errors = {email: {}, question: {}}
+    @text = @page.text.sub(/\[news_block\]/, @news_html)
     @text.sub!(/\[question_block\]/, render_to_string('application/question/new', layout: false))
     @text.sub!(/\[how_to_pay_block\]/, render_to_string('application/question/pay', layout: false))
     @text.sub!(/\[tester_block\]/, render_to_string('tester_block', layout: false))
@@ -16,6 +18,10 @@ class Application::MainController < ApplicationController
             ru: {method: :page_path, params: {url: Globalize.with_locale(:ru) { @page.url }}},
             en: {method: :page_path, params: {url: Globalize.with_locale(:en) { @page.url }}}
         })
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def news

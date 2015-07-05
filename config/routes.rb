@@ -19,13 +19,13 @@ Rails.application.routes.draw do
 
   scope module: :application do
     root 'main#index'
-    match '/:locale' => 'main#index', locale: /#{I18n.available_locales.join('|')}/, via: [:get, :post]
+    # match '/:locale' => 'main#index', locale: /#{I18n.available_locales.join('|')}/, via: [:get, :post]
     post '/', to: 'main#index'
     get 'news/index'
     get 'news/page'
     get 'news/block'
     get 'question/new'
-    post 'question/send'
+    post 'question/send_message'
     get 'poleznaja-informacija', to: 'main#articles', constraints: {locale: /ru/}, as: :articles_ru
     get 'poleznaja-informacija-en', to: 'main#articles', constraints: {locale: /en/}, as: :articles_en
     get ':url' => 'main#index', as: :page
