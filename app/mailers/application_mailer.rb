@@ -1,4 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default to: Setting.find_by(name: 'notify_email').value
+  # default to: :get_notify_email
   layout 'mailer'
+
 end
