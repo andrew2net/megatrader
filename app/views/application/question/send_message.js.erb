@@ -1,3 +1,7 @@
 $('#question-form').parent().replaceWith('<%= j render partial: 'form' %>');
 $('.input-grp input#email, .input-grp textarea#question').popover({container: '.input-grp > div'}).popover('show');
-//$('').popover({container: '#question + div'}).popover('show');
+<% if err %>
+$('#question-form').after('<div id="message-error" class="block-centred"><%= t(:message_error).html_safe %></div >');
+$('#message-error').fadeIn();
+setTimeout(function(){$('#message-error').fadeOut()}, 3000);
+<% end %>

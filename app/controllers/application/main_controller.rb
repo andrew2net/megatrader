@@ -3,7 +3,7 @@ class Application::MainController < ApplicationController
 
   def index
     @page = Page.find_by url: request.env['PATH_INFO'].sub(/^\//, '')
-    @news = Page.news.page(params[:page]).per(6)
+    @news = Page.news.page(params[:page]).per(5)
     @news_html = render_to_string('application/news/block', layout: false)
     @errors = {email: {}, question: {}}
     @text = @page.text.sub(/\[news_block\]/, @news_html)

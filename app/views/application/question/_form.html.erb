@@ -1,4 +1,4 @@
-<div>
+<div style="position: relative">
   <%= form_tag question_send_message_path, remote: true, id: 'question-form', style: 'padding-bottom: 30px;' do %>
       <div class="input-grp"><%= text_field_tag :name, params[:name], placeholder: t(:name) %></div>
       <div class="input-grp">

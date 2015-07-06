@@ -20,10 +20,14 @@ class Application::QuestionController < ApplicationController
 
     respond_to do |format|
       if valid
-        UserMailer.question_email(params[:name], params[:email], params[:question]).deliver_later
-        format.js
+        begin
+          UserMailer.question_email(params[:name], params[:email], params[:question]).deliver_later
+          format.js { render 'message_sent' }
+        rescue
+          format.js { render 'send_message', locals: {err: true} }
+        end
       else
-        format.js
+        format.js { render 'send_message', locals: {err: false} }
       end
     end
   end

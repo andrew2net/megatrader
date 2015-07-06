@@ -5,6 +5,7 @@ $grid-float-breakpoint-max: $grid-float-breakpoint - 1px;
 @import "bootstrap";
 
 $orange-color: #f98617;
+$orange-light-color: rgba(247, 132, 25, 0.70);
 $green-color: #83b46b;
 $green-light-color: #eaefe7;
 $gray-color: #545151;
@@ -34,7 +35,7 @@ $gray-superlight-color: #f6f6f5;
 
 .angle-btn {
   position: absolute;
-  top: 20px;
+  top: 35px;
   &.next-page {
     @include transform(rotate(-90deg));
     left: 0;
@@ -66,6 +67,15 @@ $gray-superlight-color: #f6f6f5;
 
 .color-light-gray {
   color: $gray-light-color;
+}
+
+.block-centred {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 .bold, .header {
@@ -272,7 +282,8 @@ ul.about {
   -webkit-columns: 2;
   -moz-columns: 2;
   li {
-    margin: 10px;
+    margin: 7px;
+    display: inline-block;
   }
 }
 
@@ -316,6 +327,19 @@ ul.about {
       max-width: 360px;
     }
   }
+}
+
+#message-error {
+  width: 280px;
+  height: 110px;
+  bottom: 75px;
+  padding: 15px;
+  background: $orange-color;
+  border: 10px solid $orange-light-color;
+  border-radius: 10px;
+  background-clip: padding-box;
+  color: white;
+  display: none;
 }
 
 .loading-form {

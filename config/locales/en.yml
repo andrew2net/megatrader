@@ -43,6 +43,8 @@ en:
   question: Question
   email_invalid: Email is invalid
   question_emty: Question should not be empty
+  message_sent: Message is sent. We will contact you shortly.
+  message_error: There was an error when sending a message.<br>Tray again later.
   phone: Phone
   subject: Topic
   how_to_pay: How to pay?
