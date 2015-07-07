@@ -35,7 +35,7 @@ $gray-superlight-color: #f6f6f5;
 
 .angle-btn {
   position: absolute;
-  top: 35px;
+  top: 30px;
   &.next-page {
     @include transform(rotate(-90deg));
     left: 0;
@@ -283,7 +283,8 @@ ul.about {
   -moz-columns: 2;
   li {
     margin: 7px;
-    display: inline-block;
+    display: block;
+    page-break-inside: avoid;
   }
 }
 
@@ -302,6 +303,9 @@ ul.about {
   position: relative;
   div.input-grp {
     margin: 10px 0;
+    > input {
+      height: 36px;
+    }
     > div {
       position: relative;
       margin: auto;

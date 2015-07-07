@@ -27,7 +27,9 @@ Rails.application.routes.draw do
     get 'question/new'
     post 'question/send_message'
     get 'poleznaja-informacija', to: 'main#articles', constraints: {locale: /ru/}, as: :articles_ru
+    get 'poleznaja-informacija/:url', to: 'main#article', constraints: {locale: /ru/}, as: :article_ru
     get 'poleznaja-informacija-en', to: 'main#articles', constraints: {locale: /en/}, as: :articles_en
+    get 'poleznaja-informacija-en/:url', to: 'main#article', constraints: {locale: /en/}, as: :article_en
     get ':url' => 'main#index', as: :page
   end
 

@@ -37,6 +37,22 @@ class Application::MainController < ApplicationController
     end
   end
 
+  def article
+    @article = Page.find_by url: params[:url]
+    @news = Page.news.page(params[:page]).per(5)
+    @news_html = render_to_string('application/news/block', layout: false)
+
+    @locale_sw = locale_sw (
+       {
+           ru: {method: :article_ru_path, params: {url: Globalize.with_locale(:ru) { @article.url }}},
+           en: {method: :article_en_path, params: {url: Globalize.with_locale(:en) { @article.url }}}
+       })
+    respond_to do |format|
+      format.html
+      format.js {render :index}
+    end
+  end
+
   private
   def locale_sw(urls_data)
     case I18n.locale
