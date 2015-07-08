@@ -8,12 +8,12 @@
     <div class="col-xs-8 col-sm-8 col-md-8">
       <ul class="orange-bullet columns-2 color-gray visible-lg visible-md">
         <% @news.each do |n| %>
-            <li><%= n.title.html_safe %></li>
+            <li><%= link_to n.title.html_safe, Rails.application.routes.url_helpers.send("news_#{locale}_path", n.url, page:@news.current_page) %></li>
         <% end %>
       </ul>
       <ul class="orange-bullet color-gray hidden-lg hidden-md center-block">
         <% @news.each do |n| %>
-            <li><%= n.title.html_safe %></li>
+            <li><%= link_to n.title.html_safe, Rails.application.routes.url_helpers.send("news_#{locale}_path", n.url) %></li>
         <% end %>
       </ul>
     </div>

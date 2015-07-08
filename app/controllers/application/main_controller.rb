@@ -25,7 +25,15 @@ class Application::MainController < ApplicationController
   end
 
   def news
+    @article = Page.find_by url: params[:url]
+    @news = Page.news.page(params[:page]).per(5)
+    @news_html = render_to_string('application/news/block', layout: false)
     @locale_sw = locale_sw MenuItem::URLS[:news]
+
+    respond_to do |format|
+      format.html {render :article}
+      format.js {render :index}
+    end
   end
 
   def articles

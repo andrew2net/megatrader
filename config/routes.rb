@@ -21,9 +21,10 @@ Rails.application.routes.draw do
     root 'main#index'
     # match '/:locale' => 'main#index', locale: /#{I18n.available_locales.join('|')}/, via: [:get, :post]
     post '/', to: 'main#index'
-    get 'news/index'
-    get 'news/page'
-    get 'news/block'
+    # get 'news/index'
+    get 'novosti/:url', to: 'main#news', constraints: {locale: /ru/}, as: :news_ru
+    get 'novosti-en/:url', to: 'main#news', constraints: {locale: /en/}, as: :news_en
+    # get 'news/block'
     get 'question/new'
     post 'question/send_message'
     get 'poleznaja-informacija', to: 'main#articles', constraints: {locale: /ru/}, as: :articles_ru

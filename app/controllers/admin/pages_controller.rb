@@ -6,7 +6,7 @@ class Admin::PagesController < ApplicationController
   add_breadcrumb Page.model_name.human, :admin_pages_path
 
   def index
-    @pages_grid = initialize_grid(Page.with_translations(:ru))
+    @pages_grid = initialize_grid(Page.order(:created_at).with_translations(:ru))
   end
 
   def new

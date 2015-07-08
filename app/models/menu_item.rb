@@ -3,9 +3,9 @@ class MenuItem < ActiveRecord::Base
   validates :title, :type_id, presence: true
   translates :title
 
-  URLS = {news:
-              {ru: 'novosti', en: 'novosti-en'},
-          articles: {ru: {method: :articles_ru_path, params: {}}, en: {method: :articles_en_path, params: {}}}
+  URLS = {
+      news: {ru: {method: :news_ru_path, params: {}}, en: {method: :news_en_path, params: {}}},
+      articles: {ru: {method: :articles_ru_path, params: {}}, en: {method: :articles_en_path, params: {}}}
   }
 
   def url
