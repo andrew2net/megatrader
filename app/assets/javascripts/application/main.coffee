@@ -65,8 +65,6 @@ $ ->
       return
     )
 
-    return
-
     $('.price-accord').accordion(
       heightStyle: "content",
       icons: {header: 'price-accord-icon-s', activeHeader: 'price-accord-icon-e'}

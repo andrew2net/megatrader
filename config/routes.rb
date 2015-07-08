@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :application do
+  get 'static_pages/show'
+  end
+
   filter :locale, exclude: /^(\/admins|\/tinymce_assets)/
 
   post 'admin_session/create'

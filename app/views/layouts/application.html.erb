@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%=  full_title yield(:title) %></title>
+  <title><%= full_title yield(:title) %></title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -71,27 +71,39 @@
 </div>
 
 <div class="row banners visible-xs visible-sm">
-  <div class="col-xs-12 col-sm-12 col-centered">
-    <div><%= (t :b1, scope: :banners).html_safe %></div>
-  </div>
-  <div class="col-xs-12 col-sm-12 col-centered">
-    <div><%= (t :b2, scope: :banners).html_safe %></div>
-  </div>
-  <div class="col-xs-12 col-sm-12 col-centered">
-    <div><%= (t :b3, scope: :banners).html_safe %></div>
-  </div>
+  <%= link_to Rails.application.routes.url_helpers.send("news_#{locale}_path", '29-novost-10', locale: locale) do %>
+      <div class="col-xs-12 col-sm-12 col-centered">
+        <div><%= (t :b1, scope: :banners).html_safe %></div>
+      </div>
+  <% end %>
+  <%= link_to Rails.application.routes.url_helpers.send("article_#{locale}_path", '23-hand-trade-imitation', locale: locale) do %>
+      <div class="col-xs-12 col-sm-12 col-centered">
+        <div><%= (t :b2, scope: :banners).html_safe %></div>
+      </div>
+  <% end %>
+  <%= link_to(locale==:ru ? page_path('webinar') : Rails.application.routes.url_helpers.send("article_#{locale}_path", '19-bitcoin-statistical-arbitrage', locale: locale)) do %>
+      <div class="col-xs-12 col-sm-12 col-centered">
+        <div><%= (t :b3, scope: :banners).html_safe %></div>
+      </div>
+  <% end %>
 </div>
 
 <div class="row banners hidden-xs hidden-sm center-block">
-  <div class="col-md-3 col-lg-3 nopadding">
-    <div><%= (t :b1, scope: :banners).html_safe %></div>
-  </div>
-  <div class="col-md-3 col-lg-3 nopadding">
-    <div><%= (t :b2, scope: :banners).html_safe %></div>
-  </div>
-  <div class="col-md-3 col-lg-3 nopadding">
-    <div><%= (t :b3, scope: :banners).html_safe %></div>
-  </div>
+  <%= link_to Rails.application.routes.url_helpers.send("news_#{locale}_path", '29-novost-10', locale: locale) do %>
+      <div class="col-md-3 col-lg-3 nopadding">
+        <div><%= (t :b1, scope: :banners).html_safe %></div>
+      </div>
+  <% end %>
+  <%= link_to Rails.application.routes.url_helpers.send("article_#{locale}_path", '23-hand-trade-imitation', locale: locale) do %>
+      <div class="col-md-3 col-lg-3 nopadding">
+        <div><%= (t :b2, scope: :banners).html_safe %></div>
+      </div>
+  <% end %>
+  <%= link_to(locale==:ru ? page_path('webinar') : Rails.application.routes.url_helpers.send("article_#{locale}_path", '19-bitcoin-statistical-arbitrage', locale: locale)) do %>
+      <div class="col-md-3 col-lg-3 nopadding">
+        <div><%= (t :b3, scope: :banners).html_safe %></div>
+      </div>
+  <% end %>
 </div>
 
 <%= yield %>
@@ -100,15 +112,19 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-1" style="margin-top: 20px; color: #9f9f9f; font-size: 8pt"><%= t :risk_disclosure %></div>
     <div class="col-md-2 hidden-sm hidden-xs" style="margin: 20px 0">
-      <div style="margin-bottom: 15px;"><%= image_tag "88x31_wm_blue_on_transparent_#{locale}.png", class: 'pull-right' %></div>
-      <div><%= image_tag "88x31_wm_v_blue_on_white_#{locale}.png", class: 'pull-right' %></div>
+      <a href="https://passport.webmoney.ru/asp/certview.asp?wmid=237371696349">
+        <div style="margin-bottom: 15px;"><%= image_tag "88x31_wm_blue_on_transparent_#{locale}.png", class: 'pull-right' %></div>
+        <div><%= image_tag "88x31_wm_v_blue_on_white_#{locale}.png", class: 'pull-right' %></div>
+      </a>
     </div>
     <div class="visible-sm visible-xs" style="margin: 20px 0">
       <div class="col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3">
-        <div style="margin-bottom: 15px;">
-          <%= image_tag "88x31_wm_blue_on_transparent_#{locale}.png" %>
-          <%= image_tag "88x31_wm_v_blue_on_white_#{locale}.png" %>
-        </div>
+        <a href="https://passport.webmoney.ru/asp/certview.asp?wmid=237371696349">
+          <div style="margin-bottom: 15px;">
+            <%= image_tag "88x31_wm_blue_on_transparent_#{locale}.png" %>
+            <%= image_tag "88x31_wm_v_blue_on_white_#{locale}.png" %>
+          </div>
+        </a>
       </div>
     </div>
   </div>

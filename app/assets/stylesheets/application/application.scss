@@ -130,28 +130,30 @@ $gray-superlight-color: #f6f6f5;
 .banners {
   margin: 40px auto;
   max-width: 960px;
-  > div {
-    width: 320px;
-    height: 125px;
-    color: white;
-    text-align: center;
+  > a {
     > div {
-      position: relative;
-      top: 55px;
-      span {
-        text-decoration: underline;
-        font-size: 8pt;
+      width: 320px;
+      height: 125px;
+      color: white;
+      text-align: center;
+      > div {
+        position: relative;
+        top: 55px;
+        span {
+          text-decoration: underline;
+          font-size: 8pt;
+        }
       }
     }
-  }
-  > div:nth-child(1) {
-    background-image: image-url("1.png");
-  }
-  > div:nth-child(2) {
-    background-image: image-url("2.png");
-  }
-  > div:nth-child(3) {
-    background-image: image-url("3.png");
+    &:nth-child(1) > div {
+      background-image: image-url("1.png");
+    }
+    &:nth-child(2) > div {
+      background-image: image-url("2.png");
+    }
+    &:nth-child(3) > div {
+      background-image: image-url("3.png");
+    }
   }
 }
 
