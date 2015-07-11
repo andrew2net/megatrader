@@ -1,12 +1,13 @@
 <div style="position: relative">
   <%= form_tag question_send_message_path, remote: true, id: 'question-form', style: 'padding-bottom: 30px;' do %>
-      <div class="input-grp"><%= text_field_tag :name, params[:name], placeholder: t(:name) %></div>
+      <div class="input-grp"><%= text_field_tag :name, data.nil? ? nil : data[:name], placeholder: t(:name) %></div>
       <div class="input-grp">
-        <div></div>
-        <%= text_field_tag :email, params[:email], {placeholder: 'Email'}.merge(@errors[:email]) %>
+        <div id="email-popover"></div>
+        <%= text_field_tag :email, data.nil? ? nil : data[:email], {placeholder: 'Email'}.merge(@errors[:email]) %>
       </div>
       <div class="input-grp">
-        <%= text_area_tag :question, params[:question], {rows: 5, cols: 30, placeholder: t(:question)}.merge(@errors[:question]) %>
+        <div id="question-popover"></div>
+        <%= text_area_tag :question, data.nil? ? nil : data[:question], {placeholder: t(:question), style: 'height: 160px'}.merge(@errors[:question]) %>
       </div>
       <div class="input-grp"><%= submit_tag t(:ask), class: 'btn btn-default' %></div>
   <% end %>

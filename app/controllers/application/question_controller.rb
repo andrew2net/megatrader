@@ -18,17 +18,26 @@ class Application::QuestionController < ApplicationController
       valid = false
     end
 
+    partial = params.has_key?(:phone) ? 'application/main/contact_form' : 'form'
+    err = false
+    sent = false
+
     respond_to do |format|
       if valid
+        data = nil
         begin
-          UserMailer.question_email(params[:name], params[:email], params[:question]).deliver_later
-          format.js { render 'message_sent' }
-        rescue
-          format.js { render 'send_message', locals: {err: true} }
+          UserMailer.question_email(params).deliver_later
+          sent = true
+          # format.js { render 'message_sent' }
+        rescue => e
+          err = true
+          # format.js { render 'send_message', locals: {err: true, part: partial} }
         end
       else
-        format.js { render 'send_message', locals: {err: false} }
+        data = params
       end
+        format.js { render 'send_message', locals: {err: err, part: partial, data: data, sent: sent} }
+      # end
     end
   end
 end

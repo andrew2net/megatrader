@@ -1,7 +1,15 @@
-$('#question-form').parent().replaceWith('<%= j render partial: 'form' %>');
-$('.input-grp input#email, .input-grp textarea#question').popover({container: '.input-grp > div'}).popover('show');
+$('#question-form').parent().replaceWith('<%= j render partial: part, locals: {data: data} %>');
+$('.input-grp input#email').popover({container: '#email-popover'}).popover('show');
+$('.input-grp textarea#question').popover({container: '#question-popover'}).popover('show');
+
 <% if err %>
 $('#question-form').after('<div id="message-error" class="block-centred"><%= t(:message_error).html_safe %></div >');
+$('#message-error').fadeIn();
+setTimeout(function(){$('#message-error').fadeOut()}, 3000);
+<% end %>
+
+<% if sent %>
+$('#question-form').after('<div id="message-error" class="block-centred"><%= t(:message_sent).html_safe %></div >');
 $('#message-error').fadeIn();
 setTimeout(function(){$('#message-error').fadeOut()}, 3000);
 <% end %>

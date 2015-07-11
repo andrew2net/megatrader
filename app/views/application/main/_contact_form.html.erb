@@ -1,0 +1,24 @@
+<div style="position: relative">
+  <%= form_tag question_send_message_path, remote: true, id: 'question-form', style: 'padding-bottom: 30px;' do %>
+      <div class="row">
+        <div class="col-md-6 col-sm-6">
+          <div class="input-grp"><%= text_field_tag :name, data.nil? ? nil : data[:name], placeholder: t(:name) %></div>
+          <div class="input-grp">
+            <div id="email-popover"></div>
+            <%= text_field_tag :email, data.nil? ? nil : data[:email], {placeholder: 'Email'}.merge(@errors[:email]) %>
+          </div>
+          <div class="input-grp"><%= text_field_tag :phone, data.nil? ? nil : data[:phone], placeholder: t(:phone) %></div>
+          <div class="input-grp"><%= text_field_tag :subject, data.nil? ? nil : data[:subject], placeholder: t(:subject) %></div>
+          <div class="input-grp hidden-xs"><%= submit_tag t(:ask), class: 'btn btn-default' %></div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+          <div class="input-grp">
+            <div id="question-popover"></div>
+            <%= text_area_tag :question, data.nil? ? nil : data[:question], {placeholder: t(:question), style: 'height: 175px;'}.merge(@errors[:question]) %>
+          </div>
+        </div>
+      </div>
+      <div class="input-grp visible-xs"><%= submit_tag t(:ask), class: 'btn btn-default' %></div>
+  <% end %>
+  <div class="loading-form" style="height: 270px"><%= image_tag 'ajax-loader.gif' %></div>
+</div>

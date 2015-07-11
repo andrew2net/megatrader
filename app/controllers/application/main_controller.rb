@@ -4,14 +4,14 @@ class Application::MainController < ApplicationController
   def index
     @page = Page.find_by url: request.env['PATH_INFO'].sub(/^\//, '')
     @news = Page.news.page(params[:page]).per(5)
-    @news_html = render_to_string('application/news/block', layout: false)
+    @news_html = render_to_string(partial: 'application/news/block')
     @errors = {email: {}, question: {}}
     @text = @page.text.sub(/\[news_block\]/, @news_html)
-    @text.sub!(/\[question_block\]/, render_to_string('application/question/new', layout: false))
-    @text.sub!(/\[how_to_pay_block\]/, render_to_string('application/question/pay', layout: false))
-    @text.sub!(/\[tester_block\]/, render_to_string('tester_block', layout: false))
-    @text.sub!(/\[popup_video\]/, render_to_string('popup_video', layout: false))
-    @text.sub!(/\[contact_form\]/, render_to_string('contact_form', layout: false))
+    @text.sub!(/\[question_block\]/, render_to_string(partial: 'application/question/new', locals: {data: nil}))
+    @text.sub!(/\[how_to_pay_block\]/, render_to_string(partial: 'application/question/pay'))
+    @text.sub!(/\[tester_block\]/, render_to_string(partial: 'tester_block'))
+    @text.sub!(/\[popup_video\]/, render_to_string(partial: 'popup_video'))
+    @text.sub!(/\[contact_form\]/, render_to_string(partial: 'contact_form', locals: {data: nil}))
 
     @locale_sw = locale_sw(
         {
@@ -27,7 +27,7 @@ class Application::MainController < ApplicationController
   def news
     @article = Page.find_by url: params[:url]
     @news = Page.news.page(params[:page]).per(5)
-    @news_html = render_to_string('application/news/block', layout: false)
+    @news_html = render_to_string(partial: 'application/news/block')
     @locale_sw = locale_sw MenuItem::URLS[:news]
 
     respond_to do |format|
@@ -48,7 +48,7 @@ class Application::MainController < ApplicationController
   def article
     @article = Page.find_by url: params[:url]
     @news = Page.news.page(params[:page]).per(5)
-    @news_html = render_to_string('application/news/block', layout: false)
+    @news_html = render_to_string(partial: 'application/news/block')
 
     @locale_sw = locale_sw (
        {
