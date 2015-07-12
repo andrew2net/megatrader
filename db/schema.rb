@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150525092803) do
+ActiveRecord::Schema.define(version: 20150712143029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,13 +64,15 @@ ActiveRecord::Schema.define(version: 20150525092803) do
   end
 
   create_table "page_translations", force: :cascade do |t|
-    t.integer  "page_id",    null: false
-    t.string   "locale",     null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "page_id",     null: false
+    t.string   "locale",      null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "title"
     t.string   "url"
     t.text     "text"
+    t.string   "keywords"
+    t.string   "description"
   end
 
   add_index "page_translations", ["locale"], name: "index_page_translations_on_locale", using: :btree

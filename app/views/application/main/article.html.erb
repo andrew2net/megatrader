@@ -1,4 +1,8 @@
 <% provide(:title, @article.title) %>
+<% content_for :meta_tags do %>
+    <meta name="keywords" content="<%= @article.keywords %>">
+    <meta name="description" content="<%= @article.description %>">
+<% end %>
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">

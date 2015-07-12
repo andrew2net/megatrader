@@ -2,7 +2,7 @@ class Page < ActiveRecord::Base
   validates :title, presence: true, length: {maximum: 255}
   validates :url, uniqueness: true
   validates :type_id, numericality: {only_integer: true, allow_blank: true}
-  translates :title, :url, :text
+  translates :title, :url, :text, :keywords, :description
 
   TYPES = {page: 1, articles: 2, news: 3}
 

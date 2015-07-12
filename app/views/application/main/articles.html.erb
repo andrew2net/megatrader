@@ -1,4 +1,9 @@
 <% provide :title, t(:useful_info) %>
+<% content_for :meta_tags do %>
+    <meta name="keywords" content="<%= t :useful_info_keywords %>">
+    <meta name="description" content="<%= t :useful_info_description %>">
+<% end %>
+
 <div class="container">
   <h3 class="header" style="margin: 0 0 30px;"><%= t :useful_info %></h3>
 

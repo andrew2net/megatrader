@@ -2,133 +2,136 @@
 <html>
 <head>
   <title><%= full_title yield(:title) %></title>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <% if content_for? :meta_tags %>
+    <%= yield :meta_tags %>
+  <% end %>
+      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <%= csrf_meta_tags %>
+      </head>
+      <body>
 
-<header>
-  <div class="background-orange row">
-    <div class="container">
-      <span class="glyphicon glyphicon-earphone" style="font-size: 12pt; line-height: 26px; margin-left: 10px"></span>
-      <span style="position: relative; bottom: 2px;">+7 913 985 69 71</span>
-      <%= image_tag 'envelop.png', style: 'position: relative; bottom: 3px; margin-left: 15px;' %>
-      <span style="position: relative; bottom: 2px; margin-left: 3px;">
+      <header>
+        <div class="background-orange row">
+          <div class="container">
+            <span class="glyphicon glyphicon-earphone" style="font-size: 12pt; line-height: 26px; margin-left: 10px"></span>
+            <span style="position: relative; bottom: 2px;">+7 913 985 69 71</span>
+            <%= image_tag 'envelop.png', style: 'position: relative; bottom: 3px; margin-left: 15px;' %>
+            <span style="position: relative; bottom: 2px; margin-left: 3px;">
         <%= mail_to 'info@megatrader.org', 'info@megatrader.org', style: 'color: white;' %>
       </span>
 
-      <div class="pull-right" style="margin-right: 10px; position: relative;">
-        <div class="locale-btn">
-          <span class="caret" style="position: relative; top: 2px;"></span>
-          <span style="font-weight: bold"><%= I18n.locale %></span>
-        </div>
-        <div class="locale-sw">
-          <%= link_to self.send(@locale_sw[:method], @locale_sw[:params]) do %>
-              <div><%= @locale_sw[:params][:locale] %></div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
-
-<nav class="navbar" style="margin-bottom: 10px">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar-collapse">
-        <!--<span class="sr-only">Toggle navigation</span>-->
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to (image_tag 'logo.png'), root_path, class: 'navbar-brand' %>
-    </div>
-    <div class="collapse navbar-collapse" id="main-menu-navbar-collapse">
-      <%= render_navigation context: :app, &main_menu_items %>
-    </div>
-  </div>
-</nav>
-
-<div class="hline">
-  <% if request.env['PATH_INFO'] == '/' %>
-      <div class="slider">
-        <%= image_tag('slider.png', class: 'img-responsive center-block') %>
-        <div>
-          <p>MegaTrader</p>
-          <ul class="orange-bullet">
-            <li><%= t :li1, scope: :slider %></li>
-            <li><%= t :li2, scope: :slider %></li>
-            <li><%= t :li3, scope: :slider %></li>
-            <li><%= t :li4, scope: :slider %></li>
-            <li><%= t :li5, scope: :slider %></li>
-            <li><%= t :li6, scope: :slider %></li>
-            <li><%= t :li7, scope: :slider %></li>
-          </ul>
-        </div>
-      </div>
-  <% end %>
-</div>
-
-<div class="row banners visible-xs visible-sm">
-  <%= link_to Rails.application.routes.url_helpers.send("news_#{locale}_path", '29-novost-10', locale: locale) do %>
-      <div class="col-xs-12 col-sm-12 col-centered">
-        <div><%= (t :b1, scope: :banners).html_safe %></div>
-      </div>
-  <% end %>
-  <%= link_to Rails.application.routes.url_helpers.send("article_#{locale}_path", '23-hand-trade-imitation', locale: locale) do %>
-      <div class="col-xs-12 col-sm-12 col-centered">
-        <div><%= (t :b2, scope: :banners).html_safe %></div>
-      </div>
-  <% end %>
-  <%= link_to(locale==:ru ? page_path('webinar') : Rails.application.routes.url_helpers.send("article_#{locale}_path", '19-bitcoin-statistical-arbitrage', locale: locale)) do %>
-      <div class="col-xs-12 col-sm-12 col-centered">
-        <div><%= (t :b3, scope: :banners).html_safe %></div>
-      </div>
-  <% end %>
-</div>
-
-<div class="row banners hidden-xs hidden-sm center-block">
-  <%= link_to Rails.application.routes.url_helpers.send("news_#{locale}_path", '29-novost-10', locale: locale) do %>
-      <div class="col-md-3 col-lg-3 nopadding">
-        <div><%= (t :b1, scope: :banners).html_safe %></div>
-      </div>
-  <% end %>
-  <%= link_to Rails.application.routes.url_helpers.send("article_#{locale}_path", '23-hand-trade-imitation', locale: locale) do %>
-      <div class="col-md-3 col-lg-3 nopadding">
-        <div><%= (t :b2, scope: :banners).html_safe %></div>
-      </div>
-  <% end %>
-  <%= link_to(locale==:ru ? page_path('webinar') : Rails.application.routes.url_helpers.send("article_#{locale}_path", '19-bitcoin-statistical-arbitrage', locale: locale)) do %>
-      <div class="col-md-3 col-lg-3 nopadding">
-        <div><%= (t :b3, scope: :banners).html_safe %></div>
-      </div>
-  <% end %>
-</div>
-
-<%= yield %>
-
-<footer class="container">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-1" style="margin-top: 20px; color: #9f9f9f; font-size: 8pt"><%= t :risk_disclosure %></div>
-    <div class="col-md-2 hidden-sm hidden-xs" style="margin: 20px 0">
-      <a href="https://passport.webmoney.ru/asp/certview.asp?wmid=237371696349">
-        <div style="margin-bottom: 15px;"><%= image_tag "88x31_wm_blue_on_transparent_#{locale}.png", class: 'pull-right' %></div>
-        <div><%= image_tag "88x31_wm_v_blue_on_white_#{locale}.png", class: 'pull-right' %></div>
-      </a>
-    </div>
-    <div class="visible-sm visible-xs" style="margin: 20px 0">
-      <div class="col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3">
-        <a href="https://passport.webmoney.ru/asp/certview.asp?wmid=237371696349">
-          <div style="margin-bottom: 15px;">
-            <%= image_tag "88x31_wm_blue_on_transparent_#{locale}.png" %>
-            <%= image_tag "88x31_wm_v_blue_on_white_#{locale}.png" %>
+            <div class="pull-right" style="margin-right: 10px; position: relative;">
+              <div class="locale-btn">
+                <span class="caret" style="position: relative; top: 2px;"></span>
+                <span style="font-weight: bold"><%= I18n.locale %></span>
+              </div>
+              <div class="locale-sw">
+                <%= link_to self.send(@locale_sw[:method], @locale_sw[:params]) do %>
+                    <div><%= @locale_sw[:params][:locale] %></div>
+                <% end %>
+              </div>
+            </div>
           </div>
-        </a>
-      </div>
-    </div>
-  </div>
-</footer>
+        </div>
+      </header>
 
-</body>
-</html>
+      <nav class="navbar" style="margin-bottom: 10px">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar-collapse">
+              <!--<span class="sr-only">Toggle navigation</span>-->
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <%= link_to (image_tag 'logo.png'), root_path, class: 'navbar-brand' %>
+          </div>
+          <div class="collapse navbar-collapse" id="main-menu-navbar-collapse">
+            <%= render_navigation context: :app, &main_menu_items %>
+          </div>
+        </div>
+      </nav>
+
+      <div class="hline">
+        <% if request.env['PATH_INFO'] == '/' %>
+            <div class="slider">
+              <%= image_tag('slider.png', class: 'img-responsive center-block') %>
+              <div>
+                <p>MegaTrader</p>
+                <ul class="orange-bullet">
+                  <li><%= t :li1, scope: :slider %></li>
+                  <li><%= t :li2, scope: :slider %></li>
+                  <li><%= t :li3, scope: :slider %></li>
+                  <li><%= t :li4, scope: :slider %></li>
+                  <li><%= t :li5, scope: :slider %></li>
+                  <li><%= t :li6, scope: :slider %></li>
+                  <li><%= t :li7, scope: :slider %></li>
+                </ul>
+              </div>
+            </div>
+        <% end %>
+      </div>
+
+      <div class="row banners visible-xs visible-sm">
+        <%= link_to Rails.application.routes.url_helpers.send("news_#{locale}_path", '29-novost-10', locale: locale) do %>
+            <div class="col-xs-12 col-sm-12 col-centered">
+              <div><%= (t :b1, scope: :banners).html_safe %></div>
+            </div>
+        <% end %>
+        <%= link_to Rails.application.routes.url_helpers.send("article_#{locale}_path", '23-hand-trade-imitation', locale: locale) do %>
+            <div class="col-xs-12 col-sm-12 col-centered">
+              <div><%= (t :b2, scope: :banners).html_safe %></div>
+            </div>
+        <% end %>
+        <%= link_to(locale==:ru ? page_path('webinar') : Rails.application.routes.url_helpers.send("article_#{locale}_path", '19-bitcoin-statistical-arbitrage', locale: locale)) do %>
+            <div class="col-xs-12 col-sm-12 col-centered">
+              <div><%= (t :b3, scope: :banners).html_safe %></div>
+            </div>
+        <% end %>
+      </div>
+
+      <div class="row banners hidden-xs hidden-sm center-block">
+        <%= link_to Rails.application.routes.url_helpers.send("news_#{locale}_path", '29-novost-10', locale: locale) do %>
+            <div class="col-md-3 col-lg-3 nopadding">
+              <div><%= (t :b1, scope: :banners).html_safe %></div>
+            </div>
+        <% end %>
+        <%= link_to Rails.application.routes.url_helpers.send("article_#{locale}_path", '23-hand-trade-imitation', locale: locale) do %>
+            <div class="col-md-3 col-lg-3 nopadding">
+              <div><%= (t :b2, scope: :banners).html_safe %></div>
+            </div>
+        <% end %>
+        <%= link_to(locale==:ru ? page_path('webinar') : Rails.application.routes.url_helpers.send("article_#{locale}_path", '19-bitcoin-statistical-arbitrage', locale: locale)) do %>
+            <div class="col-md-3 col-lg-3 nopadding">
+              <div><%= (t :b3, scope: :banners).html_safe %></div>
+            </div>
+        <% end %>
+      </div>
+
+      <%= yield %>
+
+      <footer class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-1" style="margin-top: 20px; color: #9f9f9f; font-size: 8pt"><%= t :risk_disclosure %></div>
+          <div class="col-md-2 hidden-sm hidden-xs" style="margin: 20px 0">
+            <a href="https://passport.webmoney.ru/asp/certview.asp?wmid=237371696349">
+              <div style="margin-bottom: 15px;"><%= image_tag "88x31_wm_blue_on_transparent_#{locale}.png", class: 'pull-right' %></div>
+              <div><%= image_tag "88x31_wm_v_blue_on_white_#{locale}.png", class: 'pull-right' %></div>
+            </a>
+          </div>
+          <div class="visible-sm visible-xs" style="margin: 20px 0">
+            <div class="col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3">
+              <a href="https://passport.webmoney.ru/asp/certview.asp?wmid=237371696349">
+                <div style="margin-bottom: 15px;">
+                  <%= image_tag "88x31_wm_blue_on_transparent_#{locale}.png" %>
+                  <%= image_tag "88x31_wm_v_blue_on_white_#{locale}.png" %>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      </body>
+      </html>
