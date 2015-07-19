@@ -24,6 +24,9 @@ en:
   edit: Edit
   users: Users
   title_suff: MegaTrader - spread trading, pair trading, arbitrage
+  not_found:
+    title: Error 404. The requested page was not found.
+    text: But do not despair! Check the address and try pereyte links on it again. Or read an interesting <a href="/en/poleznaja-informacija-en">article</a> on our website and learn more about the program <a href="/en/primery-i-obzor-programmy-en">MegaTrader</a>.
   slider:
     li1: Automatic trader sistems
     li2: Historical data backtesting
@@ -54,3 +57,18 @@ en:
   useful_info_keywords: years, trading, trade, worked, couple, harder, classical, chaotic, markets, traders, nowadays, changed, volatile, spread
   useful_info_description: Most traders say that markets nowadays have changed, become more volatile and chaotic. They are definitely harder to trade than 5 or 10 years ago. Classical trading, which worked a couple of years
   read_more: Read more
+  gflash:
+    titles:
+      error: Error
+      notice: Notice
+      success: Success
+      warning: "Warning"
+      progress: "Progress"
+    defaults:
+      success: Successful operation comleted
+      error: Error operation
+    users:
+      update:
+        success: User data updated successful
+        notice: User data updated
+        error: Save error

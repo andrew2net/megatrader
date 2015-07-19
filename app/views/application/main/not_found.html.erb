@@ -1,0 +1,10 @@
+<% content_for(:title, t(:title, scope: :not_found)) %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <h4 class="header"><%= t :title, scope: :not_found %></h4>
+      <p style="margin: 40px 0;"><%= t(:text, scope: :not_found).html_safe %></p>
+    </div>
+  </div>
+</div>
+<%= render partial: 'application/news/block' %>

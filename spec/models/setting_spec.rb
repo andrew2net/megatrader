@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Setting, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'can save option notify_email' do
+    create :notify_email_setting
+    setting = Setting.find_by name: 'notify_email'
+    expect(setting).to_not be_nil
+  end
 end

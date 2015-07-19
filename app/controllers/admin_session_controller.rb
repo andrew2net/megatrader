@@ -4,9 +4,11 @@ class AdminSessionController < ApplicationController
   def create
     @admin_session = AdminSession.new(params[:admin_session])
     if @admin_session.save
+      flash[:notice] = t :sign_in_success
       gflash :now, notice: (t :sign_in_success)
       redirect_to params[:return_path]
     else
+      flash[:notice] = t :sign_in_false
       gflash :now, error: (t :sign_in_false)
       @return_path = params[:return_path] || request.fullpath
       render 'admin/login', layout: false

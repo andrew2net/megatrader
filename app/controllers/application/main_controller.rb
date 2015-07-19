@@ -1,8 +1,30 @@
 class Application::MainController < ApplicationController
   skip_before_action :authenticate
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found
+
+  def not_found
+    case params[:action]
+      when 'index'
+        method_ru = method_en = :page_path
+      when 'article'
+        method_ru = :article_ru_path
+        method_en = :article_en_path
+      when 'news'
+        method_en = :news_en_path
+        method_ru = :news_ru_path
+    end
+    @locale_sw = locale_sw({ru: {method: method_ru, params: {url: params[:url] || ''}}, en: {method: method_en, params: {url: params[:url] || ''}}})
+    @news = Page.news.page(params[:page]).per(5)
+    @news_html = render_to_string(partial: 'application/news/block')
+
+    respond_to do |format|
+      format.html {render 'not_found', status: :not_found}
+      format.js {render :index}
+    end
+  end
 
   def index
-    @page = Page.find_by url: request.env['PATH_INFO'].sub(/^\//, '')
+    @page = Page.find_by!(url: params[:url] || '')
     @news = Page.news.page(params[:page]).per(5)
     @news_html = render_to_string(partial: 'application/news/block')
     @errors = {email: {}, question: {}}
@@ -25,14 +47,14 @@ class Application::MainController < ApplicationController
   end
 
   def news
-    @article = Page.find_by url: params[:url]
+    @article = Page.find_by! url: params[:url]
     @news = Page.news.page(params[:page]).per(5)
     @news_html = render_to_string(partial: 'application/news/block')
     @locale_sw = locale_sw MenuItem::URLS[:news]
 
     respond_to do |format|
-      format.html {render :article}
-      format.js {render :index}
+      format.html { render :article }
+      format.js { render :index }
     end
   end
 
@@ -46,18 +68,18 @@ class Application::MainController < ApplicationController
   end
 
   def article
-    @article = Page.find_by url: params[:url]
+    @article = Page.find_by! url: params[:url]
     @news = Page.news.page(params[:page]).per(5)
     @news_html = render_to_string(partial: 'application/news/block')
 
     @locale_sw = locale_sw (
-       {
-           ru: {method: :article_ru_path, params: {url: Globalize.with_locale(:ru) { @article.url }}},
-           en: {method: :article_en_path, params: {url: Globalize.with_locale(:en) { @article.url }}}
-       })
+                               {
+                                   ru: {method: :article_ru_path, params: {url: Globalize.with_locale(:ru) { @article.url }}},
+                                   en: {method: :article_en_path, params: {url: Globalize.with_locale(:en) { @article.url }}}
+                               })
     respond_to do |format|
       format.html
-      format.js {render :index}
+      format.js { render :index }
     end
   end
 

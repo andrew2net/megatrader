@@ -8,7 +8,7 @@ ru:
   back: Назад
   sign_in: Вход
   sign_in_button: Войти
-  sign_in_false: Неверный емайл или пароль
+  sign_in_false: Неверный емейл или пароль
   sign_in_success: Вход выполнен
   sign_out: Выход
   sign_out_success: Вы вышли из системы
@@ -19,6 +19,9 @@ ru:
   notify_email: Адрес email для получения заявок
 #  products: Продукты
   title_suff: MegaTrader - торговля спредом, парный трейдинг, арбитраж
+  not_found:
+    title: Ошибка 404. Запрашиваемая страница не найдена.
+    text: Но не отчаивайтесь! Уточните адрес ссылки и попробуйте перейте по ней снова. Или почитайте интересные <a href="/ru/poleznaja-informacija">статьи</a> на нашем сайте, и узнайте подробности о программе <a href="/ru/primery-i-obzor-programmy">MegaTrader</a>.
   slider:
     li1: Автоматические торговые системы
     li2: Тестирование на исторических данных
@@ -106,6 +109,10 @@ ru:
           attributes:
             email:
               taken: Этот email уже занят
+        page:
+          attributes:
+            url:
+              taken: Этот url уже занят
   authlogic:
     error_messages:
       email_invalid: Значение должно быть email адресом

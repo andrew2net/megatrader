@@ -75,12 +75,12 @@ group :development, :test do
   # gem 'debugger'
   # gem 'ruby-debug-ide19'
 
-  # gem 'rspec-rails'
-  # gem 'factory_girl_rails'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'factory_girl_rails'
 end
 
 group :test do
   gem 'shoulda-matchers'
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end

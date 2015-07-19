@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   get 'static_pages/show'
   end
 
-  filter :locale, exclude: /^(\/admins|\/tinymce_assets)/
+  filter :locale, exclude: /^(\/admins|\/tinymce_assets|\/admin_session)/
 
-  post 'admin_session/create'
+  post 'admin_session/create', to: 'admin_session#create'
   delete 'admin_session/destroy'
 
   scope module: :admin do

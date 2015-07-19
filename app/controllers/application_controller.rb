@@ -11,8 +11,8 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    if /^\/(?:admin|tinymce_assets)/.match request.fullpath
-      I18n.locale = 'ru'
+    if /^\/(?:admin|tinymce_assets)/.match(request.fullpath)
+      I18n.locale = :ru
       return
     elsif params[:locale]
       l=params[:locale]
@@ -22,13 +22,18 @@ class ApplicationController < ActionController::Base
       l = http_accept_language.preferred_language_from I18n.available_locales
     end
     cookies.permanent[:locale] = l
-    redirect_to "/#{l}#{request.fullpath}" unless params[:locale] or /^\/admins/.match request.fullpath
+    redirect_to "/#{l}#{request.fullpath}" unless params[:locale] or /^\/admins/.match(request.fullpath)
     I18n.locale = l
   end
 
   rescue_from CanCan::AccessDenied do |exception|
     gflash :now, error: exception.message
     render 'admin/forbidden'
+  end
+
+  def current_user
+    return @current_user if defined?(@current_user)
+    @current_user = current_admin_session && current_admin_session.admin
   end
 
   private
@@ -45,8 +50,4 @@ class ApplicationController < ActionController::Base
     @current_user_session = AdminSession.find
   end
 
-  def current_user
-    return @current_user if defined?(@current_user)
-    @current_user = current_admin_session && current_admin_session.admin
-  end
 end
