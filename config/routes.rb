@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     get 'poleznaja-informacija-en', to: 'main#articles', constraints: {locale: /en/}, as: :articles_en
     get 'poleznaja-informacija-en/:url', to: 'main#article', constraints: {locale: /en/}, as: :article_en
     get ':url' => 'main#index', as: :page
+    match '*path', to: 'main#not_found', via: :all
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

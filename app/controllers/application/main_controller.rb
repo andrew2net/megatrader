@@ -12,6 +12,8 @@ class Application::MainController < ApplicationController
       when 'news'
         method_en = :news_en_path
         method_ru = :news_ru_path
+      else
+        method_en = method_ru = :root_path
     end
     @locale_sw = locale_sw({ru: {method: method_ru, params: {url: params[:url] || ''}}, en: {method: method_en, params: {url: params[:url] || ''}}})
     @news = Page.news.page(params[:page]).per(5)

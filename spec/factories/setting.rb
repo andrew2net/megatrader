@@ -1,6 +1,6 @@
 FactoryGirl.define do
-  factory :notify_email_setting, class: :setting do
+  factory :setting do
     name "notify_email"
-    value "andriano@ngs.ru"
+    value "admin@abcd.nn"
   end
 end

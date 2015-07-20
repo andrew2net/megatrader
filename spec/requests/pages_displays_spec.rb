@@ -14,9 +14,11 @@ RSpec.describe "PagesDisplays", type: :request do
 
     it "should display not found page" do
       get root_path(locale: :en)
+      expect(response).to have_http_status :not_found
       expect(response).to render_template :not_found
       expect(response.body).to include I18n.t :title, scope: :not_found
       get root_path(locale: :ru)
+      expect(response).to have_http_status :not_found
       expect(response).to render_template :not_found
       expect(response.body).to include I18n.t :title, scope: :not_found
     end
@@ -35,9 +37,11 @@ RSpec.describe "PagesDisplays", type: :request do
 
     it "should display not found page" do
       get article_en_path(locale: :en, url: '5-torgovlja-spredom')
+      expect(response).to have_http_status :not_found
       expect(response).to render_template :not_found
       expect(response.body).to include I18n.t :title, scope: :not_found
       get article_en_path(locale: :ru, url: '5-torgovlja-spredom')
+      expect(response).to have_http_status :not_found
       expect(response).to render_template :not_found
       expect(response.body).to include I18n.t :title, scope: :not_found
     end
@@ -49,11 +53,33 @@ RSpec.describe "PagesDisplays", type: :request do
       get news_en_path(locale: :en, url: '29-novost-10')
       expect(response).to render_template :article
       expect(response.body).to include 'New news'
+      get news_en_path(locale: :ru, url: '29-novost-10')
+      expect(response).to render_template :article
+      expect(response.body).to include 'New news'
     end
 
     it "should display not found page" do
       get news_en_path(locale: :en, url: '29-novost-10')
+      expect(response).to have_http_status :not_found
       expect(response).to render_template :not_found
+      expect(response.body).to include I18n.t :title, scope: :not_found
+      get news_en_path(locale: :ru, url: '29-novost-10')
+      expect(response).to have_http_status :not_found
+      expect(response).to render_template :not_found
+      expect(response.body).to include I18n.t :title, scope: :not_found
+    end
+  end
+
+  describe 'GET /qwer/asdf/zxcv' do
+    it "should display not found page" do
+      get '/qwer/asdf/zxcv'
+      expect(response).to redirect_to('//qwer/asdf/zxcv')
+      get '/ru/qwer/asdf/zxcv'
+      expect(response).to render_template :not_found
+      expect(response.body).to include I18n.t :title, scope: :not_found
+      get '/en/qwer/asdf/zxcv'
+      expect(response).to render_template :not_found
+      expect(response.body).to include I18n.t :title, scope: :not_found
     end
   end
 end
