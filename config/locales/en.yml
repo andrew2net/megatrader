@@ -28,13 +28,13 @@ en:
     title: Error 404. The requested page was not found.
     text: But do not despair! Check the address and try pereyte links on it again. Or read an interesting <a href="/en/poleznaja-informacija-en">article</a> on our website and learn more about the program <a href="/en/primery-i-obzor-programmy-en">MegaTrader</a>.
   slider:
-    li1: Automatic trader systems
+    li1: Automatic trading systems
     li2: Historical data backtesting
     li3: Order execution delay emulation
     li4: MetaTrader and SaxoTrader support
     li5: Spread chart analysis
     li6: Easy manual trading
-    li7: One-click spread by/sell
+    li7: One-click spread buy/sell
   banners:
     b1: Direct exchange data from<br>CQG<br><span>read more</span>
     b2: MegaClicker MT4 manual<br>trading emulator<br><span>read more</sapn>
