@@ -49,6 +49,7 @@ en:
   message_sent: Message is sent. We will contact you shortly.
   message_error: There was an error when sending a message.<br>Tray again later.
   phone: Phone
+  phone_number: +7 906 906 18 20
   subject: Topic
   how_to_pay: How to pay?
   pay_question_hint: Please leave a message to get the payment credentials or futher information
