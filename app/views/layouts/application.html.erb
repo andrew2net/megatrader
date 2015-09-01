@@ -43,14 +43,14 @@
 <header>
   <div class="background-orange row">
     <div class="container">
-      <span class="glyphicon glyphicon-earphone" style="font-size: 12pt; line-height: 26px; margin-left: 10px"></span>
-      <span style="position: relative; bottom: 2px;"><%= t :phone_number %></span>
-      <%= image_tag 'envelop.png', style: 'position: relative; bottom: 3px; margin-left: 15px;' %>
-      <span style="position: relative; bottom: 2px; margin-left: 3px;">
+      <span class="icon-whatsapp white"></span>
+      <span style="position: relative; bottom: 4px;"><%= t :phone_number %></span>
+      <%= image_tag 'envelop.png', style: 'position: relative; bottom: 6px; margin-left: 15px;' %>
+      <span style="position: relative; bottom: 5px; margin-left: 3px;">
         <%= mail_to 'info@megatrader.org', 'info@megatrader.org', style: 'color: white;' %>
       </span>
 
-      <div class="pull-right" style="margin-right: 10px; position: relative;">
+      <div class="pull-right" style="margin-right: 10px; position: relative; top: 2px">
         <div class="locale-btn">
           <span class="caret" style="position: relative; top: 2px;"></span>
           <span style="font-weight: bold"><%= I18n.locale %></span>

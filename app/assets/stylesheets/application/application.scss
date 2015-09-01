@@ -82,6 +82,21 @@ $gray-superlight-color: #f6f6f5;
   font-weight: bold;
 }
 
+.icon-whatsapp{
+  height: 24px;
+  display: inline-block;
+  position: relative;
+  top: 3px;
+  &.orange{
+    background: image_url('whatsapp-or.png') no-repeat;
+    width: 28px;
+  }
+  &.white{
+    background: image_url('whatsapp-w.png') no-repeat;
+    width: 24px;
+  }
+}
+
 .icon-envelope {
   background: image-url('envelope-orange.png') no-repeat;
   width: 28px;
