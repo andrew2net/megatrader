@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  namespace :application do
-  get 'static_pages/show'
-  end
+  # namespace :application do
+  # get 'static_pages/show'
+  # end
 
-  filter :locale, exclude: /^(\/admins|\/tinymce_assets|\/admin_session)/
+  filter :locale, exclude: /^(\/admin|\/tinymce_assets|\/admin_session)/
 
   post 'admin_session/create', to: 'admin_session#create'
   delete 'admin_session/destroy'

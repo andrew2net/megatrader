@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe AdminSessionController, type: :controller do
   describe 'POST #create' do
+    setup :activate_authlogic
     context 'when password is invalid'  do
       it 'render the page with error' do
         admin = create :admin
