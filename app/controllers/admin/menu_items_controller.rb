@@ -46,6 +46,11 @@ class Admin::MenuItemsController < ApplicationController
     end
   end
 
+  def destroy
+    MenuItem.find(params[:id]).destroy
+    redirect_to admin_menu_items_path
+  end
+
   private
   def menu_params
     params.require(:menu_item).permit(:title, :type_id, :page_id, :weight)
