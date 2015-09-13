@@ -19,6 +19,10 @@ $ ->
     image.animate {opacity: 1}, 300
     return
 
+  $(document).on 'page:before-change', (data)->
+    counter = new Ya.Metrika {id: 15483610}
+    counter.hit data.currentTarget.activeElement.href
+    return
 
   $(document).on 'click', '.video-stub', ->
     video_popup = $ '.video-popup'
