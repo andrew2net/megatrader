@@ -21,7 +21,10 @@ $ ->
 
   $(document).on 'page:before-change', (data)->
     counter = new Ya.Metrika {id: 15483610}
-    counter.hit data.currentTarget.activeElement.href
+    counter.hit data.currentTarget.activeElement.href, {
+      referer: data.currentTarget.URL
+#      title: data.currentTarget.activeElement.innerHTML
+    }
     return
 
   $(document).on 'click', '.video-stub', ->
