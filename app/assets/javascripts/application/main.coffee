@@ -49,6 +49,40 @@ $ ->
     return
 
   pageLoaded = ->
+
+#    (
+#      (d, w, c)->
+#        (w[c] = w[c] || []).push ()->
+#          try
+#            w.yaCounter15483610 = new Ya.Metrika({
+#              id: 15483610
+#              webvisor: true
+#              clickmap: true
+#              trackLinks: true
+#              accurateTrackBounce: true
+#              trackHash:true
+#            })
+#          catch e
+#          return
+#
+#        n = d.getElementsByTagName("script")[0]
+#        s = d.createElement("script")
+#        f = ()->
+#          n.parentNode.insertBefore(s, n)
+#          return
+#
+#        s.type = "text/javascript"
+#        s.async = true
+#        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"
+#
+#        if (w.opera == "[object Opera]")
+#          d.addEventListener("DOMContentLoaded", f, false)
+#        else
+#          f()
+#        return
+#    )(document, window, "yandex_metrika_callbacks")
+
+
     $('.articles-pager').hide()
     if $('.pagination a[rel=next]').size() > 0
       $(window).on 'scroll', ->
