@@ -56,7 +56,7 @@
           <span style="font-weight: bold"><%= I18n.locale %></span>
         </div>
         <div class="locale-sw">
-          <%= link_to self.send(@locale_sw[:method], @locale_sw[:params]) do %>
+          <%= link_to self.send(@locale_sw[:method], @locale_sw[:params]), data:{ no_turbolink:true } do %>
               <div><%= @locale_sw[:params][:locale] %></div>
           <% end %>
         </div>
@@ -166,6 +166,10 @@
     </div>
   </div>
 </footer>
-
+<% if locale == :ru %>
+  <span id="jivosite_id" style="display:none">mVB9uoEBHj</span>
+<% else %>
+  <span id="jivosite_id" style="display:none">xZ9J5FtXli</span>
+<% end %>
 </body>
 </html>
