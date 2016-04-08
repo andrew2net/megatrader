@@ -1,0 +1,2 @@
+module Application::QuestionHelper
+end
