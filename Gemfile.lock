@@ -403,7 +403,7 @@ DEPENDENCIES
   simple_form
   simple_navigation_renderers
   spring
-  sprockets (~> 2)
+  sprockets-rails
   therubyracer
   tinymce-rails
   tinymce-rails-imageupload!

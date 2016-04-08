@@ -30,7 +30,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'unicorn', group: :production
 
 # Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 group :development do
   gem 'capistrano'
   gem 'capistrano-bundler'
@@ -38,8 +37,8 @@ group :development do
   gem 'capistrano-rvm'
 end
 
-gem 'sprockets', '~> 2'
-# gem 'sprockets-rails'
+# gem 'sprockets', '~> 2'
+gem 'sprockets-rails'
 
 gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'master'
 gem 'routing-filter'
