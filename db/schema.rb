@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150712143029) do
+ActiveRecord::Schema.define(version: 20160406103417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(version: 20150712143029) do
 
   add_index "admins_roles", ["admin_id"], name: "index_admins_roles_on_admin_id", using: :btree
   add_index "admins_roles", ["role_id"], name: "index_admins_roles_on_role_id", using: :btree
+
+  create_table "correlations", force: :cascade do |t|
+    t.integer  "row_tool_symbol_id"
+    t.integer  "col_tool_symbol_id"
+    t.decimal  "value",              precision: 3, scale: 2
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+  end
+
+  add_index "correlations", ["col_tool_symbol_id"], name: "index_correlations_on_col_tool_symbol_id", using: :btree
+  add_index "correlations", ["row_tool_symbol_id", "col_tool_symbol_id"], name: "index_correlations_on_row_tool_symbol_id_and_col_tool_symbol_id", unique: true, using: :btree
 
   create_table "menu_item_translations", force: :cascade do |t|
     t.integer  "menu_item_id", null: false
@@ -96,5 +107,13 @@ ActiveRecord::Schema.define(version: 20150712143029) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "tool_symbols", force: :cascade do |t|
+    t.string   "name",       limit: 6
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "tool_symbols", ["name"], name: "index_tool_symbols_on_name", unique: true, using: :btree
 
 end

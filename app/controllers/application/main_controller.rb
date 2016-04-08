@@ -31,11 +31,24 @@ class Application::MainController < ApplicationController
     @news_html = render_to_string(partial: 'application/news/block')
     @errors = {email: {}, question: {}}
     @text = @page.text.sub(/\[news_block\]/, @news_html)
-    @text.sub!(/\[question_block\]/, render_to_string(partial: 'application/question/new', locals: {data: nil}))
-    @text.sub!(/\[how_to_pay_block\]/, render_to_string(partial: 'application/question/pay'))
-    @text.sub!(/\[tester_block\]/, render_to_string(partial: 'tester_block'))
-    @text.sub!(/\[popup_video\]/, render_to_string(partial: 'popup_video'))
-    @text.sub!(/\[contact_form\]/, render_to_string(partial: 'contact_form', locals: {data: nil}))
+
+    question_rgxp = /\[question_block\]/
+    @text.sub!(question_rgxp, render_to_string(partial: 'application/question/new', locals: {data: nil})) if @text =~ question_rgxp
+
+    how_to_pay_rgxp = /\[how_to_pay_block\]/
+    @text.sub!(how_to_pay_rgxp, render_to_string(partial: 'application/question/pay')) if @text =~ how_to_pay_rgxp
+
+    tester_block_rgxp = /\[tester_block\]/
+    @text.sub!(tester_block_rgxp, render_to_string(partial: 'tester_block')) if @text =~ tester_block_rgxp
+
+    popup_video_rgxp = /\[popup_video\]/
+    @text.sub!(popup_video_rgxp, render_to_string(partial: 'popup_video')) if @text =~ popup_video_rgxp
+
+    contact_form_rgxp = /\[contact_form\]/
+    @text.sub!(contact_form_rgxp, render_to_string(partial: 'contact_form', locals: {data: nil})) if @text =~ contact_form_rgxp
+
+    correlation_rgxp = /\[correlation\]/
+    @text.sub! correlation_rgxp, render_to_string(partial: 'correlation') if @text =~ correlation_rgxp
 
     @locale_sw = locale_sw(
         {
@@ -74,11 +87,10 @@ class Application::MainController < ApplicationController
     @news = Page.news.page(params[:page]).per(5)
     @news_html = render_to_string(partial: 'application/news/block')
 
-    @locale_sw = locale_sw (
-                               {
-                                   ru: {method: :article_ru_path, params: {url: Globalize.with_locale(:ru) { @article.url }}},
-                                   en: {method: :article_en_path, params: {url: Globalize.with_locale(:en) { @article.url }}}
-                               })
+    @locale_sw = locale_sw ({
+      ru: {method: :article_ru_path, params: {url: Globalize.with_locale(:ru) { @article.url }}},
+      en: {method: :article_en_path, params: {url: Globalize.with_locale(:en) { @article.url }}}
+    })
     respond_to do |format|
       format.html
       format.js { render :index }

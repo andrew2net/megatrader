@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # get 'static_pages/show'
   # end
 
-  filter :locale, exclude: /^(\/admin|\/tinymce_assets|\/admin_session)/
+  filter :locale, exclude: /^(\/admin|\/tinymce_assets|\/admin_session|\/api\/)/
 
   post 'admin_session/create', to: 'admin_session#create'
   delete 'admin_session/destroy'
@@ -23,6 +23,9 @@ Rails.application.routes.draw do
 
   scope module: :application do
     root 'main#index'
+    scope :api do
+      get 'get_correlations', controller: 'api'
+    end
     # match '/:locale' => 'main#index', locale: /#{I18n.available_locales.join('|')}/, via: [:get, :post]
     post '/', to: 'main#index'
     # get 'news/index'
@@ -38,6 +41,7 @@ Rails.application.routes.draw do
     get ':url' => 'main#index', as: :page
     match '*path', to: 'main#not_found', via: :all
   end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

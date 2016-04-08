@@ -1,175 +1,180 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title><%= full_title yield(:title) %></title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <% if content_for? :meta_tags %>
+  <head>
+    <title><%= full_title yield(:title) %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <% if content_for? :meta_tags %>
       <%= yield :meta_tags %>
-  <% end %>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function (d, w, c) {
-        (w[c] = w[c] || []).push(function() {
-            try {
-                w.yaCounter15483610 = new Ya.Metrika({id:15483610,
-                    webvisor:true,
-                    clickmap:true,
-                    trackLinks:true,
-                    accurateTrackBounce:true,
-                    trackHash:true});
-            } catch(e) { }
-        });
+    <% end %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/angular-ui/bower-ui-grid/master/ui-grid.min.css" type="text/css">
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular&#45;touch.min.js"></script> -->
+    <script src="https://cdn.rawgit.com/angular-ui/bower-ui-grid/master/ui-grid.min.js"></script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+(function (d, w, c) {
+  (w[c] = w[c] || []).push(function() {
+    try {
+      w.yaCounter15483610 = new Ya.Metrika({id:15483610,
+        webvisor:true,
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        trackHash:true});
+    } catch(e) { }
+  });
 
-        var n = d.getElementsByTagName("script")[0],
-                s = d.createElement("script"),
-                f = function () { n.parentNode.insertBefore(s, n); };
-        s.type = "text/javascript";
-        s.async = true;
-        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+  var n = d.getElementsByTagName("script")[0],
+  s = d.createElement("script"),
+  f = function () { n.parentNode.insertBefore(s, n); };
+  s.type = "text/javascript";
+  s.async = true;
+  s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
 
-        if (w.opera == "[object Opera]") {
-            d.addEventListener("DOMContentLoaded", f, false);
-        } else { f(); }
-    })(document, window, "yandex_metrika_callbacks");
-</script>
-<noscript><div><img src="//mc.yandex.ru/watch/15483610" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-<script>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"5117417"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script><noscript><img src="//bat.bing.com/action/0?ti=5117417&Ver=2" height="0" width="0" style="display:none; visibility: hidden;" /></noscript>
-<header>
-  <div class="background-orange row">
-    <div class="container">
-      <span class="icon-whatsapp white"></span>
-      <span style="position: relative; bottom: 4px;"><%= t :phone_number %></span>
-      <%= image_tag 'envelop.png', style: 'position: relative; bottom: 6px; margin-left: 15px;' %>
-      <span style="position: relative; bottom: 5px; margin-left: 3px;">
-        <%= mail_to 'info@megatrader.org', 'info@megatrader.org', style: 'color: white;' %>
-      </span>
+  if (w.opera == "[object Opera]") {
+    d.addEventListener("DOMContentLoaded", f, false);
+  } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+    </script>
+    <noscript><div><img src="//mc.yandex.ru/watch/15483610" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    <script>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"5117417"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script><noscript><img src="//bat.bing.com/action/0?ti=5117417&Ver=2" height="0" width="0" style="display:none; visibility: hidden;" /></noscript>
+    <header>
+      <div class="background-orange row">
+        <div class="container">
+          <span class="icon-whatsapp white"></span>
+          <span style="position: relative; bottom: 4px;"><%= t :phone_number %></span>
+          <%= image_tag 'envelop.png', style: 'position: relative; bottom: 6px; margin-left: 15px;' %>
+          <span style="position: relative; bottom: 5px; margin-left: 3px;">
+            <%= mail_to 'info@megatrader.org', 'info@megatrader.org', style: 'color: white;' %>
+          </span>
 
-      <div class="pull-right" style="margin-right: 10px; position: relative; top: 2px">
-        <div class="locale-btn">
-          <span class="caret" style="position: relative; top: 2px;"></span>
-          <span style="font-weight: bold"><%= I18n.locale %></span>
-        </div>
-        <div class="locale-sw">
-          <%= link_to self.send(@locale_sw[:method], @locale_sw[:params]), data:{ no_turbolink:true } do %>
-              <div><%= @locale_sw[:params][:locale] %></div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
-
-<nav class="navbar" style="margin-bottom: 10px">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar-collapse">
-        <!--<span class="sr-only">Toggle navigation</span>-->
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to (image_tag 'logo.png'), root_path, class: 'navbar-brand' %>
-    </div>
-    <div class="collapse navbar-collapse" id="main-menu-navbar-collapse">
-      <%= render_navigation context: :app, &main_menu_items %>
-    </div>
-  </div>
-</nav>
-
-<div class="hline">
-  <% if request.env['PATH_INFO'] == '/' %>
-      <div class="slider">
-        <%= image_tag('slider.png', class: 'img-responsive center-block') %>
-        <div>
-          <p>MegaTrader</p>
-          <ul class="orange-bullet">
-            <li><%= t :li1, scope: :slider %></li>
-            <li><%= t :li2, scope: :slider %></li>
-            <li><%= t :li3, scope: :slider %></li>
-            <li><%= t :li4, scope: :slider %></li>
-            <li><%= t :li5, scope: :slider %></li>
-            <li><%= t :li6, scope: :slider %></li>
-            <li><%= t :li7, scope: :slider %></li>
-          </ul>
-        </div>
-      </div>
-  <% end %>
-</div>
-
-<div class="row banners visible-xs visible-sm">
-  <%= link_to Rails.application.routes.url_helpers.send("news_#{locale}_path", '29-novost-10', locale: locale) do %>
-      <div class="col-xs-12 col-sm-12 col-centered">
-        <div><%= (t :b1, scope: :banners).html_safe %></div>
-      </div>
-  <% end %>
-  <%= link_to Rails.application.routes.url_helpers.send("article_#{locale}_path", '23-hand-trade-imitation', locale: locale) do %>
-      <div class="col-xs-12 col-sm-12 col-centered">
-        <div><%= (t :b2, scope: :banners).html_safe %></div>
-      </div>
-  <% end %>
-  <%= link_to(locale==:ru ? page_path('webinar') : Rails.application.routes.url_helpers.send("article_#{locale}_path", '19-bitcoin-statistical-arbitrage', locale: locale)) do %>
-      <div class="col-xs-12 col-sm-12 col-centered">
-        <div><%= (t :b3, scope: :banners).html_safe %></div>
-      </div>
-  <% end %>
-</div>
-
-<div class="row banners hidden-xs hidden-sm center-block">
-  <%= link_to Rails.application.routes.url_helpers.send("news_#{locale}_path", '29-novost-10', locale: locale) do %>
-      <div class="col-md-3 col-lg-3 nopadding">
-        <div><%= (t :b1, scope: :banners).html_safe %></div>
-      </div>
-  <% end %>
-  <%= link_to Rails.application.routes.url_helpers.send("article_#{locale}_path", '23-hand-trade-imitation', locale: locale) do %>
-      <div class="col-md-3 col-lg-3 nopadding">
-        <div><%= (t :b2, scope: :banners).html_safe %></div>
-      </div>
-  <% end %>
-  <%= link_to(locale==:ru ? page_path('webinar') : Rails.application.routes.url_helpers.send("article_#{locale}_path", '19-bitcoin-statistical-arbitrage', locale: locale)) do %>
-      <div class="col-md-3 col-lg-3 nopadding">
-        <div><%= (t :b3, scope: :banners).html_safe %></div>
-      </div>
-  <% end %>
-</div>
-
-<%= yield %>
-
-<footer class="container">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-1" style="margin-top: 20px; color: #9f9f9f; font-size: 8pt"><%= t :risk_disclosure %></div>
-    <div class="col-md-2 hidden-sm hidden-xs" style="margin: 20px 0">
-      <a href="https://passport.webmoney.ru/asp/certview.asp?wmid=237371696349">
-        <div style="margin-bottom: 15px;"><%= image_tag "88x31_wm_blue_on_transparent_#{locale}.png", class: 'pull-right' %></div>
-        <div><%= image_tag "88x31_wm_v_blue_on_white_#{locale}.png", class: 'pull-right' %></div>
-      </a>
-    </div>
-    <div class="visible-sm visible-xs" style="margin: 20px 0">
-      <div class="col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3">
-        <a href="https://passport.webmoney.ru/asp/certview.asp?wmid=237371696349">
-          <div style="margin-bottom: 15px;">
-            <%= image_tag "88x31_wm_blue_on_transparent_#{locale}.png" %>
-            <%= image_tag "88x31_wm_v_blue_on_white_#{locale}.png" %>
+          <div class="pull-right" style="margin-right: 10px; position: relative; top: 2px">
+            <div class="locale-btn">
+              <span class="caret" style="position: relative; top: 2px;"></span>
+              <span style="font-weight: bold"><%= I18n.locale %></span>
+            </div>
+            <div class="locale-sw">
+              <%= link_to self.send(@locale_sw[:method], @locale_sw[:params]), data:{ no_turbolink:true } do %>
+                <div><%= @locale_sw[:params][:locale] %></div>
+              <% end %>
+            </div>
           </div>
-        </a>
+        </div>
       </div>
+    </header>
+
+    <nav class="navbar" style="margin-bottom: 10px">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar-collapse">
+            <!--<span class="sr-only">Toggle navigation</span>-->
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to (image_tag 'logo.png'), root_path, class: 'navbar-brand' %>
+        </div>
+        <div class="collapse navbar-collapse" id="main-menu-navbar-collapse">
+          <%= render_navigation context: :app, &main_menu_items %>
+        </div>
+      </div>
+    </nav>
+
+    <div class="hline">
+      <% if request.env['PATH_INFO'] == '/' %>
+        <div class="slider">
+          <%= image_tag('slider.png', class: 'img-responsive center-block') %>
+          <div>
+            <p>MegaTrader</p>
+            <ul class="orange-bullet">
+              <li><%= t :li1, scope: :slider %></li>
+              <li><%= t :li2, scope: :slider %></li>
+              <li><%= t :li3, scope: :slider %></li>
+              <li><%= t :li4, scope: :slider %></li>
+              <li><%= t :li5, scope: :slider %></li>
+              <li><%= t :li6, scope: :slider %></li>
+              <li><%= t :li7, scope: :slider %></li>
+            </ul>
+          </div>
+        </div>
+      <% end %>
     </div>
-  </div>
-  <div class="row" style="margin-top: 20px; color: #9f9f9f; font-size: 8pt">
-    <div class="col-md-8 col-md-offset-1 text-center">
-      <%= t :enterprise %>
+
+    <div class="row banners visible-xs visible-sm">
+      <%= link_to Rails.application.routes.url_helpers.send("news_#{locale}_path", '29-novost-10', locale: locale) do %>
+        <div class="col-xs-12 col-sm-12 col-centered">
+          <div><%= (t :b1, scope: :banners).html_safe %></div>
+        </div>
+      <% end %>
+      <%= link_to Rails.application.routes.url_helpers.send("article_#{locale}_path", '23-hand-trade-imitation', locale: locale) do %>
+        <div class="col-xs-12 col-sm-12 col-centered">
+          <div><%= (t :b2, scope: :banners).html_safe %></div>
+        </div>
+      <% end %>
+      <%= link_to(locale==:ru ? page_path('webinar') : Rails.application.routes.url_helpers.send("article_#{locale}_path", '19-bitcoin-statistical-arbitrage', locale: locale)) do %>
+        <div class="col-xs-12 col-sm-12 col-centered">
+          <div><%= (t :b3, scope: :banners).html_safe %></div>
+        </div>
+      <% end %>
     </div>
-  </div>
-</footer>
-<% if locale == :ru %>
-  <span id="jivosite_id" style="display:none">mVB9uoEBHj</span>
-<% else %>
-  <span id="jivosite_id" style="display:none">xZ9J5FtXli</span>
-<% end %>
-</body>
+
+    <div class="row banners hidden-xs hidden-sm center-block">
+      <%= link_to Rails.application.routes.url_helpers.send("news_#{locale}_path", '29-novost-10', locale: locale) do %>
+        <div class="col-md-3 col-lg-3 nopadding">
+          <div><%= (t :b1, scope: :banners).html_safe %></div>
+        </div>
+      <% end %>
+      <%= link_to Rails.application.routes.url_helpers.send("article_#{locale}_path", '23-hand-trade-imitation', locale: locale) do %>
+        <div class="col-md-3 col-lg-3 nopadding">
+          <div><%= (t :b2, scope: :banners).html_safe %></div>
+        </div>
+      <% end %>
+      <%= link_to(locale==:ru ? page_path('webinar') : Rails.application.routes.url_helpers.send("article_#{locale}_path", '19-bitcoin-statistical-arbitrage', locale: locale)) do %>
+        <div class="col-md-3 col-lg-3 nopadding">
+          <div><%= (t :b3, scope: :banners).html_safe %></div>
+        </div>
+      <% end %>
+    </div>
+
+    <%= yield %>
+
+    <footer class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-1" style="margin-top: 20px; color: #9f9f9f; font-size: 8pt"><%= t :risk_disclosure %></div>
+        <div class="col-md-2 hidden-sm hidden-xs" style="margin: 20px 0">
+          <a href="https://passport.webmoney.ru/asp/certview.asp?wmid=237371696349">
+            <div style="margin-bottom: 15px;"><%= image_tag "88x31_wm_blue_on_transparent_#{locale}.png", class: 'pull-right' %></div>
+            <div><%= image_tag "88x31_wm_v_blue_on_white_#{locale}.png", class: 'pull-right' %></div>
+          </a>
+        </div>
+        <div class="visible-sm visible-xs" style="margin: 20px 0">
+          <div class="col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3">
+            <a href="https://passport.webmoney.ru/asp/certview.asp?wmid=237371696349">
+              <div style="margin-bottom: 15px;">
+                <%= image_tag "88x31_wm_blue_on_transparent_#{locale}.png" %>
+                <%= image_tag "88x31_wm_v_blue_on_white_#{locale}.png" %>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 20px; color: #9f9f9f; font-size: 8pt">
+        <div class="col-md-8 col-md-offset-1 text-center">
+          <%= t :enterprise %>
+        </div>
+      </div>
+    </footer>
+    <% if locale == :ru %>
+      <span id="jivosite_id" style="display:none">mVB9uoEBHj</span>
+    <% else %>
+      <span id="jivosite_id" style="display:none">xZ9J5FtXli</span>
+    <% end %>
+  </body>
 </html>

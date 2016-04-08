@@ -102,14 +102,14 @@ $ ->
       $('.loading-form').show()
       return
     ).on('ajax:complete', '#question-form', ->
-      $('.loading-form').hide();
+      $('.loading-form').hide()
       return
     )
 
     $('.price-accord').accordion(
       heightStyle: "content",
       icons: {header: 'price-accord-icon-s', activeHeader: 'price-accord-icon-e'}
-    );
+    )
 
     return
 
