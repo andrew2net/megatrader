@@ -6,7 +6,7 @@ class Application::ApiController < ApplicationController
       row = {name: r.name}
       ToolSymbol.all.each do |c|
         correlation = Correlation.find_by row_tool_symbol_id: r.id, col_tool_symbol_id: c.id
-        row[c.name] = correlation.value
+        row[c.name] = correlation.value if correlation
       end
       row
     end

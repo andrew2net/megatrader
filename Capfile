@@ -21,11 +21,12 @@ require 'capistrano/rvm'
 require 'capistrano/bundler'
 require 'capistrano/rails/migrations'
 require 'capistrano/rails/assets'
-# require 'capistrano/rails'
+require 'capistrano/rails'
 # require 'capistrano/passenger'
+require 'capistrano/sidekiq'
 
 set :rvm_type, :user
-set :rvm_ruby_version, '2.2.2'
+set :rvm_ruby_version, '2.2.2@megatrader'
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
