@@ -1,4 +1,5 @@
 class Application::ApiController < ApplicationController
+  skip_before_action :authenticate
   def get_correlations
     correlations = {}
     correlations[:cols] = ToolSymbol.pluck :name
