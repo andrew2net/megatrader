@@ -35,7 +35,8 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 # Default value for keep_releases is 5
 set :keep_releases, 5
 
-# namespace :deploy do
+namespace :deploy do
+  after :finishing, 'nginx:reload'
 
   # desc 'Restart application'
   # task :restart do
@@ -56,6 +57,6 @@ set :keep_releases, 5
   #     #   execute :rake, 'cache:clear'
   #     # end
   #   end
-  # end
+  end
 
 # end

@@ -31,6 +31,7 @@ gem 'unicorn', group: :production
 
 # Use Capistrano for deployment
 group :development do
+  gem 'capistrano3-nginx', '~> 2.0'
   gem 'capistrano'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'

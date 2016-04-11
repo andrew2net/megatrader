@@ -24,6 +24,7 @@ require 'capistrano/rails/assets'
 require 'capistrano/rails'
 # require 'capistrano/passenger'
 require 'capistrano/sidekiq'
+require 'capistrano/nginx'
 
 set :rvm_type, :user
 set :rvm_ruby_version, '2.2.2@megatrader'

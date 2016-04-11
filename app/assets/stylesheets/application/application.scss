@@ -180,7 +180,7 @@ $gray-superlight-color: #f6f6f5;
     color: $gray-color;
     font-size: 12pt;
   }
-  li.active a{
+  li.active > a{
     font-weight: bold;
     color: $orange-color;
   }
