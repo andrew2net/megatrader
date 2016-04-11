@@ -12,7 +12,7 @@ SimpleNavigation::Configuration.run do |navigation|
 
   # Specify the class that will be applied to the current leaf of
   # active navigation items. Defaults to 'simple-navigation-active-leaf'
-  navigation.active_leaf_class = 'active'
+  # navigation.active_leaf_class = 'active'
 
   # Item keys are normally added to list items as id.
   # This settings turns that off
@@ -21,7 +21,7 @@ SimpleNavigation::Configuration.run do |navigation|
   # You can override the default logic that is used to autogenerate the item ids.
   # To do this, define a Proc which takes the key of the current item as argument.
   # The example below would add a prefix to each key.
-  # navigation.id_generator = Proc.new {|key| "my-prefix-#{key}"}
+  navigation.id_generator = Proc.new {|key| "main-menu-#{key.to_s}"}
 
   # If you need to add custom html around item names, you can define a proc that
   # will be called with the name you pass in to the navigation.

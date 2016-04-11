@@ -1,5 +1,8 @@
 class MenuItem < ActiveRecord::Base
+  has_many :subitems, class_name: 'MenuItem', foreign_key: :parent
+  belongs_to :parent_item, class_name: 'MenuItem', foreign_key: :parent
   belongs_to :page
+
   validates :title, :type_id, presence: true
   translates :title
 
@@ -11,7 +14,7 @@ class MenuItem < ActiveRecord::Base
   def url
     case self.type_id
       when 1
-        Rails.application.routes.url_helpers.page_path(url: Page.find(self.page_id).url)
+        Rails.application.routes.url_helpers.page_path(url: page.url)
       when 2
         Rails.application.routes.url_helpers.send(URLS[:articles][I18n.locale][:method], locale: I18n.locale)
       when 3

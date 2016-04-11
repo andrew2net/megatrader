@@ -36,6 +36,7 @@ class Admin::MenuItemsController < ApplicationController
   def update
     @menu_item = MenuItem.find params[:id]
     @menu_item.attributes = menu_params
+    @menu_item.parent = nil if @menu_item.type_id == 4
     locale_attrs
     if @menu_item.save
       gflash :success
@@ -53,7 +54,7 @@ class Admin::MenuItemsController < ApplicationController
 
   private
   def menu_params
-    params.require(:menu_item).permit(:title, :type_id, :page_id, :weight)
+    params.require(:menu_item).permit(:title, :type_id, :page_id, :weight, :parent)
   end
 
   def locale_attrs

@@ -82,7 +82,7 @@
           <%= link_to (image_tag 'logo.png'), root_path, class: 'navbar-brand' %>
         </div>
         <div class="collapse navbar-collapse" id="main-menu-navbar-collapse">
-          <%= render_navigation context: :app, &main_menu_items %>
+          <%= render_navigation context: :app, expand_all: true, renderer: :bootstrap3, &main_menu_items %>
         </div>
       </div>
     </nav>

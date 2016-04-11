@@ -179,9 +179,15 @@ $gray-superlight-color: #f6f6f5;
   a {
     color: $gray-color;
     font-size: 12pt;
-    &.selected {
-      font-weight: bold;
-      color: $orange-color;
+  }
+  li.active a{
+    font-weight: bold;
+    color: $orange-color;
+  }
+  .dropdown-menu > .active > a{
+    background: white;
+    &:hover {
+      background-color: #eee;
     }
   }
 }
