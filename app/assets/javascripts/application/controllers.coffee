@@ -38,14 +38,17 @@ angular.module 'app'
         .then (response)->
           $scope.symbols = response.data.cols
           $scope.selectedSymbols = response.data.cols.slice 0, 6 unless $scope.selectedSymbols.length
-          $scope.correlationGrid.columnDefs = [{ field: 'name', displayName: '' }]
+          $scope.correlationGrid.columnDefs = [{ field: 'name', displayName: '', cellClass: 'cell-name' }]
           for col in response.data.cols
             $scope.correlationGrid.columnDefs.push {
               field: col
               displayName: col
               type: 'number'
               cellFilter: 'percentage'
-              cellClass: 'cell-number'
+              cellClass: (grid, row, col)->
+                val = Math.abs( grid.getCellValue row, col )
+                val = Math.floor(val*10) * 10
+                'cell-number correlation-' + val
               headerCellClass: 'cell-centred'
               visible: $scope.isChecked(col)
             }
