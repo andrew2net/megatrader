@@ -8,7 +8,7 @@ set :stage, :production
 # Don't declare `role :all`, it's a meta role
 role :app, %w{mgtr}
 role :web, %w{mgtr}
-# role :db,  %w{mgtr}
+role :db,  %w{mgtr}
 
 # Extended Server Syntax
 # ======================
