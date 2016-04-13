@@ -2,9 +2,53 @@
   width: 100%;
   height: 213px;
 }
+.cell-name{
+  font-weight: bold;
+  text-align: center;
+}
 .cell-number{
   text-align: right;
+  font-weight: bold;
 }
 .cell-centred{
   text-align: center;
+}
+.correlation-0{
+  background-color: rgb(255, 255, 255) !important;
+}
+.correlation-10{
+  background-color: rgb(235, 245, 235) !important;;
+}
+.correlation-20{
+  background-color: rgb(215, 235, 215) !important;;
+}
+.correlation-30{
+  background-color: rgb(195, 225, 195) !important;;
+}
+.correlation-40{
+  background-color: rgb(175, 215, 175) !important;;
+}
+.correlation-50{
+  background-color: rgb(155, 205, 155) !important;;
+  color: white;
+}
+.correlation-60{
+  background-color: rgb(135, 195, 135) !important;;
+  color: white;
+}
+.correlation-70{
+  background-color: rgb(115, 185, 115) !important;;
+  color: white;
+}
+.correlation-80{
+  background-color: rgb(95, 175, 95) !important;;
+  color: white;
+}
+.correlation-90{
+  background-color: rgb(75, 165, 75) !important;;
+  color: white;
+}
+.correlation-100{
+  background-color: rgb(55, 155, 55) !important;;
+  color: white;
 }
