@@ -24,20 +24,27 @@ Rails.application.routes.draw do
   scope module: :application do
     root 'main#index'
     scope :api do
-      get 'get_correlations', controller: 'api'
+      get 'tools', controller: 'api'
+      get 'correlations', controller: 'api'
+      get 'tool_symbols', controller: 'api'
     end
     # match '/:locale' => 'main#index', locale: /#{I18n.available_locales.join('|')}/, via: [:get, :post]
     post '/', to: 'main#index'
     # get 'news/index'
     get 'novosti/:url', to: 'main#news', constraints: {locale: /ru/}, as: :news_ru
-    get 'novosti-en/:url', to: 'main#news', constraints: {locale: /en/}, as: :news_en
+    get 'novosti-en/:url', to: 'main#news',
+      constraints: {locale: /en/}, as: :news_en
     # get 'news/block'
     get 'question/new'
     post 'question/send_message'
-    get 'poleznaja-informacija', to: 'main#articles', constraints: {locale: /ru/}, as: :articles_ru
-    get 'poleznaja-informacija/:url', to: 'main#article', constraints: {locale: /ru/}, as: :article_ru
-    get 'poleznaja-informacija-en', to: 'main#articles', constraints: {locale: /en/}, as: :articles_en
-    get 'poleznaja-informacija-en/:url', to: 'main#article', constraints: {locale: /en/}, as: :article_en
+    get 'poleznaja-informacija', to: 'main#articles',
+      constraints: {locale: /ru/}, as: :articles_ru
+    get 'poleznaja-informacija/:url', to: 'main#article',
+      constraints: {locale: /ru/}, as: :article_ru
+    get 'poleznaja-informacija-en', to: 'main#articles',
+      constraints: {locale: /en/}, as: :articles_en
+    get 'poleznaja-informacija-en/:url', to: 'main#article',
+      constraints: {locale: /en/}, as: :article_en
     get ':url' => 'main#index', as: :page
     match '*path', to: 'main#not_found', via: :all
   end

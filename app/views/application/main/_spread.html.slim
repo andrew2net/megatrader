@@ -1,0 +1,10 @@
+.row [ng-controller='SpreadCtrl']
+  .col-md-10.col-md-offset-1
+    .row.symbol-inputs
+      .col-md-2 [ng-repeat='symbol in symbols']
+        .checkbox
+          label
+            input[type="checkbox" ng-checked='isChecked(symbol)'
+                ng-click='toggleCheck(symbol)']
+            |{{symbol}}
+            input [type='number']

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160412094427) do
+ActiveRecord::Schema.define(version: 20160427061305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20160412094427) do
 
   add_index "correlations", ["col_tool_symbol_id"], name: "index_correlations_on_col_tool_symbol_id", using: :btree
   add_index "correlations", ["row_tool_symbol_id"], name: "index_correlations_on_row_tool_symbol_id", using: :btree
+  add_index "correlations", ["time_frame_id"], name: "correlation_pair_unique_idx", unique: true, using: :btree
   add_index "correlations", ["time_frame_id"], name: "index_correlations_on_time_frame_id", using: :btree
 
   create_table "menu_item_translations", force: :cascade do |t|
@@ -113,19 +114,41 @@ ActiveRecord::Schema.define(version: 20160412094427) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "spreads", force: :cascade do |t|
+    t.integer  "tool_symbol_id"
+    t.integer  "time_frame_id"
+    t.float    "value"
+    t.datetime "date_time"
+  end
+
+  add_index "spreads", ["time_frame_id"], name: "index_spreads_on_time_frame_id", using: :btree
+  add_index "spreads", ["tool_symbol_id"], name: "index_spreads_on_tool_symbol_id", using: :btree
+
   create_table "time_frames", force: :cascade do |t|
     t.string   "name",       limit: 3
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
 
+  create_table "tool_groups", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tool_symbols", force: :cascade do |t|
-    t.string   "name",       limit: 6
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.string   "name",          limit: 10
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "full_name"
+    t.integer  "tool_group_id"
   end
 
   add_index "tool_symbols", ["name"], name: "index_tool_symbols_on_name", unique: true, using: :btree
+  add_index "tool_symbols", ["tool_group_id"], name: "index_tool_symbols_on_tool_group_id", using: :btree
 
   add_foreign_key "correlations", "time_frames"
+  add_foreign_key "spreads", "time_frames"
+  add_foreign_key "spreads", "tool_symbols"
 end

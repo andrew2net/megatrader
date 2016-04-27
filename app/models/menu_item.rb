@@ -3,6 +3,8 @@ class MenuItem < ActiveRecord::Base
   belongs_to :parent_item, class_name: 'MenuItem', foreign_key: :parent
   belongs_to :page
 
+  default_scope {order(:weight)}
+
   validates :title, :type_id, presence: true
   translates :title
 

@@ -1,0 +1,26 @@
+.row ng-controller="CorrelationCtrl"
+  .col-md-10.col-md-offset-1
+    .row
+      .col-md-12
+        .form-inline.text-center
+          .form-group [ style="margin:10px" ]
+            label for="timeFrame" Timeframe
+            select.form-control [ id="timeFrame" ng-model="timeFrame"
+            ng-model-options="{getterSetter: true}"
+            ng-options="value for value in timeFrames" ]
+          button.btn.btn-default [ type="button"
+          ng-click="isSymCollapsed=!isSymCollapsed" ] Tools
+        div uib-collapse="isSymCollapsed"
+          uib-tabset active='activeJustified' justified='true'
+            uib-tab [ index='$index' ng-repeat='group in groups'
+                heading='{{ group.name }}' ]
+              .row
+                .col-md-2 ng-repeat="symbol in symbols | filter:{g_id: group.id}"
+                  .checkbox
+                    label
+                      input [ type="checkbox" ng-checked="isChecked(symbol.name)"
+                      ng-click="toggleCheck(symbol.name)" ] {{symbol.name}}
+      .row
+        .col-md-12 style='position: relative'
+          div [ id="correlation-grid" ui-grid="correlationGrid" ui-grid-pinning ]
+          .loading-stub ng-show='loading'

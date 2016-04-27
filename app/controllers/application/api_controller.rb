@@ -1,18 +1,27 @@
 class Application::ApiController < ApplicationController
   skip_before_action :authenticate
 
-  def get_correlations
+  def tools
+    g = ToolGroup.order(:position).select :id, :name
+    t = ToolSymbol
+      .select(%{ tool_symbols.id, tool_symbols.name, tool_symbols.full_name,
+    tool_group_id g_id })
+    render json: { groups: g, tools: t }
+  end
+
+  def correlations
     time_frame = TimeFrame.find_by name: params[:timeFrame]
     correlations = {}
-    correlations[:cols] = ToolSymbol.pluck :name
-    correlations[:rows] = ToolSymbol.all.map do |r|
-      row = {name: r.name}
-      ToolSymbol.all.each do |c|
-        correlation = Correlation.find_by time_frame_id: time_frame.id, row_tool_symbol_id: r.id, col_tool_symbol_id: c.id
-        row[c.name] = correlation.value if correlation
-      end
-      row
+    Correlation .select('row_tool_symbol_id r, col_tool_symbol_id c, value')
+      .where(time_frame_id: time_frame.id).each do |corr|
+      correlations[corr.r] = {} unless correlations[corr.r]
+      correlations[corr.r][corr.c] = corr.value
     end
     render json: correlations
+  end
+
+  def tool_symbols
+    tool_sybols = ToolSymbol.pluck :name
+    render json: tool_sybols
   end
 end

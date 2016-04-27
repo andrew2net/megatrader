@@ -50,6 +50,9 @@ class Application::MainController < ApplicationController
     correlation_rgxp = /\[correlation\]/
     @text.sub! correlation_rgxp, render_to_string(partial: 'correlation') if @text =~ correlation_rgxp
 
+    spread_rgxp = /\[spread\]/
+    @text.sub! spread_rgxp, render_to_string(partial: 'spread') if @text =~ spread_rgxp
+
     @locale_sw = locale_sw(
         {
             ru: {method: :page_path, params: {url: Globalize.with_locale(:ru) { @page.url }}},
