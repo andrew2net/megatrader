@@ -8,7 +8,6 @@ class AddFullNameToToolSymbol < ActiveRecord::Migration
         ToolSymbol.delete_all
         change_column :tool_symbols, :name, :string, limit: 10
         Admin::GetToolsWorker.perform_in 10.second
-        Admin::GetCorrelationWorker.perform_in 30.second
         # Admin::GetSpreadWorker.perform_in 30.seconds
       end
     end
