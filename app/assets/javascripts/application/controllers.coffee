@@ -2,7 +2,7 @@ angular.module 'app'
   .controller 'CorrelationCtrl', ['$scope', '$http', 'uiGridConstants', '$filter'
   ($scope, $http, uiGridConstants, $filter)->
     $scope.timeFrames = ['m15', 'm30', 'h1', 'h4', 'd1']
-    $scope.isSymCollapsed = true
+    $scope.isSymCollapsed = false
 
     _timeFrame = 'm15'
     $scope.timeFrame = (newValue)->
@@ -43,7 +43,7 @@ angular.module 'app'
             row = {name: r.name}
             for c in $scope.symbols
               if r.id == c.id
-                val = 1
+                val = undefined
               else
                 val = if response.data[r.id] and response.data[r.id][c.id]
                         response.data[r.id][c.id]
@@ -81,7 +81,9 @@ angular.module 'app'
             cellFilter: 'percentage'
             minWidth: 100
             cellClass: (grid, row, col)->
-              val = Math.abs( grid.getCellValue row, col )
+              val = grid.getCellValue row, col
+              return '' if val == undefined
+              val = Math.abs( val )
               val = Math.floor(val*10) * 10
               'cell-number correlation-' + val
             headerCellClass: 'cell-centred'
@@ -94,5 +96,8 @@ angular.module 'app'
   ]
   .filter 'percentage', ['$filter', ($filter)->
     (input)->
-      $filter('number')(input * 100, 0) + '%'
+      if input == undefined
+        ''
+      else
+        $filter('number')(input * 100, 0) + '%'
   ]

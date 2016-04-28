@@ -4,12 +4,12 @@
       .col-md-12
         .form-inline.text-center
           .form-group [ style="margin:10px" ]
-            label for="timeFrame" Timeframe
-            select.form-control [ id="timeFrame" ng-model="timeFrame"
+            label for="time-frame" Timeframe
+            select.form-control [ id="time-frame" ng-model="timeFrame"
             ng-model-options="{getterSetter: true}"
             ng-options="value for value in timeFrames" ]
-          button.btn.btn-default [ type="button"
-          ng-click="isSymCollapsed=!isSymCollapsed" ] Tools
+          /button.btn.btn-default [ type="button"
+          /  ng-click="isSymCollapsed=!isSymCollapsed" ] Tools
         div uib-collapse="isSymCollapsed"
           uib-tabset active='activeJustified' justified='true'
             uib-tab [ index='$index' ng-repeat='group in groups'
@@ -23,7 +23,8 @@
                         ng-click="toggleCheck(symbol.name)" ] {{symbol.name}}
                   .col-md-4
                     span.glyphicon.glyphicon-info-sign.tool-info [
-                      uib-popover='{{symbol.full_name}}' ng-show='symbol.name!=symbol.full_name'
+                      uib-popover='{{symbol.full_name}}'
+                      ng-show='symbol.name!=symbol.full_name'
                       popover-trigger='outsideClick' popover-placement='left' ]
       .row
         .col-md-12 style='position: relative'

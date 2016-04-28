@@ -3,7 +3,7 @@ class Application::ApiController < ApplicationController
 
   def tools
     g = ToolGroup.order(:position).select :id, :name
-    t = ToolSymbol
+    t = ToolSymbol.joins(:tool_group).reorder('position, tool_symbols.name')
       .select(%{ tool_symbols.id, tool_symbols.name, tool_symbols.full_name,
     tool_group_id g_id })
     render json: { groups: g, tools: t }
