@@ -1,2 +1,5 @@
 Admin::GetCorrelationWorker:
   cron: '30 5 * * *'
+
+Admin::GetToolsWorker:
+  cron: '25 5 * * *'

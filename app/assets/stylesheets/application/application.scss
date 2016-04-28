@@ -13,6 +13,10 @@ $gray-light-color: #bfbfbf;
 $gray-lightener-color: #e8e8e8;
 $gray-superlight-color: #f6f6f5;
 
+* {
+  outline: 0;
+}
+
 .color-orange {
   color: $orange-color;
 }
@@ -616,4 +620,10 @@ iframe.manual{
       font-size: 9pt;
     }
   }
+}
+
+.tool-info{
+  margin-top: 12px;
+  cursor: pointer;
+  positon: relative;
 }
