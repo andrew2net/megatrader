@@ -15,17 +15,18 @@
             uib-tab [ index='$index' ng-repeat='group in groups'
                 heading='{{ group.name }}' ]
               .row
-                .col-md-2 ng-repeat="symbol in symbols | filter:{g_id: group.id}"
-                  .col-md-8
+                .col-xs-4.col-sm-3.col-md-2 [
+                  ng-repeat="symbol in symbols | filter:{g_id: group.id}" ]
+                  .col-xs-8.col-sm-8.col-md-8
                     .checkbox
                       label
                         input [ type="checkbox" ng-checked="isChecked(symbol.name)"
                         ng-click="toggleCheck(symbol.name)" ] {{symbol.name}}
-                  .col-md-4
+                  .col-xs-4.col-sm-4.col-md-4
                     span.glyphicon.glyphicon-info-sign.tool-info [
                       uib-popover='{{symbol.full_name}}'
                       ng-show='symbol.name!=symbol.full_name'
-                      popover-trigger='outsideClick' popover-placement='left' ]
+                      popover-trigger='outsideClick' popover-placement='top-right' ]
       .row
         .col-md-12 style='position: relative'
           div [ id="correlation-grid" ui-grid="correlationGrid" ui-grid-pinning ]
