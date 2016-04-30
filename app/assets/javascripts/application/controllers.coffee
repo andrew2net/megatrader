@@ -47,8 +47,10 @@ angular.module 'app'
               else
                 val = if response.data[r.id] and response.data[r.id][c.id]
                         response.data[r.id][c.id]
-                      else
+                      else if response.data[c.id]
                         response.data[c.id][r.id]
+                      else
+                        undefined
               r[c.name] = val
             r
           $scope.loading = false
