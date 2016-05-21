@@ -46,7 +46,8 @@ class Application::ApiController < ApplicationController
         else
           sw << 's.value*' + w
           spread = %{FROM spreads s joins WHERE s.date_time>=:date_time AND
-          s.time_frame_id=:time_frame_id AND s.tool_symbol_id=#{s.id}}
+          s.time_frame_id=:time_frame_id AND s.tool_symbol_id=#{s.id}
+          ORDER BY s.date_time}
         end
       end
       if spread
