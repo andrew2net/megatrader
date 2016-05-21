@@ -3,3 +3,6 @@ Admin::GetCorrelationWorker:
 
 Admin::GetToolsWorker:
   cron: '25 5 * * *'
+
+Admin::GetSpreadWorker:
+  cron: '0 6 * * *'

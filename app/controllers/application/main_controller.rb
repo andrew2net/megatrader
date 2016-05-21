@@ -15,7 +15,9 @@ class Application::MainController < ApplicationController
       else
         method_en = method_ru = :root_path
     end
-    @locale_sw = locale_sw({ru: {method: method_ru, params: {url: params[:url] || ''}}, en: {method: method_en, params: {url: params[:url] || ''}}})
+    @locale_sw = locale_sw(
+      {ru: {method: method_ru, params: {url: params[:url] || ''}},
+       en: {method: method_en, params: {url: params[:url] || ''}}})
     @news = Page.news.page(params[:page]).per(5)
     @news_html = render_to_string(partial: 'application/news/block')
 
@@ -27,31 +29,45 @@ class Application::MainController < ApplicationController
 
   def index
     @page = Page.find_by!(url: params[:url] || '')
-    @news = Page.news.page(params[:page]).per(5)
-    @news_html = render_to_string(partial: 'application/news/block')
+    @text = @page.text
     @errors = {email: {}, question: {}}
-    @text = @page.text.sub(/\[news_block\]/, @news_html)
+    news_rgxp = /\[news_block\]/
+    if @text =~ news_rgxp
+      @news = Page.news.page(params[:page]).per(5)
+      @news_html = render_to_string(partial: 'application/news/block')
+      @text.sub!(news_rgxp, @news_html)
+    end
 
     question_rgxp = /\[question_block\]/
-    @text.sub!(question_rgxp, render_to_string(partial: 'application/question/new', locals: {data: nil})) if @text =~ question_rgxp
+    @text.sub!(question_rgxp, render_to_string(
+      partial: 'application/question/new', locals: {data: nil}
+    )) if @text =~ question_rgxp
 
     how_to_pay_rgxp = /\[how_to_pay_block\]/
-    @text.sub!(how_to_pay_rgxp, render_to_string(partial: 'application/question/pay')) if @text =~ how_to_pay_rgxp
+    @text.sub!(how_to_pay_rgxp, render_to_string(
+      partial: 'application/question/pay')) if @text =~ how_to_pay_rgxp
 
     tester_block_rgxp = /\[tester_block\]/
-    @text.sub!(tester_block_rgxp, render_to_string(partial: 'tester_block')) if @text =~ tester_block_rgxp
+    @text.sub!(tester_block_rgxp, render_to_string(
+      partial: 'tester_block')) if @text =~ tester_block_rgxp
 
     popup_video_rgxp = /\[popup_video\]/
-    @text.sub!(popup_video_rgxp, render_to_string(partial: 'popup_video')) if @text =~ popup_video_rgxp
+    @text.sub!(popup_video_rgxp, render_to_string(
+      partial: 'popup_video')) if @text =~ popup_video_rgxp
 
     contact_form_rgxp = /\[contact_form\]/
-    @text.sub!(contact_form_rgxp, render_to_string(partial: 'contact_form', locals: {data: nil})) if @text =~ contact_form_rgxp
+    @text.sub!(contact_form_rgxp, render_to_string(
+      partial: 'contact_form', locals: {data: nil})
+              ) if @text =~ contact_form_rgxp
 
     correlation_rgxp = /\[correlation\]/
-    @text.sub! correlation_rgxp, render_to_string(partial: 'correlation') if @text =~ correlation_rgxp
+    @text.sub!(
+      correlation_rgxp, render_to_string(partial: 'correlation')
+    ) if @text =~ correlation_rgxp
 
     spread_rgxp = /\[spread\]/
-    @text.sub! spread_rgxp, render_to_string(partial: 'spread') if @text =~ spread_rgxp
+    @text.sub!(spread_rgxp, render_to_string(partial: 'spread')
+              )if @text =~ spread_rgxp
 
     @locale_sw = locale_sw(
         {

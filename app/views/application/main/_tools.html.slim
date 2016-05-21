@@ -1,0 +1,18 @@
+uib-tabset active='activeJustified' justified='true'
+  uib-tab [index='$index' ng-repeat='group in groups' heading='{{group.name}}']
+    .row.symbol-inputs
+      .col-xs-4.col-sm-3.col-md-2 [ 
+        ng-repeat="symbol in symbols | filter:{g_id: group.id}" ]
+        .col-xs-8.col-sm-8.col-md-8
+          .checkbox
+            label
+              input [ type="checkbox" ng-checked="isChecked(symbol)"
+              ng-click="toggleCheck(symbol)" ] {{symbol.name}}
+        .col-xs-3.col-sm-4.col-md-4
+          - if with_input
+            input [ng-show='isChecked(symbol)' ng-model='symbol.weight']
+          span.glyphicon.glyphicon-info-sign.tool-info [
+            uib-popover='{{symbol.full_name}}'
+            ng-show="symbol.name!=symbol.full_name && (#{!with_input}\
+            || !isChecked(symbol.name))"
+            popover-trigger='outsideClick' popover-placement='top-right' ]

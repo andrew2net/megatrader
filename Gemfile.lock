@@ -59,6 +59,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    angular_rails_csrf (1.0.4)
+      rails (>= 3, < 5)
     arel (6.0.0)
     authlogic (3.4.5)
       activerecord (>= 3.2)
@@ -378,10 +380,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  angular_rails_csrf
   authlogic
   bootstrap-sass (~> 3.3.6)
   breadcrumbs_on_rails!
-  byebug
   cancancan
   capistrano
   capistrano-bundler
@@ -402,7 +404,6 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   pg
-  pry
   pry-byebug
   pry-rails
   rails (= 4.2.0)

@@ -1,10 +1,14 @@
 .row [ng-controller='SpreadCtrl']
   .col-md-10.col-md-offset-1
-    .row.symbol-inputs
-      .col-md-2 [ng-repeat='symbol in symbols']
-        .checkbox
-          label
-            input[type="checkbox" ng-checked='isChecked(symbol)'
-                ng-click='toggleCheck(symbol)']
-            |{{symbol}}
-            input [type='number']
+    .row
+      .form-inline.text-center
+        .form-group [ style="margin:10px" ]
+          label for="time-frame" Timeframe
+          select.form-control [ id="time-frame" ng-model="timeFrame"
+          ng-options="value for value in timeFrames" ]
+        a.btn.btn-default [ng-disabled='selectedSymbols.length==0'
+        ng-click='spreadChart()'] =I18n.t 'chart'
+    = render partial: 'tools', locals: { with_input: true }
+    .row
+      div n4-chart='chart' ng-if='chart' style='height:600px;width:100%'
+      .loading-stub ng-show='loading'

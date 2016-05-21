@@ -114,7 +114,7 @@ $gray-superlight-color: #f6f6f5;
   color: $gray-superlight-color;
   border: none;
   border-radius: 0;
-  &:hover {
+  &:hover, &[disabled]:hover {
     color: $gray-superlight-color;
     background: #EE8016;
   }
@@ -602,7 +602,7 @@ ul.about {
       border-top: 1px solid white;
     }
   }
-;
+
 }
 
 iframe.manual{
@@ -612,13 +612,10 @@ iframe.manual{
 }
 
 .symbol-inputs{
-  label{
-    line-height: 14px;
-    input[type="number"]{
-      width: 50px;
-      margin-left: 4px;
-      font-size: 9pt;
-    }
+  input:not([type="checkbox"]){
+    width: 40px;
+    margin: 7px 0;
+    font-size: 9pt;
   }
 }
 

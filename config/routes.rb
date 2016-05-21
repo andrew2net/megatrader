@@ -24,9 +24,12 @@ Rails.application.routes.draw do
   scope module: :application do
     root 'main#index'
     scope :api do
-      get 'tools', controller: 'api'
-      get 'correlations', controller: 'api'
-      get 'tool_symbols', controller: 'api'
+      controller :api do
+        get 'tools'
+        get 'correlations'
+        get 'tool_symbols'
+        post :spread
+      end
     end
     # match '/:locale' => 'main#index', locale: /#{I18n.available_locales.join('|')}/, via: [:get, :post]
     post '/', to: 'main#index'

@@ -64,11 +64,12 @@ gem 'faraday'
 gem 'sidekiq'
 gem 'sidekiq-scheduler', '~> 2.0'
 gem 'slim'
+gem 'angular_rails_csrf'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-  gem 'pry'
+  # gem 'byebug'
+  # gem 'pry'
   gem 'pry-rails'
   gem 'pry-byebug'
 

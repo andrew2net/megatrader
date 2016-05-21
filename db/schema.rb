@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160427061305) do
+ActiveRecord::Schema.define(version: 20160515171324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(version: 20160427061305) do
     t.datetime "date_time"
   end
 
+  add_index "spreads", ["date_time", "time_frame_id", "tool_symbol_id"], name: "index_spreads_on_date_time_and_time_frame_id_and_tool_symbol_id", unique: true, using: :btree
   add_index "spreads", ["time_frame_id"], name: "index_spreads_on_time_frame_id", using: :btree
   add_index "spreads", ["tool_symbol_id"], name: "index_spreads_on_tool_symbol_id", using: :btree
 

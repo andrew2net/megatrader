@@ -1,10 +1,10 @@
 angular.module 'app'
   .controller 'CorrelationCtrl', ['$scope', '$http', 'uiGridConstants', '$filter'
   ($scope, $http, uiGridConstants, $filter)->
-    $scope.timeFrames = ['m15', 'm30', 'h1', 'h4', 'd1']
+    $scope.timeFrames = ['m1', 'm5', 'm15', 'm30', 'h1', 'h4', 'd1']
     $scope.isSymCollapsed = false
 
-    _timeFrame = 'm15'
+    _timeFrame = 'h1'
     $scope.timeFrame = (newValue)->
       if arguments.length
         _timeFrame = newValue
@@ -95,11 +95,4 @@ angular.module 'app'
         return
 
     return
-  ]
-  .filter 'percentage', ['$filter', ($filter)->
-    (input)->
-      if input == undefined
-        ''
-      else
-        $filter('number')(input * 100, 0) + '%'
   ]
