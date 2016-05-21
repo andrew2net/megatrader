@@ -3,6 +3,10 @@ class Admin::GetSpreadWorker
 
   def perform(*args)
     TimeFrame.all.each do |t|
+      days_ago = Setting.find_by(name: t.name + '_period').value.to_i * 2
+      first_date = ( Date.today - days_ago ).strftime '%Y%m%d'
+
+      # Retrieve new data add it to db.
       ToolSymbol.all.each do |s|
         ActiveRecord::Base.transaction do
           req_params = {
@@ -19,9 +23,7 @@ class Admin::GetSpreadWorker
             time_from = last_date.date_time.strftime '%H%M%S'
             req_params.merge! DateFrom: date_from, TimeFrom: time_from
           else
-            days_ago = Setting.find_by(name: t.name + '_period').value.to_i * 2
-            date_from = ( Date.today - days_ago ).strftime '%Y%m%d'
-            req_params.merge! DateFrom: date_from
+            req_params.merge! DateFrom: first_date
           end
           resp = Faraday.post 'http://94.180.118.28:4100', req_params
           spread = JSON.parse(resp.body)['Chart']
@@ -51,6 +53,9 @@ class Admin::GetSpreadWorker
           } unless values.blank?
         end
       end
+
+      # Remove old data
+      Spread.where('date_time<:date', date: first_date).delete_all
     end
   end
 end

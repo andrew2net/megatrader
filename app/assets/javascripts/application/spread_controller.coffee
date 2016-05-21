@@ -24,7 +24,8 @@ angular.module 'app'
 
     $http.post '/api/spread', {symbols: symbols, time_frame: $scope.timeFrame}
       .then (resp)->
-        $scope.chart = AppService.chartTable resp.data if resp.data
+        if resp.data and resp.data.length
+          $scope.chart = AppService.chartTable resp.data
         $scope.loading = false
         return
     return
