@@ -48,7 +48,7 @@ class Admin::GetSpreadWorker
             WHERE up.time_frame_id=v.time_frame_id
               AND up.tool_symbol_id=v.tool_symbol_id
               AND up.date_time=v.date_time)
-          }
+          } unless values.blank?
         end
       end
     end
