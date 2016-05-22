@@ -61,7 +61,8 @@ class Admin::GetSpreadWorker
       end
 
       # Remove old data
-      Spread.where('date_time<:date', date: first_date).delete_all
+      Spread.where('tool_symbol_id=:s_id AND date_time<:date',
+                   s_id: s.id, date: first_date).delete_all
     end
     reload_setting.update value: 'no' if reload
   end
