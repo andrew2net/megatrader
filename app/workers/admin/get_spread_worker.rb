@@ -4,9 +4,9 @@ class Admin::GetSpreadWorker
   def perform(*args)
 
     # Check if spread shoul be reloaded.
-    reload_setting = Setting.find_by(name: 'reload_spred')
+    reload_setting = Setting.find_by(name: 'reload_spread')
     reload = reload_setting.value.downcase == 'yes' if reload_setting
-    Spread.delete_all if reload
+    # Spread.delete_all if reload
 
     TimeFrame.all.each do |t|
       days_ago = Setting.find_by(name: t.name + '_period').value.to_i * 2
@@ -21,15 +21,19 @@ class Admin::GetSpreadWorker
             Weights: 1,
             Epsilon: 0
           }
-          last_date = Spread.select(:date_time)
-            .where(time_frame_id: t.id, tool_symbol_id: s.id)
-            .order(:date_time).last
-          if last_date
-            date_from = last_date.date_time.strftime '%Y%m%d'
-            time_from = last_date.date_time.strftime '%H%M%S'
-            req_params.merge! DateFrom: date_from, TimeFrom: time_from
-          else
+          if reload
             req_params.merge! DateFrom: first_date
+          else
+            last_date = Spread.select(:date_time)
+              .where(time_frame_id: t.id, tool_symbol_id: s.id)
+              .order(:date_time).last
+            if last_date
+              date_from = last_date.date_time.strftime '%Y%m%d'
+              time_from = last_date.date_time.strftime '%H%M%S'
+              req_params.merge! DateFrom: date_from, TimeFrom: time_from
+            else
+              req_params.merge! DateFrom: first_date
+            end
           end
           resp = Faraday.post 'http://94.180.118.28:4100', req_params
           spread = JSON.parse(resp.body)['Chart']
@@ -60,9 +64,9 @@ class Admin::GetSpreadWorker
         end
       end
 
-      # Remove old data
-      Spread.where('tool_symbol_id=:s_id AND date_time<:date',
-                   s_id: s.id, date: first_date).delete_all
+      # Remove old data.
+      Spread.where('time_frame_id=:t_id AND date_time<:date',
+                   t_id: t.id, date: first_date).delete_all
     end
     reload_setting.update value: 'no' if reload
   end
