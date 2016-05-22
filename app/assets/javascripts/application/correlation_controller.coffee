@@ -12,12 +12,12 @@ angular.module 'app'
       _timeFrame
 
     $scope.isChecked = (symbol)->
-      $scope.selectedSymbols.indexOf(symbol) > -1
+      $scope.selectedSymbols.indexOf(symbol.name) > -1
 
     $scope.toggleCheck = (symbol)->
-      idx = $scope.selectedSymbols.indexOf(symbol)
+      idx = $scope.selectedSymbols.indexOf(symbol.name)
       if idx == -1
-        $scope.selectedSymbols.push symbol
+        $scope.selectedSymbols.push symbol.name
       else
         $scope.selectedSymbols.splice idx, 1
       for i in [ 1...$scope.correlationGrid.columnDefs.length ]
@@ -30,8 +30,8 @@ angular.module 'app'
     $scope.selectedSymbols = []
     $scope.correlationGrid = {
       enableColumnMenus: false
-      onRegisterApi: (grisApi)->
-        $scope.crlGridApi = grisApi
+      onRegisterApi: (gridApi)->
+        $scope.crlGridApi = gridApi
         return
     }
 
@@ -89,7 +89,7 @@ angular.module 'app'
               val = Math.floor(val*10) * 10
               'cell-number correlation-' + val
             headerCellClass: 'cell-centred'
-            visible: $scope.isChecked(col.name)
+            visible: $scope.isChecked(col)
           }
         getData()
         return
