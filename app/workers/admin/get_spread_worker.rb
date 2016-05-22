@@ -2,6 +2,12 @@ class Admin::GetSpreadWorker
   include Sidekiq::Worker
 
   def perform(*args)
+
+    # Check if spread shoul be reloaded.
+    reload_setting = Setting.find_by(name: 'reload_spred')
+    reload = reload_setting.value.downcase == 'yes' if reload_setting
+    Spread.delete_all if reload
+
     TimeFrame.all.each do |t|
       days_ago = Setting.find_by(name: t.name + '_period').value.to_i * 2
       first_date = ( Date.today - days_ago ).strftime '%Y%m%d'
@@ -57,5 +63,6 @@ class Admin::GetSpreadWorker
       # Remove old data
       Spread.where('date_time<:date', date: first_date).delete_all
     end
+    reload_setting.update value: 'no' if reload
   end
 end
