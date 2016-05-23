@@ -5,4 +5,4 @@ Admin::GetToolsWorker:
   cron: '25 5 * * *'
 
 Admin::GetSpreadWorker:
-  cron: '0 6 * * *'
+  cron: '45 4 * * *'
