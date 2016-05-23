@@ -2,7 +2,7 @@ Admin::GetCorrelationWorker:
   cron: '30 5 * * *'
 
 Admin::GetToolsWorker:
-  cron: '25 5 * * *'
+  cron: '45 4 * * *'
 
 Admin::GetSpreadWorker:
-  cron: '45 4 * * *'
+  cron: '55 4 * * *'
