@@ -9,6 +9,16 @@
         a.btn.btn-default [ng-disabled='selectedSymbols.length==0'
         ng-click='spreadChart()'] =I18n.t 'chart'
     = render partial: 'tools', locals: { with_input: true }
+    .row.chart-params
+      .form-inline ng-repeat='symbol in selectedSymbols'
+        .form-group
+          span
+            |(&nbsp;
+          label ng-bind='symbol.name'
+          span.chart-param-multiplicator &nbsp;*&nbsp;
+          input ng-model='symbol.weight'
+          span &nbsp;)
+        .chart-param-plus ng-if='!$last' +
     .row
       div n4-chart='chart' ng-if='chart' style='height:600px;width:100%'
       .loading-stub ng-show='loading'

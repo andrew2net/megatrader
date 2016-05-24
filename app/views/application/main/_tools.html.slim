@@ -9,10 +9,9 @@ uib-tabset active='activeJustified' justified='true'
               input [ type="checkbox" ng-checked="isChecked(symbol)"
               ng-click="toggleCheck(symbol)" ] {{symbol.name}}
         .col-xs-3.col-sm-4.col-md-4
-          - if with_input
+          /- if with_input
             input [ng-show='isChecked(symbol)' ng-model='symbol.weight']
           span.glyphicon.glyphicon-info-sign.tool-info [
             uib-popover='{{symbol.full_name}}'
-            ng-show="symbol.name!=symbol.full_name && (#{!with_input}\
-            || !isChecked(symbol.name))"
+            ng-show="symbol.name!=symbol.full_name"
             popover-trigger='outsideClick' popover-placement='top-right' ]

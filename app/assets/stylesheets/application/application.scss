@@ -612,14 +612,14 @@ iframe.manual{
 }
 
 .symbol-inputs{
-	margin-bottom: 10px;
-	height: 100px;
-	overflow-y: scroll;
-	input:not([type="checkbox"]){
-		width: 40px;
-		margin: 7px 0;
-		font-size: 9pt;
-	}
+  margin-bottom: 10px;
+  height: 100px;
+  overflow-y: scroll;
+  input:not([type="checkbox"]){
+    width: 40px;
+    margin: 7px 0;
+    font-size: 9pt;
+  }
 }
 
 .tool-info{
@@ -630,4 +630,24 @@ iframe.manual{
 
 #time-frame{
   margin-left: 10px;
+}
+
+.chart-params{
+  // position: relative;
+  > div, .chart-param-plus{
+    display: inline-block;
+  }
+  input{
+    width: 40px;
+  }
+  .chart-param-muliplicator, .chart-param-plus{
+    top: 2px;
+  }
+  .chart-param-muliplicator{
+    position: relative;
+  }
+  .chart-param-plus{
+    text-align: center;
+    width: 30px;
+  }
 }
