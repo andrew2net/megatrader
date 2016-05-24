@@ -612,11 +612,14 @@ iframe.manual{
 }
 
 .symbol-inputs{
-  input:not([type="checkbox"]){
-    width: 40px;
-    margin: 7px 0;
-    font-size: 9pt;
-  }
+	margin-bottom: 10px;
+	height: 100px;
+	overflow-y: scroll;
+	input:not([type="checkbox"]){
+		width: 40px;
+		margin: 7px 0;
+		font-size: 9pt;
+	}
 }
 
 .tool-info{
