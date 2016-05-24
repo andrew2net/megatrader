@@ -1,8 +1,8 @@
-Admin::GetCorrelationWorker:
-  cron: '30 5 * * *'
-
 Admin::GetToolsWorker:
-  cron: '45 4 * * *'
+  cron: '0 0 * * *'
+
+Admin::GetCorrelationWorker:
+  cron: '5 0 * * *'
 
 Admin::GetSpreadWorker:
-  cron: '55 4 * * *'
+  cron: '15 0 * * *'
