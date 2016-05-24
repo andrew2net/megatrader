@@ -6,3 +6,6 @@ Admin::GetCorrelationWorker:
 
 Admin::GetSpreadWorker:
   cron: '15 0 * * *'
+
+Admin::TestMailWorker:
+  cron: '0 3 * * *'
