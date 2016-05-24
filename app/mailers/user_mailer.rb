@@ -8,6 +8,7 @@ class UserMailer < ApplicationMailer
     email = %("#{@name}" <#{data[:email]}>) unless @name.empty?
     to = Setting.find_by(name: 'notify_email').value
 
-    mail(from: email, to: to, subject: 'Вопрос с сайта mgatrader.org', delivery_method: :sendmail)
+    mail(from: email, to: to, subject: 'Вопрос с сайта mgatrader.org',
+         delivery_method: :sendmail)
   end
 end
