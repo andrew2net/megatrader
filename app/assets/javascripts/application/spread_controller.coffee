@@ -1,6 +1,7 @@
 angular.module 'app'
 .controller 'SpreadCtrl',
-['$scope', '$http', 'AppService', ($scope, $http, AppService)->
+['$scope', '$http', '$filter', 'AppService',
+($scope, $http, $filter, AppService)->
   $scope.timeFrames = ['m1', 'm5', 'm15', 'm30', 'h1', 'h4', 'd1']
   $scope.timeFrame = 'h1'
   $scope.symbols = []
@@ -29,11 +30,21 @@ angular.module 'app'
         $scope.loading = false
         return
     return
+  setDefault = (sym, w)->
+    tool = $filter('filter')($scope.symbols, {name: sym}, true)
+    if tool.length
+      tool[0].weight = w
+      $scope.selectedSymbols.push tool[0]
+    return
 
   $http.get '/api/tools'
     .then (response)->
       $scope.groups = response.data.groups
       $scope.symbols = response.data.tools
+      setDefault 'AUDUSD', '1.7'
+      setDefault 'EURUSD', '-0.6'
+      setDefault 'NZDUSD', '4'
+      google.charts.setOnLoadCallback $scope.spreadChart
       return
 
   unless google.visualization
