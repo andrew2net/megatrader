@@ -8,7 +8,7 @@
           ng-options="value for value in timeFrames" ]
         a.btn.btn-default [ng-disabled='selectedSymbols.length==0'
         ng-click='spreadChart()'] =I18n.t 'build_chart'
-    = render partial: 'tools', locals: { with_input: true }
+    = render partial: 'tools'
     .row.chart-params
       .form-inline ng-repeat='symbol in selectedSymbols'
         .form-group
