@@ -15,6 +15,6 @@ class Page < ActiveRecord::Base
   end
 
   def self.articles
-    where(type_id: 2).reorder(created_at: :desc)
+    where(type_id: 2).where.not(url: '').reorder(created_at: :desc)
   end
 end
