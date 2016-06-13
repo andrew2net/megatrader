@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160527173550) do
+ActiveRecord::Schema.define(version: 20160612183542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,22 @@ ActiveRecord::Schema.define(version: 20160527173550) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "pairs", force: :cascade do |t|
+    t.integer  "time_frame_id"
+    t.integer  "tool_symbol_1_id"
+    t.integer  "tool_symbol_2_id"
+    t.decimal  "weight_1",         precision: 7, scale: 2
+    t.decimal  "weight_2",         precision: 7, scale: 2
+    t.decimal  "fitness",          precision: 3
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
+
+  add_index "pairs", ["time_frame_id"], name: "index_pairs_on_time_frame_id", using: :btree
+  add_index "pairs", ["time_frame_id"], name: "pair_unique_idx", unique: true, using: :btree
+  add_index "pairs", ["tool_symbol_1_id"], name: "index_pairs_on_tool_symbol_1_id", using: :btree
+  add_index "pairs", ["tool_symbol_2_id"], name: "index_pairs_on_tool_symbol_2_id", using: :btree
+
   create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -150,6 +166,9 @@ ActiveRecord::Schema.define(version: 20160527173550) do
   add_index "tool_symbols", ["tool_group_id"], name: "index_tool_symbols_on_tool_group_id", using: :btree
 
   add_foreign_key "correlations", "time_frames"
+  add_foreign_key "pairs", "time_frames"
+  add_foreign_key "pairs", "tool_symbols", column: "tool_symbol_1_id"
+  add_foreign_key "pairs", "tool_symbols", column: "tool_symbol_2_id"
   add_foreign_key "spreads", "time_frames"
   add_foreign_key "spreads", "tool_symbols"
 end

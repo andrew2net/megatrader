@@ -4,8 +4,11 @@ Admin::GetToolsWorker:
 Admin::GetCorrelationWorker:
   cron: '5 0 * * *'
 
+Admin::GetPairsWorker:
+  cron: '10 0 * * *'
+
 Admin::GetSpreadWorker:
-  cron: '15 0 * * *'
+  cron: '20 0 * * *'
 
 Admin::TestMailWorker:
   cron: '0 3 * * *'
