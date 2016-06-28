@@ -1,4 +1,4 @@
-require_or_load 'lib/chart/chart'
+require_relative '../../lib/chart/chart'
 class Spread < ActiveRecord::Base
   belongs_to :tool_symbol
   belongs_to :time_frame
