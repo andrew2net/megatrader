@@ -65,6 +65,7 @@ gem 'sidekiq'
 gem 'sidekiq-scheduler', '~> 2.0'
 gem 'slim'
 gem 'angular_rails_csrf'
+gem 'ffi'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -84,12 +85,13 @@ group :development, :test do
   # gem 'ruby-debug-ide19'
 
   gem 'rspec-rails'
-  gem 'capybara'
-  gem 'selenium-webdriver'
   gem 'factory_girl_rails'
 end
 
 group :test do
+  gem 'capybara'
+  gem 'capybara-webkit'
+  # gem 'selenium-webdriver'
   gem 'shoulda-matchers'
   gem 'database_cleaner'
 end

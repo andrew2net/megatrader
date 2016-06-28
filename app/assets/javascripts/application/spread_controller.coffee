@@ -30,6 +30,7 @@ angular.module 'app'
         $scope.loading = false
         return
     return
+
   setDefault = (sym, w)->
     tool = $filter('filter')($scope.symbols, {name: sym}, true)
     if tool.length

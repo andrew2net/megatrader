@@ -29,6 +29,7 @@ Rails.application.routes.draw do
         get 'correlations'
         get 'tool_symbols'
         post :spread
+        post :pairs
       end
     end
     # match '/:locale' => 'main#index', locale: /#{I18n.available_locales.join('|')}/, via: [:get, :post]

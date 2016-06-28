@@ -69,10 +69,16 @@ class Application::MainController < ApplicationController
     @text.sub!(spread_rgxp, render_to_string(partial: 'spread')
               )if @text =~ spread_rgxp
 
+    pair_rgxp = /\[pairs\]/
+    @text.sub!(pair_rgxp, render_to_string(partial: 'pairs')
+              ) if @text =~ pair_rgxp
+
     @locale_sw = locale_sw(
         {
-            ru: {method: :page_path, params: {url: Globalize.with_locale(:ru) { @page.url }}},
-            en: {method: :page_path, params: {url: Globalize.with_locale(:en) { @page.url }}}
+            ru: {method: :page_path,
+                 params: {url: Globalize.with_locale(:ru) { @page.url }}},
+            en: {method: :page_path,
+                 params: {url: Globalize.with_locale(:en) { @page.url }}}
         })
     respond_to do |format|
       format.html

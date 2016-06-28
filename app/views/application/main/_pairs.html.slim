@@ -1,0 +1,18 @@
+.row ng-controller='PairsCtrl'
+  .col-md-10.col-md-offset-1
+    .row
+      .form-inline.text-center
+        .form-group style='margin:10px'
+          label for='time-frame' Timeframe
+          select#time-frame.form-control [ng-model='timeFrame'
+            ng-options='value for value in timeFrames']
+        a.btn.btn-default [ng-disabled='selectedSymbols.length<2'
+        ng-click='buildCharts()'] =I18n.t 'build_chart'
+    = render partial: 'tools'
+    .row.text-center
+      uib-pagination [total-items='totalCharts' ng-model='currentPage'
+        ng-change='pageChange()' items-per-page=1 ng-show='totalCharts > 1'
+        previous-text='‹' next-text='›' max-size=6 force-ellipses='true']
+      .row ng-repeat='chart in pages[currentPage - 1]'
+        div n4-chart='chart' style='height:600px;width:100%'
+      .loading-stub ng-show='loading'
