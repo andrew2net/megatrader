@@ -13,7 +13,7 @@
       </ul>
       <ul class="orange-bullet color-gray hidden-lg hidden-md center-block">
         <% @news.each do |n| %>
-            <li><%= link_to n.title.html_safe, Rails.application.routes.url_helpers.send("news_#{locale}_path", n.url) %></li>
+            <li><%= link_to n.title.html_safe, Rails.application.routes.url_helpers.send("news_#{locale}_path", n.url, page:@news.current_page) %></li>
         <% end %>
       </ul>
     </div>
