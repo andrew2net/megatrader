@@ -22,7 +22,8 @@ class ApplicationController < ActionController::Base
       l = http_accept_language.preferred_language_from I18n.available_locales
     end
     cookies.permanent[:locale] = l
-    redirect_to "/#{l}#{request.fullpath}" unless params[:locale] or /^\/admins/.match(request.fullpath)
+    redirect_to "/#{l}#{request.fullpath}",
+      status: 301 unless params[:locale] or /^\/admins/.match(request.fullpath)
     I18n.locale = l
   end
 
