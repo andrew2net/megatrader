@@ -99,6 +99,7 @@ class Application::MainController < ApplicationController
   end
 
   def articles
+    logger.info "Locale: #{I18n.locale.to_s} #{I18n.locale.class}"
     @articles = Page.articles.page(params[:page]).per(3)
     @locale_sw = locale_sw MenuItem::URLS[:articles]
     respond_to do |format|
