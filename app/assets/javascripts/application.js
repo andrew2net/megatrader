@@ -14,5 +14,4 @@
 //= require jquery-ui/accordion
 //= require bootstrap-sprockets
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree ./application

@@ -46,7 +46,8 @@ angular.module 'app'
       tooltip = 'Date: ' + date + ' Value: '
       data.addRow [index, parseFloat(value[valueIdx]), tooltip + value[valueIdx]]
 
-    {data: data, options: {hAxis: {ticks: ticks}}}
+    {data: data, options: {hAxis: {ticks: ticks}, legend: {position: 'none'}
+    chartArea: {left: 50, top: 25, width: '90%', height: '83%'}}}
   }
 ]
 .directive 'n4Chart', [ ->

@@ -52,7 +52,10 @@ angular.module 'app'
           title = title + ' - ' + negative.join(' - ') if negative.length
           chartTable.options.title = title
 
-          $scope.pages[$scope.currentPage - 1].push chartTable
+          $scope.pages[$scope.currentPage - 1].push {
+            table: chartTable
+            symbols: chart.symbols
+          }
         $scope.loading = false
         return
     return

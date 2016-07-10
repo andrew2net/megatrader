@@ -5,20 +5,22 @@
         .form-group [ style="margin:10px" ]
           label for="time-frame" Timeframe
           select.form-control [ id="time-frame" ng-model="timeFrame"
+          ng-model-options='{getterSetter: true}'
           ng-options="value for value in timeFrames" ]
         a.btn.btn-default [ng-disabled='selectedSymbols.length==0'
         ng-click='spreadChart()'] =I18n.t 'build_chart'
     = render partial: 'tools'
-    .row.chart-params
-      .form-inline ng-repeat='symbol in selectedSymbols'
-        .form-group
-          span
-            |(&nbsp;
-          label ng-bind='symbol.name'
-          span.chart-param-multiplicator &nbsp;*&nbsp;
-          input ng-model='symbol.weight'
-          span &nbsp;)
-        .chart-param-plus ng-if='!$last' +
     .row
-      div n4-chart='chart' ng-if='chart' style='height:600px;width:100%'
+      .col-md-11.col-md-offset-1.chart-params
+        .form-inline ng-repeat='symbol in selectedSymbols'
+          .form-group
+            span
+              |(&nbsp;
+            label ng-bind='symbol.name'
+            span.chart-param-multiplicator &nbsp;*&nbsp;
+            input [ng-model='symbol.weight' ng-model-options='{getterSetter:true}']
+            span &nbsp;)
+          .chart-param-plus ng-if='!$last' +
+    .row
+      .col-md-12 n4-chart='chart' ng-if='chart' style='height:500px'
       .loading-stub ng-show='loading'

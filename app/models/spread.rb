@@ -1,10 +1,10 @@
-require_relative '../../lib/chart/chart'
+require "#{Rails.root}/lib/chart/chart"
 class Spread < ActiveRecord::Base
   belongs_to :tool_symbol
   belongs_to :time_frame
 
   class << self
-    def chart_data(time_frame, symbols)
+    def chart_data(time_frame, symbols, max_points = 1200)
       return false unless symbols
       days = Setting.find_by(name: time_frame.name + '_period').value
       date_time = (Date.today - days.to_i)
@@ -37,14 +37,21 @@ class Spread < ActiveRecord::Base
         data = ActiveRecord::Base.connection.select_rows sql
         if data.empty?
           false
-        else
+        elsif data.size > max_points
           points = data.map{|p| p[0].to_f}
           points_ptr = FFI::MemoryPointer.new :double, data.size
           points_ptr.put_array_of_double 0, points
-          keep_ptr = Chart.CompressChart points_ptr, data.size, 0.02
-          keep = keep_ptr.read_array_of_uint data.size
+          e = 0.01
+          begin
+            keep_ptr = Chart.CompressChart points_ptr, data.size, e
+            keep = keep_ptr.read_array_of_uint data.size
+            p = keep.select{|v| v == 1}
+            e = e + 0.01
+          end while p.size > max_points
           keep.each_with_index{|v, i| if v == 0 then data[i] = nil end}
           data.compact
+        else
+          data
         end
       else
         false
