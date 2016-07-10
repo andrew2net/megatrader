@@ -3,7 +3,6 @@
  */
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap-sprockets
 //= require gritter
 //= require wice_grid
