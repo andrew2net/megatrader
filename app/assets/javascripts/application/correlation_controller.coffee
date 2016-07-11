@@ -80,6 +80,11 @@ angular.module 'app'
             field: col.name
             displayName: col.name
             type: 'number'
+            cellTemplate: """
+            <div class='ui-grid-cell-contents'>
+              {{row.entity['#{col.name}']}}
+            </div>
+            """
             cellFilter: 'percentage'
             minWidth: 100
             cellClass: (grid, row, col)->
