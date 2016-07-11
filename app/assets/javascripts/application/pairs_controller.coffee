@@ -56,6 +56,7 @@ angular.module 'app'
             table: chartTable
             symbols: chart.symbols
           }
+          return
         $scope.loading = false
         return
     return
@@ -64,6 +65,8 @@ angular.module 'app'
     .then (response)->
       $scope.groups = response.data.groups
       $scope.symbols = response.data.tools
+      $scope.toggleCheck $scope.symbols[2]
+      $scope.buildCharts()
       return
 
   unless google.visualization
