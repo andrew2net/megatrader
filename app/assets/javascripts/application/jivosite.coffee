@@ -1,4 +1,4 @@
-$(document).on "page:change", ->
+$(document).on "ready page:change", ->
   jivosite_id = $('#jivosite_id').text()
   if window.jivo_init
     window.jivo_init()
