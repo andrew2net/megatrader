@@ -18,7 +18,8 @@
               |(&nbsp;
             label ng-bind='symbol.name'
             span.chart-param-multiplicator &nbsp;*&nbsp;
-            input [ng-model='symbol.weight' ng-model-options='{getterSetter:true}']
+            input [ng-model='symbol.weight' type='number' string-to-number
+            step=0.01 ng-model-options='{getterSetter:true}']
             span &nbsp;)
           .chart-param-plus ng-if='!$last' +
     .row

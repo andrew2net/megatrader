@@ -22,7 +22,7 @@ angular.module 'app'
         $scope.selectedSymbols.splice idx, 1
       for i in [ 1...$scope.correlationGrid.columnDefs.length ]
         $scope.correlationGrid.columnDefs[i].visible = $scope.selectedSymbols
-          .indexOf($scope.correlationGrid.columnDefs[i].field) > -1
+          .indexOf($scope.correlationGrid.columnDefs[i].displayName) > -1
       $scope.crlGridApi.core.notifyDataChange uiGridConstants.dataChange.COLUMN
       return
 
@@ -77,12 +77,16 @@ angular.module 'app'
         ]
         for col in response.data.tools
           $scope.correlationGrid.columnDefs.push {
-            field: col.name
+            field: col.name + '.value'
             displayName: col.name
             type: 'number'
             cellTemplate: """
             <div class='ui-grid-cell-contents'>
-              {{row.entity['#{col.name}']}}
+              <a ng-href="/spread/?TimeFrame={{grid.appScope.timeFrame()}}&{{row.entity['#{col.name}'].symbol_1}}={{row.entity['#{col.name}'].weight_1}}&{{row.entity['#{col.name}'].symbol_2}}={{row.entity['#{col.name}'].weight_2}}">
+                <div>
+                  {{row.entity['#{col.name}'].value}}
+                </div>
+              </a>
             </div>
             """
             cellFilter: 'percentage'

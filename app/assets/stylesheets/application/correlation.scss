@@ -9,6 +9,9 @@
 .cell-number{
   text-align: right;
   font-weight: bold;
+  a {
+    color: rgb(51,51,51);
+  }
 }
 .cell-centred{
   text-align: center;
@@ -30,25 +33,37 @@
 }
 .correlation-50{
   background-color: rgb(155, 205, 155) !important;;
-  color: white;
+  a{
+    color: white;
+  }
 }
 .correlation-60{
   background-color: rgb(135, 195, 135) !important;;
-  color: white;
+  a{
+    color: white;
+  }
 }
 .correlation-70{
   background-color: rgb(115, 185, 115) !important;;
-  color: white;
+  a{
+    color: white;
+  }
 }
 .correlation-80{
   background-color: rgb(95, 175, 95) !important;;
-  color: white;
+  a{
+    color: white;
+  }
 }
 .correlation-90{
   background-color: rgb(75, 165, 75) !important;;
-  color: white;
+  a{
+    color: white;
+  }
 }
 .correlation-100{
   background-color: rgb(55, 155, 55) !important;;
-  color: white;
+  a{
+    color: white;
+  }
 }
