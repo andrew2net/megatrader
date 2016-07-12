@@ -17,7 +17,8 @@ class Application::ApiController < ApplicationController
     FROM correlations cr
     LEFT JOIN pairs p ON
       p.tool_symbol_1_id IN (row_tool_symbol_id,col_tool_symbol_id) AND
-      p.tool_symbol_2_id IN (row_tool_symbol_id,col_tool_symbol_id)
+      p.tool_symbol_2_id IN (row_tool_symbol_id,col_tool_symbol_id) AND
+      p.time_frame_id=cr.time_frame_id
     JOIN tool_symbols tr ON tr.id=row_tool_symbol_id
     JOIN tool_symbols tc ON tc.id=col_tool_symbol_id
     WHERE cr.time_frame_id=:time_frame_id}
