@@ -7,15 +7,15 @@
           select#time-frame.form-control [ng-model='timeFrame'
             ng-options='value for value in timeFrames']
         a.btn.btn-default [ng-disabled='selectedSymbols.length<1'
-        ng-click='buildCharts()'] =I18n.t 'build_chart'
+        ng-click='buildCharts()'] =I18n.t 'build_pairs'
     = render partial: 'tools'
     .row.text-center
       uib-pagination [total-items='totalCharts' ng-model='currentPage'
         ng-change='pageChange()' items-per-page=10 ng-show='totalCharts > 10'
         previous-text='‹' next-text='›' max-size=6 force-ellipses='true']
-      .row ng-repeat='chart in pages[currentPage - 1]'
+      .row ng-repeat='chart in pages[currentPage - 1]' style='height:270px'
         .col-md-10 n4-chart='chart.table' style='height:250px'
-        .col-md-2 style='top:80px'
+        .col-md-2 style='top:100px'
           a.btn.btn-default [
           ng-href='/spread?TimeFrame={{timeFrame}}&{{chart.symbols[0].symbol}}={{chart.symbols[0].weight}}&{{chart.symbols[1].symbol}}={{chart.symbols[1].weight}}'] =I18n.t 'open'
       .loading-stub ng-show='loading'
