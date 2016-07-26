@@ -107,14 +107,10 @@ $ ->
     )
 
     $('.price-accord').accordion(
-      header: 'form'
+      header: 'h6'
       heightStyle: "content",
       icons: {header: 'price-accord-icon-s', activeHeader: 'price-accord-icon-e'}
     )
-
-    $('.price-accord input[type="submit"]').click (event)->
-      event.stopPropagation()
-      return
 
     return
 

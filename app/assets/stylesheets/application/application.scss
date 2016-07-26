@@ -560,21 +560,14 @@ ul.about {
 
 .price-accord {
   font-weight: bold;
-  form{
+  h6 {
     border-radius: 0;
     border: 0;
-    input[type='submit']{
-      float: right;
-      color: $orange-color;
-      border-radius: 0;
-      font-weight: bold;
-    }
-    h6 {
-      display: inline-block;
-      // background: $gray-lightener-color;
-      font-weight: bold;
-      padding-left: 0.5em !important;
-    }
+    display: inline-block;
+    background: $gray-lightener-color;
+    font-weight: bold;
+    padding-left: 0.5em !important;
+  }
     span {
       float: right;
       &.price {
@@ -586,7 +579,7 @@ ul.about {
         display: block;
         width: 30px;
         height: 30px;
-        margin-top: 0 !important;
+        // margin-top: 0 !important;
       }
       &.price-accord-icon-e {
         position: relative !important;
@@ -594,7 +587,7 @@ ul.about {
         display: block;
         width: 30px;
         height: 30px;
-        margin-top: 0 !important;
+        // margin-top: 0 !important;
       }
     }
     &.ui-accordion-header-active {
@@ -603,7 +596,6 @@ ul.about {
         color: $gray-superlight-color;
       }
     }
-  }
   > div {
     padding: 0 !important;
     border-radius: 0;
