@@ -31,12 +31,12 @@ gem 'unicorn', group: :production
 
 # Use Capistrano for deployment
 group :development do
-  gem 'capistrano3-nginx', '~> 2.0'
-  gem 'capistrano'
-  gem 'capistrano-bundler'
-  gem 'capistrano-rails'
-  gem 'capistrano-rvm'
-  gem 'capistrano-sidekiq'
+  # gem 'capistrano3-nginx', '~> 2.0'
+  # gem 'capistrano'
+  # gem 'capistrano-bundler'
+  # gem 'capistrano-rails'
+  # gem 'capistrano-rvm'
+  # gem 'capistrano-sidekiq'
 end
 
 # gem 'sprockets', '~> 2'
