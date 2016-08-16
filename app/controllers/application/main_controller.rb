@@ -47,6 +47,10 @@ class Application::MainController < ApplicationController
     @text.sub!(how_to_pay_rgxp, render_to_string(
       partial: 'application/question/pay')) if @text =~ how_to_pay_rgxp
 
+    robokassa_rgxp = /\[robokassa_block\]/
+    @text.sub!(robokassa_rgxp, render_to_string(
+      partial: 'robokassa_block')) if @text =~ robokassa_rgxp
+
     tester_block_rgxp = /\[tester_block\]/
     @text.sub!(tester_block_rgxp, render_to_string(
       partial: 'tester_block')) if @text =~ tester_block_rgxp

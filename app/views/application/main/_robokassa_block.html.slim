@@ -1,0 +1,11 @@
+/script src="https://auth.robokassa.ru/Merchant/PaymentForm/FormMS.js?MerchantLogin=Megatrader-N&OutSum=13500&Description=MegaTrader+(Quik)&SignatureValue=1419e6db044faec3d350a5a7a5e2d5d6&IsTest=1"
+
+form action='https://auth.robokassa.ru/Merchant/Index.aspx' method='POST'
+  input type='hidden' name='MrchLogin' value='Megatrader-N'
+  input type='hidden' name='OutSum' ng-value='products[product].price'
+  input type='hidden' name='OutSumCurrency' value='USD' ng-if='currency=="$"'
+  input type='hidden' name='Culture' ng-value='currency=="$" ? "en" : "ru"'
+  input type='hidden' name='Desc' ng-value='product'
+  input type='hidden' name='SignatureValue' ng-value='products[product].signature'
+  input type='hidden' name='IsTest' value=1
+  input.btn.btn-default type='submit' value=I18n.t('buy')

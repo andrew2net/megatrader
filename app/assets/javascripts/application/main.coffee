@@ -111,6 +111,9 @@ $ ->
       heightStyle: "content",
       icons: {header: 'price-accord-icon-s', activeHeader: 'price-accord-icon-e'}
     )
+    $('.price-accord label').click (e)->
+      e.stopPropagation()
+      return
 
     return
 
