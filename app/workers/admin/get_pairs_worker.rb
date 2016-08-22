@@ -27,7 +27,11 @@ class Admin::GetPairsWorker
             tool_symbol_1_id: symbol_2.id,
             tool_symbol_2_id: symbol_1.id
         end
-        pair.update weight_1: p[2], weight_2: p[3], fitness: p[4]
+    begin
+        pair.update weight_1: p[2].round(2), weight_2: p[3].round(2), fitness: p[4]
+    rescue
+      require 'pry'; binding.pry
+    end
       end
     end
   end

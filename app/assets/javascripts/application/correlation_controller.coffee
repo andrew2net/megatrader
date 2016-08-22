@@ -84,7 +84,7 @@ angular.module 'app'
             <div class='ui-grid-cell-contents'>
               <a ng-href="/spread/?TimeFrame={{grid.appScope.timeFrame()}}&{{row.entity['#{col.name}'].symbol_1}}={{row.entity['#{col.name}'].weight_1}}&{{row.entity['#{col.name}'].symbol_2}}={{row.entity['#{col.name}'].weight_2}}">
                 <div>
-                  {{row.entity['#{col.name}'].value}}
+                  {{row.entity['#{col.name}'].value | percentage}}
                 </div>
               </a>
             </div>
