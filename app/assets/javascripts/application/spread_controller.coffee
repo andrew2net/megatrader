@@ -21,7 +21,7 @@ angular.module 'app'
       _timeFrame = newValue
     else
       _timeFrame
-  
+
   $scope.isChecked = (symbol)->
     $scope.selectedSymbols.indexOf(symbol) > -1
 
@@ -58,7 +58,7 @@ angular.module 'app'
       # $scope.selectedSymbols.push tool[0]
       $scope.toggleCheck tool[0]
     return
-  
+
   getSetWeight = (newValue)->
     if arguments.length
       w = unless isNaN parseFloat(newValue) then newValue

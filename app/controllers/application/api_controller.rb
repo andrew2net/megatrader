@@ -13,7 +13,7 @@ class Application::ApiController < ApplicationController
     time_frame = TimeFrame.find_by name: params[:timeFrame]
     sql = %{
     SELECT row_tool_symbol_id r, col_tool_symbol_id c, value, weight_1, weight_2,
-    tr.name symbol_1, tc.name symbol_2
+    tc.name symbol_1, tr.name symbol_2
     FROM correlations cr
     LEFT JOIN pairs p ON
       p.tool_symbol_1_id IN (row_tool_symbol_id,col_tool_symbol_id) AND
