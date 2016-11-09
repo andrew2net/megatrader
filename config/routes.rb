@@ -30,6 +30,7 @@ Rails.application.routes.draw do
         get 'tool_symbols'
         post :spread
         post :pairs
+        post :license
       end
     end
     # match '/:locale' => 'main#index', locale: /#{I18n.available_locales.join('|')}/, via: [:get, :post]

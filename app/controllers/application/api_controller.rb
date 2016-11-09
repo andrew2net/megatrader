@@ -1,5 +1,6 @@
 class Application::ApiController < ApplicationController
   skip_before_action :authenticate
+  protect_from_forgery except: :license
 
   def tools
     g = ToolGroup.order(:position).select :id, :name
@@ -61,5 +62,27 @@ class Application::ApiController < ApplicationController
   def pairs
     render json: Pair.get_pairs(params[:time_frame], params[:symbols],
                                 params[:page])
+  end
+
+  def license
+    b = inverse_transform params[:a]
+    render json: b
+  end
+
+  private
+
+  def inverse_transform(a)
+    width=a[0].size
+    height=a.size
+    b=Array.new(height)
+    b.each_index{|i| b[i]=Array.new(width)}
+    (0...height).each do |y|
+      (0...width).each do |x|
+        x2 = (x-x/(width/2+width%2)*width).abs*2-x/(width/2+width%2)
+        y2 = (y-y/(height/2+height%2)*height).abs*2-y/(height/2+height%2)
+        b[y2][x2]=a[y][x]
+      end
+    end
+    b
   end
 end
