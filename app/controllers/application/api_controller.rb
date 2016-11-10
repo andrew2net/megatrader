@@ -65,7 +65,10 @@ class Application::ApiController < ApplicationController
   end
 
   def license
-    b = inverse_transform params[:a]
+    b = []
+    params[:a].each do |a|
+      b << inverse_transform(a)
+    end
     render json: b
   end
 
