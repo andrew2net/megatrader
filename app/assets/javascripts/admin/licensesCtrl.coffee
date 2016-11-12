@@ -13,6 +13,7 @@ angular.module 'admin'
       return
 
     $scope.editLicense = ->
+      $scope.form.$setPristine()
       $scope.license = angular.copy $scope.selectedLicense
       return
 
@@ -21,6 +22,7 @@ angular.module 'admin'
         idx = $scope.licenses.indexOf $scope.selectedLicense
         $scope.license.$update (val)->
           $scope.licenses.splice idx, 1, val
+          $scope.selectedLicense = null
           return
       else
         $scope.license.$save (val)->

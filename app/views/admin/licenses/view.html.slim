@@ -29,4 +29,5 @@
         .form-group
           label for='input-text' License text
           textarea#input-text.form-control rows=5 ng-model='license.text'
-        a.btn.btn-default ng-show='form.$valid' ng-click='saveLicense()' Save license
+        a.btn.btn-default [ng-show='form.$valid && form.$dirty'
+        ng-click='saveLicense()'] Save license
