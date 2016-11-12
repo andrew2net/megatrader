@@ -25,7 +25,7 @@ class Admin::AdminsController < ApplicationController
     @admin = Admin.find(params[:id])
 
     if admin_params[:password].empty?
-      attributes = admin_params.slice(:firstname, :lastname, :email)
+      attributes = admin_params.slice(:first_name, :last_name, :email)
       result = @admin.update_attributes(attributes)
     else
       result = @admin.update(admin_params)
