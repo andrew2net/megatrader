@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     resources :admins
     resources :pages
     resource :setting, only: [:edit, :update]
+    get 'licenses/view'
+    get 'licenses/products'
+    resources :licenses, defaults: { action: :licenses }
   end
 
   scope module: :application do

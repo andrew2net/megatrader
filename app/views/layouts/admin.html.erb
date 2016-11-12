@@ -3,7 +3,10 @@
 <head>
   <title>Megatrader - Admin Panel</title>
   <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track' => true %>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/angular-ui/bower-ui-grid/master/ui-grid.min.css" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/angular-resource/1.4.9/angular-resource.min.js'></script>
+  <script src="https://cdn.rawgit.com/angular-ui/bower-ui-grid/master/ui-grid.js"></script>
   <%= javascript_include_tag 'admin', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>

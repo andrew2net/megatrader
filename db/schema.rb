@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160822124829) do
+ActiveRecord::Schema.define(version: 20161112005230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,17 @@ ActiveRecord::Schema.define(version: 20160822124829) do
   add_index "correlations", ["row_tool_symbol_id"], name: "index_correlations_on_row_tool_symbol_id", using: :btree
   add_index "correlations", ["time_frame_id"], name: "correlation_pair_unique_idx", unique: true, using: :btree
   add_index "correlations", ["time_frame_id"], name: "index_correlations_on_time_frame_id", using: :btree
+
+  create_table "licenses", force: :cascade do |t|
+    t.text     "text"
+    t.string   "email",      null: false
+    t.boolean  "blocked"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "product_id"
+  end
+
+  add_index "licenses", ["product_id"], name: "index_licenses_on_product_id", using: :btree
 
   create_table "menu_item_translations", force: :cascade do |t|
     t.integer  "menu_item_id", null: false
@@ -116,6 +127,12 @@ ActiveRecord::Schema.define(version: 20160822124829) do
   add_index "pairs", ["time_frame_id"], name: "pair_unique_idx", unique: true, using: :btree
   add_index "pairs", ["tool_symbol_1_id"], name: "index_pairs_on_tool_symbol_1_id", using: :btree
   add_index "pairs", ["tool_symbol_2_id"], name: "index_pairs_on_tool_symbol_2_id", using: :btree
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"

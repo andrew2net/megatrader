@@ -74,8 +74,11 @@ SimpleNavigation::Configuration.run do |navigation|
 
     primary.item :pages, Page.model_name.human, admin_pages_path, highlights_on: %r(^/admin/pages)
     primary.item :menu_items, MenuItem.model_name.human, admin_menu_items_path, highlights_on: %r(^/admin/menu_items)
+    primary.item :licenses, {icon: '', text: I18n.t(:licenses)}, admin_licenses_view_path
     primary.item :admins,{icon: '', text: I18n.t(:administartion)}, split: false, if: lambda{can? :read, @admin} do |admin|
-      admin.item :admins, {icon: 'glyphicon glyphicon-user', text: Admin.model_name.human}, admin_admins_path, highlights_on: %r(^/admin/admins), if: lambda {can? :read, @admin}
+      admin.item :admins, {icon: 'glyphicon glyphicon-user',
+                           text: Admin.model_name.human}, admin_admins_path,
+                           highlights_on: %r(^/admin/admins), if: lambda {can? :read, @admin}
       admin.item :settings, {text: Setting.model_name.human, icon: 'glyphicon glyphicon-wrench'}, edit_admin_setting_path, highlights_on: %r(^/admin/setting)
     end
 
