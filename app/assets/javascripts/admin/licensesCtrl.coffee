@@ -34,6 +34,7 @@ angular.module 'admin'
     $scope.delLicense = ->
       if confirm 'Delete "' + $scope.selectedLicense.email + '" license?'
         idx = $scope.licenses.indexOf $scope.selectedLicense
+        $scope.license = null
         $scope.selectedLicense.$remove ->
           $scope.licenses.splice idx, 1
           $scope.selectedLicense = null
