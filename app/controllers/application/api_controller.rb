@@ -67,17 +67,30 @@ class Application::ApiController < ApplicationController
   def license
     license = License.find_by text: params[:l]
     if license
-      b = []
-      params[:a].each do |a|
-        b << inverse_transform(a)
+      ActiveRecord::Base.connection.transaction do
+        unless license.key.blank? or license.key == params[:k]
+          render json: {m: 'Bad key'}, status: :not_found
+          return
+        end
+        license.update key: key_gen
+        license.reload
+        b = []
+        params[:a].each do |a|
+          b << inverse_transform(a)
+        end
+        render json: {b: b, k: license.key}
       end
-      render json: b
     else
-      head :not_found
+      head json: {m: 'License not found'}, status: :not_found
     end
   end
 
   private
+  def key_gen
+    ts = DateTime.now.to_s
+    salt = Setting.find_by name: 'Salt'
+    Digest::MD5.hexdigest ts + salt.value.to_s
+  end
 
   def inverse_transform(a)
     width=a[0].size

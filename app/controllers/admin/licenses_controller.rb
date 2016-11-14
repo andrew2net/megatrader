@@ -6,17 +6,17 @@ class Admin::LicensesController < ApplicationController
   add_breadcrumb I18n.t(:licenses)
 
   def index
-    render json: License.select(:id, :email, :product_id, :text, :blocked)
+    render json: License.select(:id, :email, :product_id, :text, :blocked, :key)
   end
 
   def create
     render json: License.create(license_params),
-      only: [:id, :email, :product_id, :text, :blocked]
+      only: [:id, :email, :product_id, :text, :blocked, :key]
   end
 
   def update
     render json: License.update(params[:id], license_params),
-      only: [:id, :email, :product_id, :text, :blocked]
+      only: [:id, :email, :product_id, :text, :blocked, :key]
   end
 
   def destroy
@@ -33,6 +33,6 @@ class Admin::LicensesController < ApplicationController
 
   private
   def license_params
-    params.require(:license).permit(:email, :text, :product_id, :blocked)
+    params.require(:license).permit(:email, :text, :product_id, :blocked, :key)
   end
 end
