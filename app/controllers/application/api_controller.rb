@@ -65,7 +65,7 @@ class Application::ApiController < ApplicationController
   end
 
   def license
-    license = License.find_by text: params[:l]
+    license = License.where(blocked: false).find_by(text: params[:l])
     if license
       ActiveRecord::Base.connection.transaction do
         unless license.key.blank? or license.key == params[:k]
@@ -81,7 +81,7 @@ class Application::ApiController < ApplicationController
         render json: {b: b, k: license.key}
       end
     else
-      head json: {m: 'License not found'}, status: :not_found
+      render json: {m: 'License not found'}, status: :not_found
     end
   end
 
