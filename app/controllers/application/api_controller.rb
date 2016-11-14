@@ -65,11 +65,16 @@ class Application::ApiController < ApplicationController
   end
 
   def license
-    b = []
-    params[:a].each do |a|
-      b << inverse_transform(a)
+    license = License.find_by text: params[:l]
+    if license
+      b = []
+      params[:a].each do |a|
+        b << inverse_transform(a)
+      end
+      render json: b
+    else
+      head :not_found
     end
-    render json: b
   end
 
   private
