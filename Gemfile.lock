@@ -128,6 +128,7 @@ GEM
       nenv
       rspec-logsplit (>= 0.1.2)
       timers (>= 4.1.1)
+    choice (0.2.0)
     coderay (1.1.1)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -225,6 +226,11 @@ GEM
       activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
+    rails-erd (1.5.0)
+      activerecord (>= 3.2)
+      activesupport (>= 3.2)
+      choice (~> 0.2.0)
+      ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
     railties (4.2.0)
@@ -261,6 +267,7 @@ GEM
       rspec-mocks (~> 3.3.0)
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
+    ruby-graphviz (1.2.2)
     rufus-scheduler (3.1.10)
     sass (3.4.14)
     sass-rails (5.0.3)
@@ -371,6 +378,7 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   rails (= 4.2.0)
+  rails-erd
   rails-i18n!
   routing-filter
   rspec-rails
@@ -395,4 +403,4 @@ DEPENDENCIES
   wice_grid
 
 BUNDLED WITH
-   1.10.6
+   1.13.6

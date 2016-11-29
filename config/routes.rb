@@ -21,7 +21,9 @@ Rails.application.routes.draw do
     resource :setting, only: [:edit, :update]
     get 'licenses/view'
     get 'licenses/products'
-    resources :licenses, defaults: { action: :licenses }
+    resources :licenses, defaults: { action: :licenses } do
+      get :logs
+    end
   end
 
   scope module: :application do

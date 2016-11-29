@@ -63,7 +63,7 @@ angular.module 'admin'
         }
         {
           name: 'Blocked'
-          fielld: 'blocked'
+          field: 'blocked'
           type: 'boolean'
           cellTemplate: """
           <div class="ui-grid-cell-contents text-center" title="TOOLTIP">
@@ -76,6 +76,7 @@ angular.module 'admin'
       onRegisterApi: (gridApi)->
         $scope.licensesGridApi = gridApi
         gridApi.selection.on.rowSelectionChanged $scope, (newRow, oldRow)->
+          getLogs newRow.entity.id
           $scope.selectedLicense = newRow.entity
           $scope.license = null
           return
@@ -84,6 +85,30 @@ angular.module 'admin'
       .then (resp)->
         $scope.products = resp.data
         return
+
+    $scope.logs = []
+    $scope.logsGridOptions = {
+      columnDefs: [
+        {name: 'IP', field: 'ip'}
+        {
+          name: 'Date', field: 'created_at', type: 'date'
+          cellFilter: 'date:"dd-MM-yyyy hh:mm:ss"'
+        }
+      ]
+      data: 'logs'
+    }
+
+    getLogs = (license_id)->
+      $scope.loadingLogs = true
+      $scope.logs = []
+      $http.get "/admin/licenses/#{license_id}/logs"
+        .then (resp)->
+          $scope.logs = resp.data.map (l)->
+            l.created_at = new Date l.created_at
+            l
+          $scope.loadingLogs = false
+          return
+      return
 
     return
 ]

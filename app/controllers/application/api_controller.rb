@@ -78,6 +78,8 @@ class Application::ApiController < ApplicationController
         params[:a].each do |a|
           b << inverse_transform(a)
         end
+        LicenseLog.create ip: request.remote_ip, created_at: DateTime.now,
+          license_id: license.id
         render json: {b: b, k: license.key}
       end
     else

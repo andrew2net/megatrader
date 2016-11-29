@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161114215849) do
+ActiveRecord::Schema.define(version: 20161129120817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,14 @@ ActiveRecord::Schema.define(version: 20161114215849) do
   add_index "correlations", ["row_tool_symbol_id"], name: "index_correlations_on_row_tool_symbol_id", using: :btree
   add_index "correlations", ["time_frame_id"], name: "correlation_pair_unique_idx", unique: true, using: :btree
   add_index "correlations", ["time_frame_id"], name: "index_correlations_on_time_frame_id", using: :btree
+
+  create_table "license_logs", force: :cascade do |t|
+    t.inet     "ip",         null: false
+    t.integer  "license_id", null: false
+    t.datetime "created_at", null: false
+  end
+
+  add_index "license_logs", ["license_id"], name: "index_license_logs_on_license_id", using: :btree
 
   create_table "licenses", force: :cascade do |t|
     t.text     "text"
@@ -184,6 +192,7 @@ ActiveRecord::Schema.define(version: 20161114215849) do
   add_index "tool_symbols", ["tool_group_id"], name: "index_tool_symbols_on_tool_group_id", using: :btree
 
   add_foreign_key "correlations", "time_frames"
+  add_foreign_key "license_logs", "licenses"
   add_foreign_key "pairs", "time_frames"
   add_foreign_key "pairs", "tool_symbols", column: "tool_symbol_1_id"
   add_foreign_key "pairs", "tool_symbols", column: "tool_symbol_2_id"

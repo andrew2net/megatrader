@@ -13,24 +13,30 @@
           |&nbsp;
           .btn-group ng-show='selectedLicense'
             button.btn.btn-default ng-click='delLicense()' Delete license
-      form name='form' ng-show='license'
-        .form-group ng-class='{"has-error": form.email.$invalid && form.email.$touched}'
-          label for='input-email' E-mail
-          input#input-email.form-control [name='email' type='email'
-          ng-model='license.email' ng-required='true']
-        .form-group
-          label for='input-product' Product
-          select#input-product.form-control [ng-model='license.product_id'
-          ng-options='product.id as product.name for product in products']
-        .checkbox
-          label
-            input type='checkbox' ng-model='license.blocked'
-            |Blocked
-        .form-group
-          label for='input-text' License text
-          textarea#input-text.form-control rows=5 ng-model='license.text'
-        .form-group
-          label for='input-key' Key
-          input#input-key.form-control [ng-model='license.key']
-        a.btn.btn-default [ng-show='form.$valid && form.$dirty'
-        ng-click='saveLicense()'] Save license
+      .row
+        .col-md-12 ng-show='license'
+          form name='form'
+            .form-group [
+              ng-class='{"has-error": form.email.$invalid && form.email.$touched}']
+              label for='input-email' E-mail
+              input#input-email.form-control [name='email' type='email'
+              ng-model='license.email' ng-required='true']
+            .form-group
+              label for='input-product' Product
+              select#input-product.form-control [ng-model='license.product_id'
+              ng-options='product.id as product.name for product in products']
+            .checkbox
+              label
+                input type='checkbox' ng-model='license.blocked'
+                |Blocked
+            .form-group
+              label for='input-text' License text
+              textarea#input-text.form-control rows=5 ng-model='license.text'
+            .form-group
+              label for='input-key' Key
+              input#input-key.form-control [ng-model='license.key']
+            a.btn.btn-default [ng-show='form.$valid && form.$dirty'
+            ng-click='saveLicense()'] Save license
+        .col-md-12 ng-hide='license' style='position:relative'
+          #logs-grid ui-grid='logsGridOptions'
+          .loading-stub ng-show='loadingLogs'

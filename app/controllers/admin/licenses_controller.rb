@@ -31,6 +31,12 @@ class Admin::LicensesController < ApplicationController
     render json: Product.select('id, name')
   end
 
+  def logs
+    render json: LicenseLog.select(:id, :ip, :created_at)
+      .where(license_id: params[:license_id])
+      .map{|l| {id: l.id, ip: l.ip.to_s, created_at: l.created_at}}
+  end
+
   private
   def license_params
     params.require(:license).permit(:email, :text, :product_id, :blocked, :key)

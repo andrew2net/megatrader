@@ -37,6 +37,7 @@ group :development do
   # gem 'capistrano-rails'
   # gem 'capistrano-rvm'
   # gem 'capistrano-sidekiq'
+  gem 'rails-erd'
 end
 
 # gem 'sprockets', '~> 2'
