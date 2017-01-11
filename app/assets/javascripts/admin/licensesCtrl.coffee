@@ -1,7 +1,9 @@
 angular.module 'admin'
 .controller 'LicenseCtrl', ['$scope', 'Licenses', '$http', '$timeout', '$filter',
   ($scope, Licenses, $http, $timeout, $filter)->
-    $scope.licenses = Licenses.query()
+    $scope.licenses = Licenses.query (data)->
+      for l in data
+        l.date_end = new Date l.date_end if l.date_end
 
     $scope.addLicense = ->
       $scope.form.$setUntouched()
@@ -17,10 +19,13 @@ angular.module 'admin'
       $scope.license = angular.copy $scope.selectedLicense
       return
 
+    $scope.openDateInput = -> $scope.dateInputOpened = true
+
     $scope.saveLicense = ->
       if $scope.license.id
         idx = $scope.licenses.indexOf $scope.selectedLicense
         $scope.license.$update (val)->
+          val.date_end = new Date val.date_end if val.date_end
           $scope.licenses.splice idx, 1, val
           $scope.selectedLicense = null
           return
@@ -70,6 +75,12 @@ angular.module 'admin'
             {{row.entity.blocked ? '&#10004' : ''}}
           </div>
           """
+        }
+        {
+          name: 'Date end'
+          field: 'date_end'
+          type: 'date'
+          cellFilter: 'date : "dd-MM-yyyy"'
         }
       ]
       data: 'licenses'

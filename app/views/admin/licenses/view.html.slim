@@ -35,8 +35,18 @@
             .form-group
               label for='input-key' Key
               input#input-key.form-control [ng-model='license.key']
-            a.btn.btn-default [ng-show='form.$valid && form.$dirty'
-            ng-click='saveLicense()'] Save license
+            .row
+              .col-md-6
+                p.input-group
+                  input.form-control [uib-datepicker-popup='dd-MM-yyyy'
+                    ng-model='license.date_end' is-open='dateInputOpened'
+                    ng-model-options='{timezone: "UTC"}']
+                  span.input-group-btn
+                    button.btn.btn-default ng-click='openDateInput()'
+                      i.glyphicon.glyphicon-calendar
+              .col-md-6
+                a.btn.btn-default [ng-show='form.$valid && form.$dirty'
+                ng-click='saveLicense()'] Save license
         .col-md-12 ng-hide='license' style='position:relative'
           #logs-grid ui-grid='logsGridOptions'
           .loading-stub ng-show='loadingLogs'

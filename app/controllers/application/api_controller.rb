@@ -72,6 +72,14 @@ class Application::ApiController < ApplicationController
           render json: {m: 'Bad key'}, status: :not_found
           return
         end
+        if license.date_end
+          date_now = Date.today
+          if license.date_end < date_now
+            license.update blocked: true
+            render json: { m: 'License is expired' }, status: :not_found
+            return
+          end
+        end
         license.update key: key_gen
         license.reload
         b = []
