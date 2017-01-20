@@ -3,7 +3,7 @@
     <div class="background-gray-light article-teaser">
       <h4><%= article.title %></h4>
       <%= article.text[/<p.*/].html_safe %>
-      <%= link_to t(:read_more), '/' + locale.to_s + '/' + Rails.application.routes.url_helpers.send("article_#{locale}_path", article.url), class: 'btn btn-default pull-right', role: 'button' %>
+      <%= link_to t(:read_more), '/' + locale.to_s + Rails.application.routes.url_helpers.send("article_#{locale}_path", article.url), class: 'btn btn-default pull-right', role: 'button' %>
     </div>
   </div>
 </div>

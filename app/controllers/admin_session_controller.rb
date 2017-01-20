@@ -2,7 +2,7 @@ class AdminSessionController < ApplicationController
   skip_before_action :authenticate
 
   def create
-    @admin_session = AdminSession.new(params[:admin_session])
+    @admin_session = AdminSession.new(admin_params)
     if @admin_session.save
       flash[:notice] = t :sign_in_success
       gflash :now, notice: (t :sign_in_success)
@@ -19,5 +19,10 @@ class AdminSessionController < ApplicationController
     current_admin_session.destroy
     gflash :now, notice: (t :sign_out_success)
     redirect_to params[:return_path]
+  end
+
+  protected
+  def admin_params
+    params.require(:admin_session).permit :email, :password, :remember_me
   end
 end

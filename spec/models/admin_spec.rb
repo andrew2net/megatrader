@@ -34,6 +34,6 @@ RSpec.describe Admin, type: :model do
   it 'is invalid when password less then 4 characters' do
     admin = build :admin, password: '1'
     admin.valid?
-    expect(admin.errors[:password]).to include I18n.t 'activerecord.errors.messages.too_short', count: 4
+    expect(admin.errors[:password]).to include I18n.t 'activerecord.errors.messages.too_short', count: 8
   end
 end

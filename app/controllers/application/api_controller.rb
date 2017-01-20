@@ -67,25 +67,12 @@ class Application::ApiController < ApplicationController
   def license
     license = License.where(blocked: false).find_by(text: params[:l])
     if license
-      ActiveRecord::Base.connection.transaction do
-        unless license.key.blank? or license.key == params[:k]
-          render json: {m: 'Bad key'}, status: :not_found
-          return
-        end
-        if license.date_end
-          date_now = Date.today
-          if license.date_end < date_now
-            license.update blocked: true
-            render json: { m: 'License is expired' }, status: :not_found
-            return
-          end
-        end
-        license.update key: key_gen
-        license.reload
-        b = []
-        params[:a].each do |a|
-          b << inverse_transform(a)
-        end
+      if license.date_end and license.date_end < Date.today
+        render json: { m: 'License is expired' }, status: :not_found
+      elsif license.key.present? and license.key != params[:k]
+        render json: {m: 'Bad key'}, status: :not_found
+      else
+        b = license.resp_data params[:a]
         LicenseLog.create ip: request.remote_ip, created_at: DateTime.now,
           license_id: license.id
         render json: {b: b, k: license.key}
@@ -93,27 +80,5 @@ class Application::ApiController < ApplicationController
     else
       render json: {m: 'License not found'}, status: :not_found
     end
-  end
-
-  private
-  def key_gen
-    ts = DateTime.now.to_s
-    salt = Setting.find_by name: 'Salt'
-    Digest::MD5.hexdigest ts + salt.value.to_s
-  end
-
-  def inverse_transform(a)
-    width=a[0].size
-    height=a.size
-    b=Array.new(height)
-    b.each_index{|i| b[i]=Array.new(width)}
-    (0...height).each do |y|
-      (0...width).each do |x|
-        x2 = (x-x/(width/2+width%2)*width).abs*2-x/(width/2+width%2)
-        y2 = (y-y/(height/2+height%2)*height).abs*2-y/(height/2+height%2)
-        b[y2][x2]=a[y][x]
-      end
-    end
-    b
   end
 end

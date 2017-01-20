@@ -86,12 +86,14 @@ group :development, :test do
   # gem 'ruby-debug-ide19'
 
   gem 'rspec-rails'
+  gem 'rspec-json_expectations'
   gem 'factory_girl_rails'
 end
 
 group :test do
   gem 'capybara'
   gem 'capybara-webkit'
+  gem 'poltergeist'
   # gem 'selenium-webdriver'
   gem 'shoulda-matchers'
   gem 'database_cleaner'
