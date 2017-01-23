@@ -3,8 +3,8 @@ class License < ActiveRecord::Base
   belongs_to :product
 
   def resp_data(a)
-    self.key = key_gen
-    save
+    update key: key_gen
+    reload
     a.map { |el| inverse_transform el }
   end
 

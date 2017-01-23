@@ -12,7 +12,10 @@ RSpec.describe Application::ApiController, type: :controller do
       post :license, a: a, l: license.text, k: license.key
       expect(response).to have_http_status 200
       expect(response.body).to include_json(b: b)
-      expect(LicenseLog.count).to eq 1
+      resp = JSON.parse response.body
+      post :license, a: a, l: license.text, k: resp['k']
+      expect(response).to have_http_status 200
+      expect(LicenseLog.count).to eq 2
     end
 
     it 'respond not found with blocked license' do
