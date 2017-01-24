@@ -1,5 +1,5 @@
 class License < ActiveRecord::Base
-  has_many :license_logs
+  has_many :license_logs, dependent: :delete_all
   belongs_to :product
 
   def resp_data(a)

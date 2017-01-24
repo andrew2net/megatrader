@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe License, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'delete with logs' do
+    license = create :license_with_logs
+    license.destroy
+    expect(License.count).to eq(0)
+    expect(LicenseLog.count).to eq(0)
+  end
 end
