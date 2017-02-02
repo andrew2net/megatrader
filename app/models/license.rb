@@ -3,9 +3,14 @@ class License < ActiveRecord::Base
   belongs_to :product
 
   def resp_data(a)
+    begin
+      b = a.map { |el| inverse_transform el }
+    rescue
+      b = []
+    end
     update key: key_gen
     reload
-    a.map { |el| inverse_transform el }
+    b
   end
 
   private
