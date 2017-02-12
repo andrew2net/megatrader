@@ -16,7 +16,8 @@ class ApplicationController < ActionController::Base
       return
     elsif params[:locale]
       l=params[:locale]
-    elsif cookies[:locale] && I18n.available_locales.include?(cookies[:locale].to_sym)
+    elsif cookies[:locale] &&
+      I18n.available_locales.include?(cookies[:locale].to_sym)
       l = cookies[:locale].to_sym
     else
       l = http_accept_language.preferred_language_from I18n.available_locales

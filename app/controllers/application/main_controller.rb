@@ -77,6 +77,10 @@ class Application::MainController < ApplicationController
     @text.sub!(pair_rgxp, render_to_string(partial: 'pairs')
               ) if @text =~ pair_rgxp
 
+    download_rgxp = /\[download\]/
+    @text.sub!(download_rgxp, render_to_string(partial: 'download')
+              ) if @text =~ download_rgxp
+
     @locale_sw = locale_sw(
         {
             ru: {method: :page_path,
@@ -119,8 +123,12 @@ class Application::MainController < ApplicationController
     @news_html = render_to_string(partial: 'application/news/block')
 
     @locale_sw = locale_sw ({
-      ru: {method: :article_ru_path, params: {url: Globalize.with_locale(:ru) { @article.url }}},
-      en: {method: :article_en_path, params: {url: Globalize.with_locale(:en) { @article.url }}}
+      ru: {method: :article_ru_path, params: {
+        url: Globalize.with_locale(:ru) { @article.url }
+      }},
+      en: {method: :article_en_path, params: {
+        url: Globalize.with_locale(:en) { @article.url }
+      }}
     })
     respond_to do |format|
       format.html

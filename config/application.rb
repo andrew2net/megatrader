@@ -29,5 +29,6 @@ module Megatrader
 
     I18n.available_locales = [:en, :ru]
     config.active_job.queue_adapter = :sidekiq
+    config.action_mailer.default_url_options = { host: 'sitscan.com' }
   end
 end

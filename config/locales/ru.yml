@@ -18,6 +18,11 @@ ru:
   admin: Администратор
   editor: Редактор
   notify_email: Адрес email для получения заявок
+  download: Скачать
+  email_for_download_sent: "Инструкция для скачивания демонстрационных версий отправлена на адрес:"
+  agree_receive_news: Я согласен получать новости
+  cancel: Отмена
+  close: Закрыть
 #  products: Продукты
   title_suff: MegaTrader - торговля спредом, парный трейдинг, арбитраж
   buy: Купить

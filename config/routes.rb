@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # get 'static_pages/show'
   # end
 
-  filter :locale, exclude: /^(\/admin|\/tinymce_assets|\/admin_session|\/api\/)/
+  filter :locale, exclude: /^\/(admin|tinymce_assets|admin_session|api\/)/
 
   post 'admin_session/create', to: 'admin_session#create'
   delete 'admin_session/destroy'
@@ -38,6 +38,12 @@ Rails.application.routes.draw do
         post :license
       end
     end
+    scope :users do
+      controller :users do
+        post :email
+      end
+    end
+    # post '/users/email', to: 'users#email'
     # match '/:locale' => 'main#index', locale: /#{I18n.available_locales.join('|')}/, via: [:get, :post]
     post '/', to: 'main#index'
     # get 'news/index'
@@ -56,7 +62,12 @@ Rails.application.routes.draw do
     get 'poleznaja-informacija-en/:url', to: 'main#article',
       constraints: {locale: /en/}, as: :article_en
     get ':url' => 'main#index', as: :page
-    match '*path', to: 'main#not_found', via: :all
+    if Rails.env == 'development'
+      match '*path', to: 'main#not_found', via: :all,
+        constraints: {path: /(?!\/rails\/)/}
+    else
+      match '*path', to: 'main#not_found', via: :all
+    end
   end
 
 

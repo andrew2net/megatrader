@@ -37,6 +37,15 @@ $gray-superlight-color: #f6f6f5;
   -ms-transform: $transforms;
 }
 
+input{
+  &.ng-invalid.ng-dirty{
+    background-color: #f2dede;
+  }
+  &.ng-valid.ng-dirty{
+    background-color: #dff0d8;
+  }
+}
+
 .angle-btn {
   position: absolute;
   top: 30px;

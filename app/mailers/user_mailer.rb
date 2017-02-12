@@ -8,7 +8,11 @@ class UserMailer < ApplicationMailer
     email = %("#{@name}" <#{data[:email]}>) unless @name.blank?
     to = Setting.find_by(name: 'notify_email').value
 
-    mail(from: email, to: to, subject: 'Вопрос с сайта mgatrader.org',
-         delivery_method: :sendmail)
+    mail(from: email, to: to, subject: 'Вопрос с сайта mgatrader.org')
+  end
+
+  def download_email(user)
+    @user = user
+    mail(to: @user.email, subject: 'Download demo')
   end
 end

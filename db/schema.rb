@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170111001923) do
+ActiveRecord::Schema.define(version: 20170209110226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -191,6 +191,17 @@ ActiveRecord::Schema.define(version: 20170111001923) do
 
   add_index "tool_symbols", ["name"], name: "index_tool_symbols_on_name", unique: true, using: :btree
   add_index "tool_symbols", ["tool_group_id"], name: "index_tool_symbols_on_tool_group_id", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                     null: false
+    t.boolean  "send_news",  default: true, null: false
+    t.string   "locale",     default: "en", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
+  add_index "users", ["send_news"], name: "index_users_on_send_news", using: :btree
 
   add_foreign_key "correlations", "time_frames"
   add_foreign_key "license_logs", "licenses"

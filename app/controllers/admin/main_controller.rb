@@ -4,6 +4,5 @@ class Admin::MainController < ApplicationController
   add_breadcrumb '', '#', options: {class: 'glyphicon glyphicon-home'}
 
   def index
-
   end
 end

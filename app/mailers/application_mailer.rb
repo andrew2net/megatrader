@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  # default to: :get_notify_email
+  default from: proc { Setting.find_by(name: 'notify_email').value }
   layout 'mailer'
 
 end
