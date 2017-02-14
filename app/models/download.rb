@@ -7,7 +7,7 @@ class Download < ActiveRecord::Base
     # Sanitize filename.
     filename.gsub!(/[^0-9A-z\.], '_'/)
 
-    filename = "shared/Download/#{filename}"
+    filename = "Download/#{filename}"
 
     # Check if file exists and token valid. Return false if not.
     return false unless File.exists?(filename) and
