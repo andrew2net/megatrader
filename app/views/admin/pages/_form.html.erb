@@ -99,5 +99,5 @@
       </div>
       <div class="btn-group pull-right"><%= link_to I18n.t(:back), session[:return_to], class: 'btn btn-default', role: 'button' %><%= f.button :submit, I18n.t(:create) %></div>
   <% end %>
-  <%= tinymce height:300, uploadimage_hint: "pages/#{@page.new_record? ? "new_#{current_user.id}" : @page.id}" %>
+  <%= tinymce height:300, content_css: asset_path('application/application.css') %>
 </div>
