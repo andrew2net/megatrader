@@ -10,7 +10,6 @@ $(() ->
   return false
 )
 
-
 #$('#en-content a').click((e) ->
 #  e.preventDefault()
 #  $(this).tab('show')

@@ -1,9 +1,9 @@
 GIT
   remote: git://github.com/PerfectlyNormal/tinymce-rails-imageupload.git
-  revision: 5ce2f1fe5c2c8ee3be3b0baacc615e5d2202fab8
+  revision: 230416b793ad89df3618eee9c61770d652ff86d7
   specs:
-    tinymce-rails-imageupload (4.0.16.beta)
-      railties (>= 3.2, < 5)
+    tinymce-rails-imageupload (4.0.17.beta)
+      railties (>= 3.2, < 6)
       tinymce-rails (~> 4.0)
 
 GIT
@@ -291,8 +291,8 @@ GEM
     tilt (2.0.6)
     tinymce-rails (4.5.3)
       railties (>= 3.1.1)
-    tinymce-rails-langs (4.20140129)
-      tinymce-rails (~> 4.0)
+    tinymce-rails-langs (4.20160310)
+      tinymce-rails (~> 4.1, >= 4.1.10)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.1)
