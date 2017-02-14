@@ -17,7 +17,7 @@ angular.module 'app'
         document.body.appendChild(a)
         a.href = url
         a.download = decodeURI filename
-        a.target = '_blank'
+        a.target = '_self'
         a.click()
         document.body.removeChild(a)
         return

@@ -80,7 +80,7 @@
               <span style="font-weight: bold"><%= I18n.locale %></span>
             </div>
             <div class="locale-sw">
-              <%= link_to self.send(@locale_sw[:method], @locale_sw[:params]), data:{ no_turbolink:true } do %>
+              <%= link_to self.send(@locale_sw[:method], @locale_sw[:params]), data:{ no_turbolink:true }, target: '_self' do %>
                 <div><%= @locale_sw[:params][:locale] %></div>
               <% end %>
             </div>
@@ -127,21 +127,21 @@
     </div>
 
     <div class="row banners visible-xs visible-sm">
-      <%= link_to Rails.application.routes.url_helpers.send("page_path", 'live_video', locale: locale) do %>
+      <%= link_to Rails.application.routes.url_helpers.send("page_path", 'live_video', locale: locale), target: '_self' do %>
         <div class="col-xs-12 col-sm-12">
           <div class="center-block">
             <div><%= (t :b1, scope: :banners).html_safe %></div>
           </div>
         </div>
       <% end %>
-      <%= link_to Rails.application.routes.url_helpers.send("article_#{locale}_path", '23-hand-trade-imitation', locale: locale) do %>
+      <%= link_to Rails.application.routes.url_helpers.send("article_#{locale}_path", '23-hand-trade-imitation', locale: locale), target: '_self' do %>
         <div class="col-xs-12 col-sm-12">
           <div class="center-block">
             <div><%= (t :b2, scope: :banners).html_safe %></div>
           </div>
         </div>
       <% end %>
-      <%= link_to(locale==:ru ? page_path('webinar') : Rails.application.routes.url_helpers.send("article_#{locale}_path", '19-bitcoin-statistical-arbitrage', locale: locale)) do %>
+      <%= link_to(locale==:ru ? page_path('webinar') : Rails.application.routes.url_helpers.send("article_#{locale}_path", '19-bitcoin-statistical-arbitrage', locale: locale), target: '_self') do %>
         <div class="col-xs-12 col-sm-12">
           <div class="center-block">
             <div><%= (t :b3, scope: :banners).html_safe %></div>
@@ -153,21 +153,21 @@
     <div class="row banners hidden-xs hidden-sm center-block">
       <div class="col-md-10 col-md-offset-1 col-lg-10 col-ld-offset-1">
         <div class="row">
-          <%= link_to Rails.application.routes.url_helpers.send("page_path", 'live_video', locale: locale) do %>
+          <%= link_to Rails.application.routes.url_helpers.send("page_path", 'live_video', locale: locale), target: '_self' do %>
             <div class="col-md-4 col-lg-4">
               <div class="center-block">
                 <div><%= (t :b1, scope: :banners).html_safe %></div>
               </div>
             </div>
           <% end %>
-          <%= link_to Rails.application.routes.url_helpers.send("article_#{locale}_path", '23-hand-trade-imitation', locale: locale) do %>
+          <%= link_to Rails.application.routes.url_helpers.send("article_#{locale}_path", '23-hand-trade-imitation', locale: locale), target: '_self' do %>
             <div class="col-md-4 col-lg-4">
               <div class="center-block">
                 <div><%= (t :b2, scope: :banners).html_safe %></div>
               </div>
             </div>
           <% end %>
-          <%= link_to(locale==:ru ? page_path('webinar') : Rails.application.routes.url_helpers.send("article_#{locale}_path", '19-bitcoin-statistical-arbitrage', locale: locale)) do %>
+          <%= link_to(locale==:ru ? page_path('webinar') : Rails.application.routes.url_helpers.send("article_#{locale}_path", '19-bitcoin-statistical-arbitrage', locale: locale), target: '_self') do %>
             <div class="col-md-4 col-lg-4">
               <div class="center-block">
                 <div><%= (t :b3, scope: :banners).html_safe %></div>
