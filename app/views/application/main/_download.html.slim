@@ -20,6 +20,12 @@
       button.btn.btn-default ng-click='cancel()' ng-show='emailSent' = t :close
     .loading-stub ng-show='sendingEmail'
 
+  script type='text/ng-template' id='downloadError.html'
+    .modal-body
+      p = t :file_unavailable
+    .modal-footer
+      button.btn.btn-default ng-click='cancel()' = t :close
+
   .col-md-12
     button.btn.btn-default.center-block ng-click='openDialog()'
       = t :download

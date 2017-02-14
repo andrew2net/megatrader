@@ -81,4 +81,12 @@ class Application::ApiController < ApplicationController
       render json: {m: 'License not found'}, status: :not_found
     end
   end
+
+  def download
+    if (file_path = Download.file_path params[:token], params[:file])
+      send_file file_path, filename: params[:file]
+    else
+      head :not_found
+    end
+  end
 end

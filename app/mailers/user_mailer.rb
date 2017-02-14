@@ -13,6 +13,7 @@ class UserMailer < ApplicationMailer
 
   def download_email(user)
     @user = user
-    mail(to: @user.email, subject: 'Download demo')
+    I18n.locale = @user.locale
+    mail(to: @user.email, subject: t(:demoversions))
   end
 end

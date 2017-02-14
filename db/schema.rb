@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170209110226) do
+ActiveRecord::Schema.define(version: 20170212171456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,15 @@ ActiveRecord::Schema.define(version: 20170209110226) do
   add_index "correlations", ["row_tool_symbol_id"], name: "index_correlations_on_row_tool_symbol_id", using: :btree
   add_index "correlations", ["time_frame_id"], name: "correlation_pair_unique_idx", unique: true, using: :btree
   add_index "correlations", ["time_frame_id"], name: "index_correlations_on_time_frame_id", using: :btree
+
+  create_table "downloads", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.uuid     "token",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "downloads", ["token"], name: "index_downloads_on_token", using: :btree
 
   create_table "license_logs", force: :cascade do |t|
     t.inet     "ip",         null: false
@@ -204,6 +213,7 @@ ActiveRecord::Schema.define(version: 20170209110226) do
   add_index "users", ["send_news"], name: "index_users_on_send_news", using: :btree
 
   add_foreign_key "correlations", "time_frames"
+  add_foreign_key "downloads", "users", on_delete: :cascade
   add_foreign_key "license_logs", "licenses"
   add_foreign_key "pairs", "time_frames"
   add_foreign_key "pairs", "tool_symbols", column: "tool_symbol_1_id"

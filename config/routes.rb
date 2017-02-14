@@ -36,6 +36,7 @@ Rails.application.routes.draw do
         post :spread
         post :pairs
         post :license
+        get '/download/:token', action: :download
       end
     end
     scope :users do

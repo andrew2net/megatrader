@@ -3,18 +3,18 @@ html
   head
     meta content='text/html; charset=UTF-8' http-equiv='Content-type'
   body
-    h1 Hello dear friend!
+    h1  Здравствуй дорогой друг!
     p
-      |You can download Megatrader demo versions by link:&nbsp;
+      |Вы можете загрузить демонстрационные версии по адресу:&nbsp;
       - link = page_url(url: :download, locale: @user.locale,
         token: @user.download.token)
       = link_to link, link
       br
-      |The link will be valid for 24 hours.
+      |Ссылка будет доступна в течении 24 часов.
       br
-      |Thank you for visit our site.
+      |Спасибо что посетили наш сайт.
     p
-      |Megatrader team.
+      |Комаеда Megatrader.
       br
       |E-mail:&nbsp;
       = mail_to 'info@megatrader.org', nil, subject: 'Megatrader demoversoins'

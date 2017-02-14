@@ -1,4 +1,37 @@
 angular.module 'app'
+.controller 'DownloadWrapperCtrl', ['$scope', '$location', '$http', '$uibModal',
+($scope, $location, $http, $uibModal)->
+  params = $location.search()
+  $scope.token = params.token
+  $scope.download = (filename)->
+    $http.get "/api/download/#{$scope.token}", {
+      params: { file: filename }
+      responseType: 'arraybuffer'
+    }
+      .then (resp)->
+        headers = resp.headers()
+        blob = new Blob [resp.data], {type: headers['content-type']}
+        url = URL.createObjectURL blob
+        a = document.createElement 'a'
+        a.style = "display: none"
+        document.body.appendChild(a)
+        a.href = url
+        a.download = decodeURI filename
+        a.target = '_blank'
+        a.click()
+        document.body.removeChild(a)
+        return
+      , (resp)->
+        $uibModal.open {
+          templateUrl: 'downloadError.html'
+          size: 'sm'
+          controller: 'DownloadErrorDialog'
+        }
+]
+.controller 'DownloadErrorDialog', ['$scope', '$uibModalInstance',
+($scope, $uibModalInstance)->
+  $scope.cancel = -> $uibModalInstance.dismiss 'cancel'
+]
 .controller 'DownloadCtrl', ['$scope', '$uibModal',
 ($scope, $uibModal)->
   $scope.openDialog = ->

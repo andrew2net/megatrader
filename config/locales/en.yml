@@ -28,9 +28,11 @@ en:
   buy: Buy
   licenses: Licenses
   download: Download
-  agree_receive_news: I agree to receive newsletters
+  demoversions: Megdtrader demo versions.
+  agree_receive_news: I agree to receive newsletters about Megatrader products
   cancel: Cancel
   email_for_download_sent: "Instruction for downloading demo versions was sent to address:"
+  file_unavailable: Required file unavailable.
   not_found:
     title: Error 404. The requested page was not found.
     text: But do not despair! Check the address and try pereyte links on it again. Or read an interesting <a href="/en/poleznaja-informacija-en">article</a> on our website and learn more about the program <a href="/en/primery-i-obzor-programmy-en">MegaTrader</a>.
