@@ -1,6 +1,7 @@
 /.row ng-controller='DownloadCtrl'
 script type='text/ng-template' id='downloadDialog.html'
   .modal-body
+    = render partial: 'download_note'
     form name='downloadForm' ng-hide='emailSent'
       .form-group
         label for='user-email' E-mail

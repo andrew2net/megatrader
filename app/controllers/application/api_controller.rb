@@ -83,10 +83,20 @@ class Application::ApiController < ApplicationController
   end
 
   def download
-    if (file_path = Download.file_path params[:token], params[:file])
-      send_file file_path, filename: params[:file]
-    else
-      head :not_found
+    respond_to do |format|
+      format.html do
+        if (file_path = Download.file_path download_params)
+          send_file file_path, filename: params[:file]
+        else
+          head :not_found
+        end
+      end
+      format.json { render json: !Download.file_path(download_params).blank? }
     end
+  end
+
+  private
+  def download_params
+    params.permit(:token, :file).symbolize_keys
   end
 end

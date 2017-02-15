@@ -18,10 +18,6 @@ angular.module 'app'
     document.body.removeChild(a)
 
   $scope.load = (filename)->
-    unless $scope.token
-      openDialog()
-      return
-
     a = document.createElement 'a'
     a.style = "display: none"
     document.body.appendChild(a)
@@ -34,7 +30,7 @@ angular.module 'app'
       window.yaCounter15483610.reachGoal 'DWNL', file: a.download,
         -> console.log 'Download event sent to metrika'
 
-  openDialog = ->
+  $scope.openDialog = ->
     dialog = $uibModal.open {
       templateUrl: 'downloadDialog.html'
       controller: 'DownloadDialogCtrl'
@@ -42,11 +38,16 @@ angular.module 'app'
     dialog.result.then (email)->
 
   $scope.error = (resp)->
-    $uibModal.open {
+    errModalInst = $uibModal.open {
       templateUrl: 'downloadError.html'
       size: 'sm'
       controller: 'DownloadErrorDialog'
     }
+    errModalInst.result.then ->
+      return
+    , ->
+      $scope.token = null
+      $scope.openDialog()
 
   # $scope.download = (filename)->
   #   $http.get "/api/download/#{$scope.token}", {
@@ -55,9 +56,11 @@ angular.module 'app'
   #   }
   #   .then $scope.success, $scope.error
 ]
-.controller 'DownloadErrorDialog', ['$scope', '$uibModalInstance',
-($scope, $uibModalInstance)->
-  $scope.cancel = -> $uibModalInstance.dismiss 'cancel'
+.controller 'DownloadErrorDialog', ['$scope', '$uibModalInstance', '$location',
+($scope, $uibModalInstance, $location)->
+  $scope.cancel = ->
+    $uibModalInstance.dismiss 'cancel'
+    $location.search {}
 ]
 # .controller 'DownloadCtrl', ['$scope', '$uibModal',
 # ($scope, $uibModal)->
@@ -84,7 +87,21 @@ angular.module 'app'
     templateUrl: 'downloadButton.html'
     scope: true
     controller: ['$scope', '$attrs', ($scope, $attrs)->
-      $scope.dwnl = -> $scope.load $attrs.download
+      $scope.dwnl = ->
+        unless $scope.token
+          $scope.openDialog()
+          return
+
+        $scope.loading = true
+
+        $http.get "/api/download/#{$scope.token}.json?file=#{$attrs.download}"
+        .then (resp)->
+          if resp.data
+            $scope.load $attrs.download
+          else
+            $scope.error()
+          $scope.loading = false
+
         # $scope.loading = true
         # $http.get "/api/download/#{$scope.token}", {
         #   params: { file: $attrs.download }

@@ -1,8 +1,8 @@
 class Download < ActiveRecord::Base
   belongs_to :user
 
-  def self.file_path(token, filename)
-    filename = URI.decode filename
+  def self.file_path(token:, file:)
+    filename = URI.decode file
 
     # Sanitize filename.
     filename.gsub!(/[^0-9A-z\.], '_'/)

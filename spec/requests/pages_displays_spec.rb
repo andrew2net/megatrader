@@ -73,7 +73,7 @@ RSpec.describe "PagesDisplays", type: :request do
   describe 'GET /qwer/asdf/zxcv' do
     it "should display not found page" do
       get '/qwer/asdf/zxcv'
-      expect(response).to redirect_to('//qwer/asdf/zxcv')
+      expect(response).to redirect_to('/en/qwer/asdf/zxcv')
       get '/ru/qwer/asdf/zxcv'
       expect(response).to render_template :not_found
       expect(response.body).to include I18n.t :title, scope: :not_found
