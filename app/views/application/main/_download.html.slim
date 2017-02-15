@@ -1,40 +1,39 @@
-.row ng-controller='DownloadCtrl'
-  script type='text/ng-template' id='downloadDialog.html'
-    .modal-body
-      form name='downloadForm' ng-hide='emailSent'
-        .form-group
-          label for='user-email' E-mail
-          input#user-email.form-control [placeholder='E-mail' type='email'
-          ng-model='email' required]
-        .checkbox
-          label
-            input type='checkbox' ng-model='agree'
-            = t :agree_receive_news
-      p ng-show='emailSent'
-        = t :email_for_download_sent
-        |&nbsp;{{email}}
-    .modal-footer
-      button.btn.btn-default [ng-disabled='downloadForm.$invalid || !agree'
-      ng-click='ok()' ng-hide='emailSent'] Ok
-      button.btn.btn-default ng-click='cancel()' ng-hide='emailSent' = t :cancel
-      button.btn.btn-default ng-click='cancel()' ng-show='emailSent' = t :close
-    .loading-stub ng-show='sendingEmail'
+/.row ng-controller='DownloadCtrl'
+script type='text/ng-template' id='downloadDialog.html'
+  .modal-body
+    form name='downloadForm' ng-hide='emailSent'
+      .form-group
+        label for='user-email' E-mail
+        input#user-email.form-control [placeholder='E-mail' type='email'
+        ng-model='email' required]
+      .checkbox
+        label
+          input type='checkbox' ng-model='agree'
+          = t :agree_receive_news
+    p ng-show='emailSent'
+      = t :email_for_download_sent
+      |&nbsp;{{email}}
+  .modal-footer
+    button.btn.btn-default [ng-disabled='downloadForm.$invalid || !agree'
+    ng-click='ok()' ng-hide='emailSent'] Ok
+    button.btn.btn-default ng-click='cancel()' ng-hide='emailSent' = t :cancel
+    button.btn.btn-default ng-click='cancel()' ng-show='emailSent' = t :close
+  .loading-stub ng-show='sendingEmail'
 
-  script type='text/ng-template' id='downloadError.html'
-    .modal-body
-      p = t :file_unavailable
-    .modal-footer
-      button.btn.btn-default ng-click='cancel()' = t :close
+script type='text/ng-template' id='downloadError.html'
+  .modal-body
+    p = t :file_unavailable
+  .modal-footer
+    button.btn.btn-default ng-click='cancel()' = t :close
 
-  script type='text/ng-template' id='downloadButton.html'
-    .btn-download
-      button.btn.btn-default [ ng-click='dwnl()' ng-hide='loading' ]
-        = t :download
-        span.arrow-dl
-      .loading-stub ng-show='loading'
-
-  .col-md-12
-    button.btn.btn-default.center-block ng-click='openDialog()'
+script type='text/ng-template' id='downloadButton.html'
+  .btn-download
+    button.btn.btn-default [ ng-click='dwnl()' ng-hide='loading' ]
       = t :download
-      span.arrow-dl style='margin-bottom:-5px'
+      span.arrow-dl
+    .loading-stub ng-show='loading'
 
+/.col-md-12
+  button.btn.btn-default.center-block ng-click='openDialog()'
+    = t :download
+    span.arrow-dl style='margin-bottom:-5px'

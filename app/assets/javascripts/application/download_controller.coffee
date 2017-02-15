@@ -18,6 +18,10 @@ angular.module 'app'
     document.body.removeChild(a)
 
   $scope.load = (filename)->
+    unless $scope.token
+      openDialog()
+      return
+
     a = document.createElement 'a'
     a.style = "display: none"
     document.body.appendChild(a)
@@ -29,6 +33,13 @@ angular.module 'app'
     if window.yaCounter15483610
       window.yaCounter15483610.reachGoal 'DWNL', file: a.download,
         -> console.log 'Download event sent to metrika'
+
+  openDialog = ->
+    dialog = $uibModal.open {
+      templateUrl: 'downloadDialog.html'
+      controller: 'DownloadDialogCtrl'
+    }
+    dialog.result.then (email)->
 
   $scope.error = (resp)->
     $uibModal.open {
@@ -48,15 +59,9 @@ angular.module 'app'
 ($scope, $uibModalInstance)->
   $scope.cancel = -> $uibModalInstance.dismiss 'cancel'
 ]
-.controller 'DownloadCtrl', ['$scope', '$uibModal',
-($scope, $uibModal)->
-  $scope.openDialog = ->
-    dialog = $uibModal.open {
-      templateUrl: 'downloadDialog.html'
-      controller: 'DownloadDialogCtrl'
-    }
-    dialog.result.then (email)->
-]
+# .controller 'DownloadCtrl', ['$scope', '$uibModal',
+# ($scope, $uibModal)->
+# ]
 .controller 'DownloadDialogCtrl', ['$scope', '$http', '$uibModalInstance',
 '$timeout',
 ($scope, $http, $uibModalInstance, $timeout)->
