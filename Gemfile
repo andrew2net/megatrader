@@ -43,7 +43,7 @@ end
 # gem 'sprockets', '~> 2'
 gem 'sprockets-rails'
 
-gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'master'
+# gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'master'
 gem 'routing-filter'
 gem 'http_accept_language'
 gem 'authlogic'
