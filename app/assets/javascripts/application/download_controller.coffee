@@ -78,7 +78,8 @@ angular.module 'app'
     controller: ['$scope', '$attrs', ($scope, $attrs)->
       $scope.dwnl = -> $scope.load $attrs.download
         if window.yaCounter15483610
-          window.yaCounter15483610.reachGoal 'DWNL', file: $attrs.downloadButton
+          window.yaCounter15483610.reachGoal 'DWNL', file: $attrs.downloadButton,
+            -> console.log 'Download event sent to metrika'
         # $scope.loading = true
         # $http.get "/api/download/#{$scope.token}", {
         #   params: { file: $attrs.download }
