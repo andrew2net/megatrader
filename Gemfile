@@ -10,7 +10,7 @@ gem 'sass-rails', '>= 3.2'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 
@@ -43,7 +43,7 @@ end
 # gem 'sprockets', '~> 2'
 gem 'sprockets-rails'
 
-# gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'master'
+gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'rails-4-x'
 gem 'routing-filter'
 gem 'http_accept_language'
 gem 'authlogic'
@@ -57,7 +57,7 @@ gem 'breadcrumbs_on_rails', git: 'https://github.com/weppos/breadcrumbs_on_rails
 gem 'gritter'
 gem 'tinymce-rails'
 # gem 'tinymce-rails-langs'
-# gem 'tinymce-rails-imageupload', github: 'PerfectlyNormal/tinymce-rails-imageupload'
+gem 'tinymce-rails-imageupload', github: 'PerfectlyNormal/tinymce-rails-imageupload'
 gem 'globalize', '~> 5.0.0'
 gem 'jquery-ui-rails'
 gem 'email_validator'
