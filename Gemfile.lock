@@ -325,7 +325,7 @@ DEPENDENCIES
   cancancan
   capybara
   capybara-webkit
-  coffee-rails
+  coffee-rails (~> 4.1.0)
   database_cleaner
   email_validator
   factory_girl_rails
