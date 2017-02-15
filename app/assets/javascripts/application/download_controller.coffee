@@ -76,6 +76,7 @@ angular.module 'app'
     templateUrl: 'downloadButton.html'
     scope: true
     controller: ['$scope', '$attrs', ($scope, $attrs)->
+      window.yaCounter15483610.reachGoal 'dwnl' if window.yaCounter15483610
       $scope.dwnl = -> $scope.load $attrs.download
         # $scope.loading = true
         # $http.get "/api/download/#{$scope.token}", {
