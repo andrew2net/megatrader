@@ -43,7 +43,7 @@ end
 # gem 'sprockets', '~> 2'
 gem 'sprockets-rails'
 
-gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'rails-4-x'
+gem 'rails-i18n', '~> 4.0.0'
 gem 'routing-filter'
 gem 'http_accept_language'
 gem 'authlogic'
@@ -57,7 +57,7 @@ gem 'breadcrumbs_on_rails', git: 'https://github.com/weppos/breadcrumbs_on_rails
 gem 'gritter'
 gem 'tinymce-rails'
 # gem 'tinymce-rails-langs'
-gem 'tinymce-rails-imageupload', github: 'PerfectlyNormal/tinymce-rails-imageupload'
+gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
 gem 'globalize', '~> 5.0.0'
 gem 'jquery-ui-rails'
 gem 'email_validator'
