@@ -3,30 +3,33 @@ angular.module 'app'
 ($scope, $location, $http, $uibModal)->
   params = $location.search()
   $scope.token = params.token
+
+  $scope.success = (resp, filename)->
+    headers = resp.headers()
+    blob = new Blob [resp.data], {type: headers['content-type']}
+    url = URL.createObjectURL blob
+    a = document.createElement 'a'
+    a.style = "display: none"
+    document.body.appendChild(a)
+    a.href = url
+    a.download = decodeURI filename
+    a.target = '_self'
+    a.click()
+    document.body.removeChild(a)
+
+  $scope.error = (resp)->
+    $uibModal.open {
+      templateUrl: 'downloadError.html'
+      size: 'sm'
+      controller: 'DownloadErrorDialog'
+    }
+
   $scope.download = (filename)->
     $http.get "/api/download/#{$scope.token}", {
       params: { file: filename }
       responseType: 'arraybuffer'
     }
-      .then (resp)->
-        headers = resp.headers()
-        blob = new Blob [resp.data], {type: headers['content-type']}
-        url = URL.createObjectURL blob
-        a = document.createElement 'a'
-        a.style = "display: none"
-        document.body.appendChild(a)
-        a.href = url
-        a.download = decodeURI filename
-        a.target = '_self'
-        a.click()
-        document.body.removeChild(a)
-        return
-      , (resp)->
-        $uibModal.open {
-          templateUrl: 'downloadError.html'
-          size: 'sm'
-          controller: 'DownloadErrorDialog'
-        }
+    .then $scope.success, $scope.error
 ]
 .controller 'DownloadErrorDialog', ['$scope', '$uibModalInstance',
 ($scope, $uibModalInstance)->
@@ -57,4 +60,24 @@ angular.module 'app'
       $scope.emailSent = true
 
   $scope.cancel = -> $uibModalInstance.dismiss 'cancel'
+]
+.directive 'download', ['$http', ($http)->
+  {
+    templateUrl: 'downloadButton.html'
+    scope: true
+    controller: ['$scope', '$attrs', ($scope, $attrs)->
+      $scope.dwnl = ->
+        $scope.loading = true
+        $http.get "/api/download/#{$scope.token}", {
+          params: { file: $attrs.download }
+          responseType: 'arraybuffer'
+        }
+        .then (resp)->
+          $scope.success(resp, $attrs.download)
+          $scope.loading = false
+        , (resp)->
+          $scope.error(resp)
+          $scope.loading = false
+    ]
+  }
 ]

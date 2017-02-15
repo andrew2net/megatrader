@@ -26,6 +26,13 @@
     .modal-footer
       button.btn.btn-default ng-click='cancel()' = t :close
 
+  script type='text/ng-template' id='downloadButton.html'
+    .btn-download
+      button.btn.btn-default [ ng-click='dwnl()' ng-hide='loading' ]
+        = t :download
+        span.arrow-dl
+      .loading-stub ng-show='loading'
+
   .col-md-12
     button.btn.btn-default.center-block ng-click='openDialog()'
       = t :download
