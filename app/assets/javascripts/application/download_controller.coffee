@@ -26,6 +26,9 @@ angular.module 'app'
     a.target = '_self'
     a.click()
     document.body.removeChild(a)
+    if window.yaCounter15483610
+      window.yaCounter15483610.reachGoal 'DWNL', file: a.download,
+        -> console.log 'Download event sent to metrika'
 
   $scope.error = (resp)->
     $uibModal.open {
@@ -77,9 +80,6 @@ angular.module 'app'
     scope: true
     controller: ['$scope', '$attrs', ($scope, $attrs)->
       $scope.dwnl = -> $scope.load $attrs.download
-        if window.yaCounter15483610
-          window.yaCounter15483610.reachGoal 'DWNL', file: $attrs.downloadButton,
-            -> console.log 'Download event sent to metrika'
         # $scope.loading = true
         # $http.get "/api/download/#{$scope.token}", {
         #   params: { file: $attrs.download }
