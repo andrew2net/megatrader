@@ -17,6 +17,16 @@ angular.module 'app'
     a.click()
     document.body.removeChild(a)
 
+  $scope.load = (filename)->
+    a = document.createElement 'a'
+    a.style = "display: none"
+    document.body.appendChild(a)
+    a.href = "/api/download/#{$scope.token}?file=#{filename}"
+    a.download = decodeURI filename
+    a.target = '_self'
+    a.click()
+    document.body.removeChild(a)
+
   $scope.error = (resp)->
     $uibModal.open {
       templateUrl: 'downloadError.html'
@@ -24,12 +34,12 @@ angular.module 'app'
       controller: 'DownloadErrorDialog'
     }
 
-  $scope.download = (filename)->
-    $http.get "/api/download/#{$scope.token}", {
-      params: { file: filename }
-      responseType: 'arraybuffer'
-    }
-    .then $scope.success, $scope.error
+  # $scope.download = (filename)->
+  #   $http.get "/api/download/#{$scope.token}", {
+  #     params: { file: filename }
+  #     responseType: 'arraybuffer'
+  #   }
+  #   .then $scope.success, $scope.error
 ]
 .controller 'DownloadErrorDialog', ['$scope', '$uibModalInstance',
 ($scope, $uibModalInstance)->
@@ -66,18 +76,18 @@ angular.module 'app'
     templateUrl: 'downloadButton.html'
     scope: true
     controller: ['$scope', '$attrs', ($scope, $attrs)->
-      $scope.dwnl = ->
-        $scope.loading = true
-        $http.get "/api/download/#{$scope.token}", {
-          params: { file: $attrs.download }
-          responseType: 'arraybuffer'
-        }
-        .then (resp)->
-          $scope.success(resp, $attrs.download)
-          $scope.loading = false
-        , (resp)->
-          $scope.error(resp)
-          $scope.loading = false
+      $scope.dwnl = -> $scope.load $attrs.download
+        # $scope.loading = true
+        # $http.get "/api/download/#{$scope.token}", {
+        #   params: { file: $attrs.download }
+        #   responseType: 'arraybuffer'
+        # }
+        # .then (resp)->
+        #   $scope.success(resp, $attrs.download)
+        #   $scope.loading = false
+        # , (resp)->
+        #   $scope.error(resp)
+        #   $scope.loading = false
     ]
   }
 ]
