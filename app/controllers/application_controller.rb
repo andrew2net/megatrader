@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
       l = cookies[:locale].to_sym
     else
       l = http_accept_language.preferred_language_from I18n.available_locales
+      l = :en if l.blank?
     end
     cookies.permanent[:locale] = l
     redirect_to "/#{l}#{request.fullpath}",
