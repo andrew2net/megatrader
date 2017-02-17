@@ -4,25 +4,25 @@ class Application::MainController < ApplicationController
 
   def not_found
     request.format = :html unless [Mime::HTML, Mime::JS].include? request.format
+    case params[:action]
+    when 'index'
+      method_ru = method_en = :page_path
+    when 'article'
+      method_ru = :article_ru_path
+      method_en = :article_en_path
+    when 'news'
+      method_en = :news_en_path
+      method_ru = :news_ru_path
+    else
+      method_en = method_ru = :root_path
+    end
+    @locale_sw = locale_sw(
+      {ru: {method: method_ru, params: {url: params[:url] || ''}},
+       en: {method: method_en, params: {url: params[:url] || ''}}})
+    @news = Page.news.page(params[:page]).per(5)
+    @news_html = render_to_string(partial: 'application/news/block', formats: :html)
     respond_to do |format|
       format.html do
-        case params[:action]
-        when 'index'
-          method_ru = method_en = :page_path
-        when 'article'
-          method_ru = :article_ru_path
-          method_en = :article_en_path
-        when 'news'
-          method_en = :news_en_path
-          method_ru = :news_ru_path
-        else
-          method_en = method_ru = :root_path
-        end
-        @locale_sw = locale_sw(
-          {ru: {method: method_ru, params: {url: params[:url] || ''}},
-           en: {method: method_en, params: {url: params[:url] || ''}}})
-        @news = Page.news.page(params[:page]).per(5)
-        @news_html = render_to_string(partial: 'application/news/block', formats: :html)
         render 'not_found', status: :not_found
       end
 
