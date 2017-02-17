@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # get 'static_pages/show'
   # end
 
-  filter :locale, exclude: /^\/(admin|tinymce_assets|admin_session|api\/)/
+  filter :locale, exclude: /^\/(admin|tinymce_assets|admin_session|api\/|.*?\.(?!(json|js)).*$)/
 
   post 'admin_session/create', to: 'admin_session#create'
   delete 'admin_session/destroy'
@@ -65,9 +65,9 @@ Rails.application.routes.draw do
     get ':url' => 'main#index', as: :page
     if Rails.env == 'development'
       match '*path', to: 'main#not_found', via: :all,
-        constraints: {path: /(?!\/rails\/).*/}
+        constraints: {path: /(?!\/rails\/).*/}, as: :not_found
     else
-      match '*path', to: 'main#not_found', via: :all
+      match '*path', to: 'main#not_found', via: :all, as: :not_found
     end
   end
 

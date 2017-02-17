@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    if /^\/(?:admin|tinymce_assets|api\/)/.match(request.fullpath)
+    if /^\/(?:admin|tinymce_assets|api\/|.*?\.(?!(json|js)).*$)/.match(request.fullpath)
       I18n.locale = :ru
       return
     elsif params[:locale]
