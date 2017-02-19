@@ -29,6 +29,7 @@ ru:
   title_suff: MegaTrader - торговля спредом, парный трейдинг, арбитраж
   buy: Купить
   licenses: Лицензии
+  users: Пользователи
   not_found:
     title: Ошибка 404. Запрашиваемая страница не найдена.
     text: Но не отчаивайтесь! Уточните адрес ссылки и попробуйте перейте по ней снова. Или почитайте интересные <a href="/ru/poleznaja-informacija">статьи</a> на нашем сайте, и узнайте подробности о программе <a href="/ru/primery-i-obzor-programmy">MegaTrader</a>.
@@ -94,6 +95,7 @@ ru:
       setting: Настройки
       page: Содержимое
       menu_item: Меню
+      user: Пользователи
     attributes:
       admin:
         first_name: Имя

@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :licenses, defaults: { action: :licenses } do
       get :logs
     end
+    get 'users/index'
   end
 
   scope module: :application do
