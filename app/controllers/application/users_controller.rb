@@ -1,4 +1,6 @@
 class Application::UsersController < ApplicationController
+  skip_before_action :authenticate
+
   def email
     user = User.find_or_initialize_by email: params[:email]
     user.locale = params[:locale]
