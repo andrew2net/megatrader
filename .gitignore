@@ -5,15 +5,24 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 # Ignore bundler config.
-/.bundle
+.bundle
 
 # Ignore all logfiles and tempfiles.
-/log/*
-!/log/.keep
-/tmp
+log/*
+!log/.keep
+tmp
 tags
-/Procfile
-/config/deploy/
-/config/database.yml
-/config/secret.yml
-/shared/
+Procfile
+config/deploy/
+config/database.yml
+config/secret.yml
+shared/
+.erdconfig
+Download/
+config/deploy.rb
+config/secrets.yml
+erd.pdf
+megatrader.csr
+megatrader.key
+public/
+www_megatrader_org.zip
