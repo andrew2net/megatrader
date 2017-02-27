@@ -1,0 +1,21 @@
+- content_for(:title, @page.title)
+- content_for :meta_tags do
+    meta name="keywords" content=@page.keywords
+    meta name="description" content=@page.description
+/<% end %>
+div ng-controller="PageCtrl"
+  =render html: @text.html_safe
+
+script type='text/ng-template' id='buyBlock.html'
+  .row
+    .col-md-12.buy-block-header
+      |{{licenseName}}
+  .row
+    .col-md-12.buy-block-price
+      |{{price}}
+  .row ng-repeat='info in infos'
+    .col-md-12.buy-block-info
+      |{{info}}
+  .row
+    .col-md-12.buy-block-footer
+      a.btn.btn-default [ng-href='{{href}}'] =t(:buy_now)

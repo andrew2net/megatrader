@@ -1,8 +1,0 @@
-<% content_for(:title, @page.title) %>
-<% content_for :meta_tags do %>
-    <meta name="keywords" content="<%= @page.keywords %>">
-    <meta name="description" content="<%= @page.description %>">
-<% end %>
-<div ng-controller="PageCtrl">
-<%= render html: @text.html_safe %>
-</div>

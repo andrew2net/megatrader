@@ -1,0 +1,26 @@
+.buy-block{
+  border: 1px solid #ddd;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.buy-block-header{
+  background-color: #fb9351;
+  line-height: 50px;
+  color: #fff;
+  font-size: 12pt;
+}
+.buy-block-price{
+  background-color: #e28449;
+  line-height: 55px;
+  color: #fff;
+  font-size: 16pt;
+}
+.buy-block-info{
+  line-height: 40px;
+}
+.buy-block-footer{
+  line-height: 65px;
+  border-top: 1px solid #ddd;
+  background-color: #f9f9f9;
+  text-transform: uppercase;
+}
