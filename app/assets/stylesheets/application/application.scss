@@ -490,7 +490,6 @@ ul.about {
     right: 0;
     margin: auto;
     padding-bottom: 56.25%;
-    padding-top: 60px;
     overflow: hidden;
     iframe {
       position: absolute;
@@ -499,6 +498,16 @@ ul.about {
       width: 100%;
       height: 100%;
     }
+  }
+}
+@media screen and (min-height: 361px) and (orientation: landscape){
+  .video-popup > div{
+    padding-top: 90px;
+  }
+}
+@media screen and (min-height: 801px) and (min-width: 901px){
+  .video-popup > div{
+    padding-top: 160px;
   }
 }
 
