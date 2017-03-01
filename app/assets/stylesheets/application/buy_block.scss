@@ -16,7 +16,8 @@
   font-size: 16pt;
 }
 .buy-block-info{
-  line-height: 40px;
+  height: 290px;
+  > div { margin-top: 15px; }
 }
 .buy-block-footer{
   line-height: 65px;

@@ -13,8 +13,8 @@ script type='text/ng-template' id='buyBlock.html'
   .row
     .col-md-12.buy-block-price
       |{{price}}
-  .row ng-repeat='info in infos'
-    .col-md-12.buy-block-info
+  .row.buy-block-info
+    .col-md-12 ng-repeat='info in infos'
       |{{info}}
   .row
     .col-md-12.buy-block-footer
