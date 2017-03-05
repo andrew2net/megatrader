@@ -23,6 +23,7 @@ en:
   new: New
   edit: Edit
   open: Open
+  sign_up: Sign up
   users: Users
   title_suff: MegaTrader - spread trading, pair trading, arbitrage
   buy: Buy
@@ -32,7 +33,9 @@ en:
   demoversions: Megatrader demo versions.
   agree_receive_news: I agree to receive newsletters about Megatrader products
   cancel: Cancel
-  email_for_download_sent: "Instruction for downloading demo versions was sent to address:"
+  email_for_download_sent: "Instruction for downloading demo versions was sent to the address:"
+  email_for_webinar_reg_sent: "Information about the webinar was sent to the address:"
+  webinar_registration: Registration for a webinar
   file_unavailable: Required file unavailable.
   not_found:
     title: Error 404. The requested page was not found.

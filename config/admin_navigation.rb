@@ -75,6 +75,7 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :pages, Page.model_name.human, admin_pages_path, highlights_on: %r(^/admin/pages)
     primary.item :menu_items, MenuItem.model_name.human, admin_menu_items_path, highlights_on: %r(^/admin/menu_items)
     primary.item :users, User.model_name.human, admin_users_index_path, highlights_on: %r(^/admin/users/index)
+    primary.item :webinars, Webinar.model_name.human, admin_webinars_index_path
     primary.item :licenses, {icon: '', text: I18n.t(:licenses)}, admin_licenses_view_path
     primary.item :admins,{icon: '', text: I18n.t(:administartion)}, split: false, if: lambda{can? :read, @admin} do |admin|
       admin.item :admins, {icon: 'glyphicon glyphicon-user',

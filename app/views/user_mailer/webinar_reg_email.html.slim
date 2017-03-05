@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    meta content='text/html; charset=UTF-8' http-equiv='Content-type'
+  body
+    h1 Hello dear friend!
+    p
+      |Thank you for registration for the webinar "
+      = @user_webinar.webinar.name
+      |".
+    p We will inform you about the date and time of performing the webinar as soon as possible.
+    p
+      |Megatrader team.
+      br
+      |E-mail:&nbsp;
+      = mail_to 'info@megatrader.org', nil,
+        subject: "Webinar #{@user_webinar.webinar.name}"
+      br
+      = link_to root_url, root_url

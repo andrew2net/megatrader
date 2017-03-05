@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    meta content='text/html; charset=UTF-8' http-equiv='Content-type'
+  body
+    h1 Здравствуй дорогой друг!
+    p
+      |Спасибо за регистрацию на вебинар "
+      = @user_webinar.webinar.name
+      |".
+    p О дате и времени проведения вебинара мы сообщим в ближайшее время.
+    p
+      |Команда Megatrader.
+      br
+      |E-mail:&nbsp;
+      = mail_to 'info@megatrader.org', nil,
+        subject: "Вебинар #{@user_webinar.webinar.name}"
+      br
+      = link_to root_url, root_url
+

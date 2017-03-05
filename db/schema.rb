@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170212171456) do
+ActiveRecord::Schema.define(version: 20170303172932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -201,6 +201,13 @@ ActiveRecord::Schema.define(version: 20170212171456) do
   add_index "tool_symbols", ["name"], name: "index_tool_symbols_on_name", unique: true, using: :btree
   add_index "tool_symbols", ["tool_group_id"], name: "index_tool_symbols_on_tool_group_id", using: :btree
 
+  create_table "user_webinars", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "webinar_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                     null: false
     t.boolean  "send_news",  default: true, null: false
@@ -212,6 +219,22 @@ ActiveRecord::Schema.define(version: 20170212171456) do
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["send_news"], name: "index_users_on_send_news", using: :btree
 
+  create_table "webinar_translations", force: :cascade do |t|
+    t.integer  "webinar_id", null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
+  end
+
+  add_index "webinar_translations", ["locale"], name: "index_webinar_translations_on_locale", using: :btree
+  add_index "webinar_translations", ["webinar_id"], name: "index_webinar_translations_on_webinar_id", using: :btree
+
+  create_table "webinars", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "correlations", "time_frames"
   add_foreign_key "downloads", "users", on_delete: :cascade
   add_foreign_key "license_logs", "licenses"
@@ -220,4 +243,6 @@ ActiveRecord::Schema.define(version: 20170212171456) do
   add_foreign_key "pairs", "tool_symbols", column: "tool_symbol_2_id"
   add_foreign_key "spreads", "time_frames"
   add_foreign_key "spreads", "tool_symbols"
+  add_foreign_key "user_webinars", "users"
+  add_foreign_key "user_webinars", "webinars"
 end

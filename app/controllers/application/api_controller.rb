@@ -95,6 +95,22 @@ class Application::ApiController < ApplicationController
     end
   end
 
+  def webinars
+    I18n.locale = params[:locale]
+    render json: Webinar.with_translations(params[:locale]).select(:id, :name)
+  end
+
+  def webinar_reg
+    user = User.find_or_initialize_by email: params[:email]
+    user.locale = params[:locale]
+    user.send_news = params[:send_news]
+    user.save
+    user_webinar = UserWebinar.create user_id: user.id,
+      webinar_id: params[:webinar_id]
+    UserMailer.webinar_reg_email(user_webinar).deliver_later
+    head :ok
+  end
+
   private
   def download_params
     params.permit(:token, :file).symbolize_keys

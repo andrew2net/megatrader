@@ -16,4 +16,10 @@ class UserMailer < ApplicationMailer
     I18n.locale = @user.locale
     mail(to: @user.email, subject: t(:demoversions))
   end
+
+  def webinar_reg_email(user_webinar)
+    @user_webinar = user_webinar
+    I18n.locale = @user_webinar.user.locale
+    mail to: @user_webinar.user.email, subject: t(:webinar_registration)
+  end
 end

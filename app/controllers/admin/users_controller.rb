@@ -10,7 +10,7 @@ class Admin::UsersController < ApplicationController
       format.html
       format.json do
         render json: User.all,
-        only: [:id, :email, :locale, :send_news]
+          only: [:id, :email, :locale, :send_news]
       end
     end
   end

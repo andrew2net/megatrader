@@ -7,6 +7,7 @@ ru:
   are_you_sure: Вы уверенны?
   back: Назад
   open: Открыть
+  sign_up: Регистрация
   sign_in: Вход
   sign_in_button: Войти
   sign_in_false: Неверный емейл или пароль
@@ -21,8 +22,11 @@ ru:
   download: Скачать
   demoversions: Megatrader демонстрационные версии.
   email_for_download_sent: "Инструкция для скачивания демонстрационных версий отправлена на адрес:"
+  email_for_webinar_reg_sent: "Информация о вебинаре была отправлена на адрес:"
   file_unavailable: Запрашиваемый файл недоступен.
   agree_receive_news: Я согласен получать новости о программных продуктах Megatrader
+  webinar_registration: Регистрация на вебинар
+  topic: Тема
   cancel: Отмена
   close: Закрыть
 #  products: Продукты
@@ -97,6 +101,7 @@ ru:
       page: Содержимое
       menu_item: Меню
       user: Пользователи
+      webinar: Вебинары
     attributes:
       admin:
         first_name: Имя

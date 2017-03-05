@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       get :logs
     end
     get 'users/index'
+    get 'webinars/index'
   end
 
   scope module: :application do
@@ -38,6 +39,8 @@ Rails.application.routes.draw do
         post :pairs
         post :license
         get '/download/:token', action: :download
+        get :webinars
+        post :webinar_reg
       end
     end
     scope :users do
@@ -64,7 +67,7 @@ Rails.application.routes.draw do
     get 'poleznaja-informacija-en/:url', to: 'main#article',
       constraints: {locale: /en/}, as: :article_en
     get ':url' => 'main#index', as: :page
-    if Rails.env == 'development'
+    if Rails.env.development?
       match '*path', to: 'main#not_found', via: :all,
         constraints: {path: /(?!\/rails\/).*/}, as: :not_found
     else

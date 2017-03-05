@@ -19,3 +19,34 @@ script type='text/ng-template' id='buyBlock.html'
   .row
     .col-md-12.buy-block-footer
       a.btn.btn-default [ng-href='{{href}}'] =t(:buy_now)
+
+script type='text/ng-template' id='webinar.html'
+  .col-md-12.text-center
+    button.btn.btn-default [ng-click='signUp()'] = t(:sign_up)
+
+script type='text/ng-template' id='webinarModal.html'
+  .modal-header
+    strong style='font-size:14pt' = t(:webinar_registration)
+  .modal-body
+    form name='webinarForm' ng-hide='emailSent'
+      .form-group
+        label = t(:email)
+        input.form-control ng-model='email' required=true type='email'
+      .form-group
+        label = t(:topic)
+        select.form-control [ ng-options='w.id as w.name for w in webinars'
+        ng-model='webinarId' required=true ]
+      .checkbox
+        label
+          input type='checkbox' ng-model='send_news' required=true
+          = t(:agree_receive_news)
+    p ng-show='emailSent'
+      = t :email_for_webinar_reg_sent
+      |&nbsp;{{email}}
+  .modal-footer
+    button.btn.btn-default [ ng-click='ok()' ng-disabled='webinarForm.$invalid'
+    ng-hide='emailSent']
+      = t(:ok)
+    button.btn.btn-default ng-click='cancel()' ng-hide='emailSent' = t(:cancel)
+    button.btn.btn-default ng-click='cancel()' ng-show='emailSent' = t :close
+  .loading-stub ng-show='sendingEmail'
