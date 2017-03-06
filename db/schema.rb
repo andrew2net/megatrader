@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170303172932) do
+ActiveRecord::Schema.define(version: 20170306140001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 20170303172932) do
   end
 
   add_index "licenses", ["product_id"], name: "index_licenses_on_product_id", using: :btree
+  add_index "licenses", ["text"], name: "index_licenses_on_text", unique: true, using: :btree
 
   create_table "menu_item_translations", force: :cascade do |t|
     t.integer  "menu_item_id", null: false
