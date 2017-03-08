@@ -11,8 +11,14 @@ class Admin::LicensesController < ApplicationController
   end
 
   def create
-    render json: License.create(license_params),
-      only: [:id, :email, :product_id, :text, :blocked, :key, :date_end]
+    begin
+      license = License.create(license_params)
+    rescue Exception => e
+      render json: license_params.merge({ error: e.message })
+    else
+      render json: license,
+        only: [:id, :email, :product_id, :text, :blocked, :key, :date_end]
+    end
   end
 
   def update

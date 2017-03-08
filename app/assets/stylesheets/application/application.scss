@@ -1,4 +1,4 @@
-$grid-float-breakpoint: 1200px;
+$grid-float-breakpoint: 1197px;
 $grid-float-breakpoint-max: $grid-float-breakpoint - 1px;
 
 @import "bootstrap-sprockets";
@@ -29,6 +29,8 @@ $gray-superlight-color: #f6f6f5;
 .background-gray-light {
   background: $gray-superlight-color;
 }
+
+body { min-width: 600px; }
 
 @mixin transform($transforms) {
   transform: $transforms;
@@ -633,7 +635,43 @@ ul.about {
       border-top: 1px solid white !important;
     }
   }
-
+}
+.price-header {
+  font-weight: bold;
+  font-size: 11pt;
+  background-color: #e8e8e8;
+  line-height: 40px;
+}
+.valign-center {
+  display: flex;
+  align-items: center;
+}
+.halign-center { justify-content: center; }
+.vborder {
+  display: flex;
+  min-height: 50px;
+  > div {
+    border-right: 1px solid white;
+    &:last-child { border-right: 0; }
+  }
+}
+.price-rows {
+  > div {
+    > .row {
+      border-top: 1px solid white;
+      > div > .row { flex-wrap: wrap; }
+    }
+    &:nth-child(odd) > .row { background-color: #f6f6f5; }
+    &:nth-child(even) > .row { background-color: #e8e8e8; }
+  }
+  .price {
+    color: $orange-color;
+    font-weight: bold;
+  }
+}
+.price-content {
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 iframe.manual{

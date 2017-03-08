@@ -25,15 +25,23 @@ angular.module 'admin'
       if $scope.license.id
         idx = $scope.licenses.indexOf $scope.selectedLicense
         $scope.license.$update (val)->
-          val.date_end = new Date val.date_end if val.date_end
-          $scope.licenses.splice idx, 1, val
-          $scope.selectedLicense = null
+          if val.error
+            alert val.error
+          else
+            val.date_end = new Date val.date_end if val.date_end
+            $scope.licenses.splice idx, 1, val
+            $scope.selectedLicense = null
+            $scope.license = null
           return
       else
         $scope.license.$save (val)->
-          $scope.licenses.push val
+          if val.error
+            alert val.error
+          else
+            val.date_end = new Date val.date_end if val.date_end
+            $scope.licenses.push val
+            $scope.license = null
           return
-      $scope.license = null
       return
 
     $scope.delLicense = ->

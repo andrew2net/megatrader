@@ -2,7 +2,7 @@
 - content_for :meta_tags do
     meta name="keywords" content=@page.keywords
     meta name="description" content=@page.description
-/<% end %>
+
 div ng-controller="PageCtrl"
   =render html: @text.html_safe
 
@@ -50,3 +50,26 @@ script type='text/ng-template' id='webinarModal.html'
     button.btn.btn-default ng-click='cancel()' ng-hide='emailSent' = t(:cancel)
     button.btn.btn-default ng-click='cancel()' ng-show='emailSent' = t :close
   .loading-stub ng-show='sendingEmail'
+
+script type='text/ng-template' id='priceHeader.html'
+  .row.price-header.vborder
+    .col-xs-3
+    .col-sm-2.col-xs-3 License
+    .col-sm-6.col-xs-4.text-center Description
+    .col-sm-1.col-xs-2.text-center Cost
+
+script type='text/ng-template' id='priceRow.html'
+  .row.vborder
+    .col-xs-3.valign-center
+      b
+        |{{product}}
+    .col-sm-2.col-xs-3.price-content
+      div ng-repeat='l in license'
+        |{{l}}
+    .col-md-6.col-xs-4
+      .row.vborder
+        .col-sm-6.col-xs-12.price-content ng-repeat='d in description'
+          div ng-repeat= 'l in d'
+            |{{l}}
+    .col-sm-1.col-xs-2.halign-center.valign-center.price
+      |{{price}}
