@@ -31,6 +31,12 @@ gem 'unicorn', group: :production
 
 # Use Capistrano for deployment
 group :development do
+  # gem 'capistrano3-nginx', '~> 2.0'
+  # gem 'capistrano'
+  # gem 'capistrano-bundler'
+  # gem 'capistrano-rails'
+  # gem 'capistrano-rvm'
+  # gem 'capistrano-sidekiq'
   gem 'rails-erd'
 end
 
@@ -51,7 +57,7 @@ gem 'breadcrumbs_on_rails', git: 'https://github.com/weppos/breadcrumbs_on_rails
 gem 'gritter'
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
-gem 'tinymce-rails-imageupload', github: 'PerfectlyNormal/tinymce-rails-imageupload' # '~> 4.0.0.beta'
+# gem 'tinymce-rails-imageupload', github: 'PerfectlyNormal/tinymce-rails-imageupload' # '~> 4.0.0.beta'
 gem 'globalize', '~> 5.0.0'
 gem 'jquery-ui-rails'
 gem 'email_validator'
