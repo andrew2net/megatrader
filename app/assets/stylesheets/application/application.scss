@@ -639,8 +639,9 @@ ul.about {
 .price-header {
   font-weight: bold;
   font-size: 11pt;
-  background-color: #e8e8e8;
+  background-color: $green-color;
   line-height: 50px;
+  color: white;
 }
 .valign-center {
   display: flex;
@@ -661,8 +662,8 @@ ul.about {
       border-top: 1px solid white;
       > div > .row { flex-wrap: wrap; }
     }
-    &:nth-child(odd) > .row { background-color: #f6f6f5; }
-    &:nth-child(even) > .row { background-color: #e8e8e8; }
+    &:nth-child(odd) > .row { background-color: $gray-superlight-color; }
+    &:nth-child(even) > .row { background-color: $gray-lightener-color; }
   }
   .price {
     color: $orange-color;

@@ -62,9 +62,12 @@ script type='text/ng-template' id='priceRow.html'
   .row.vborder
     .col-xs-3.valign-center
       b
-        |{{product}}
+        a ng-if='href' target='_self' ng-href='{{href}}'
+          |{{product}}
+        span ng-if='!href'
+          |{{product}}
     .col-sm-2.col-xs-3.price-content
-      div ng-repeat='l in license'
+      .color-orange.bold ng-repeat='l in license'
         |{{l}}
     .col-md-6.col-xs-4
       .row.vborder

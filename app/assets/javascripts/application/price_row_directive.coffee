@@ -9,6 +9,7 @@ angular.module 'app'
   scope: {}
   link: (scope, element, attrs)->
     scope.product = attrs.priceRow
+    scope.href = attrs.href
     scope.license = attrs.license.split ','
     scope.description = attrs.description.split(';').map (el)->  el.split ':'
     scope.price = attrs.price
