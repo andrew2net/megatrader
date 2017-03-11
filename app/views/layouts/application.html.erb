@@ -23,7 +23,7 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <% if Rails.env == 'production' %>
+    <% if Rails.env.production? %>
     <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)
@@ -130,7 +130,7 @@
     </div>
 
     <div class="row banners visible-xs visible-sm">
-      <%= link_to Rails.application.routes.url_helpers.send("page_path", 'live_video', locale: locale), target: '_self' do %>
+      <%= link_to Rails.application.routes.url_helpers.send("page_path", 'binarytrader', locale: locale), target: '_self' do %>
         <div class="col-xs-12 col-sm-12">
           <div class="center-block">
             <div><%= (t :b1, scope: :banners).html_safe %></div>
@@ -144,7 +144,8 @@
           </div>
         </div>
       <% end %>
-      <%= link_to(locale==:ru ? page_path('webinar') : Rails.application.routes.url_helpers.send("article_#{locale}_path", '19-bitcoin-statistical-arbitrage', locale: locale), target: '_self') do %>
+      <%# <%= link_to(locale==:ru ? page_path('webinar') : Rails.application.routes.url_helpers.send("article_#{locale}_path", '19-bitcoin-statistical-arbitrage', locale: locale), target: '_self') do %>
+      <%= link_to(page_path('webinar'), target: '_self') do %>
         <div class="col-xs-12 col-sm-12">
           <div class="center-block">
             <div><%= (t :b3, scope: :banners).html_safe %></div>
@@ -156,7 +157,7 @@
     <div class="row banners hidden-xs hidden-sm center-block">
       <div class="col-md-10 col-md-offset-1 col-lg-10 col-ld-offset-1">
         <div class="row">
-          <%= link_to Rails.application.routes.url_helpers.send("page_path", 'live_video', locale: locale), target: '_self' do %>
+          <%= link_to Rails.application.routes.url_helpers.send("page_path", 'binarytrader', locale: locale), target: '_self' do %>
             <div class="col-md-4 col-lg-4">
               <div class="center-block">
                 <div><%= (t :b1, scope: :banners).html_safe %></div>
@@ -170,7 +171,8 @@
               </div>
             </div>
           <% end %>
-          <%= link_to(locale==:ru ? page_path('webinar') : Rails.application.routes.url_helpers.send("article_#{locale}_path", '19-bitcoin-statistical-arbitrage', locale: locale), target: '_self') do %>
+          <%# <%= link_to(locale==:ru ? page_path('webinar') : Rails.application.routes.url_helpers.send("article_#{locale}_path", '19-bitcoin-statistical-arbitrage', locale: locale), target: '_self') do %>
+          <%= link_to(page_path('webinar'), target: '_self') do %>
             <div class="col-md-4 col-lg-4">
               <div class="center-block">
                 <div><%= (t :b3, scope: :banners).html_safe %></div>
