@@ -6,5 +6,4 @@ User-agent: *
 Host: https://megatrader.org
 
 User-agent: Yandex
-Host: https://megatrader.org
 Clean-param: page /*/poleznaja-informacija-*
