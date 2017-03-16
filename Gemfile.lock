@@ -1,14 +1,4 @@
 GIT
-  remote: git://github.com/PerfectlyNormal/tinymce-rails-imageupload.git
-  revision: 230416b793ad89df3618eee9c61770d652ff86d7
-  ref: 230416b
-  branch: master
-  specs:
-    tinymce-rails-imageupload (4.0.17.beta)
-      railties (>= 3.2, < 6)
-      tinymce-rails (~> 4.0)
-
-GIT
   remote: https://github.com/weppos/breadcrumbs_on_rails.git
   revision: d389feac27b507e857462127118da46447be8136
   specs:
@@ -358,7 +348,6 @@ DEPENDENCIES
   sprockets-rails
   therubyracer
   tinymce-rails
-  tinymce-rails-imageupload!
   tinymce-rails-langs
   uglifier (>= 1.3.0)
   unicorn
