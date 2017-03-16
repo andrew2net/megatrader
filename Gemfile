@@ -57,7 +57,7 @@ gem 'breadcrumbs_on_rails', git: 'https://github.com/weppos/breadcrumbs_on_rails
 gem 'gritter'
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
-gem 'tinymce-rails-imageupload', github: 'PerfectlyNormal/tinymce-rails-imageupload' # '~> 4.0.0.beta'
+gem 'tinymce-rails-imageupload', github: 'PerfectlyNormal/tinymce-rails-imageupload' '~> 4.0.0.beta'
 gem 'globalize', '~> 5.0.0'
 gem 'jquery-ui-rails'
 gem 'email_validator'
