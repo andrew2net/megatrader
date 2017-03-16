@@ -30,7 +30,7 @@ $gray-superlight-color: #f6f6f5;
   background: $gray-superlight-color;
 }
 
-body { min-width: 600px; }
+body { min-width: 440px; }
 
 @mixin transform($transforms) {
   transform: $transforms;

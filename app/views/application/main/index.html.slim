@@ -67,7 +67,7 @@ script type='text/ng-template' id='priceRow.html'
         span ng-if='!href'
           |{{product}}
     .col-sm-2.col-xs-3.price-content
-      .color-orange.bold ng-repeat='l in license'
+      div ng-repeat='l in license' ng-class='{'color-orange bold': $index==0}'
         |{{l}}
     .col-md-6.col-xs-4
       .row.vborder
