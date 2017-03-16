@@ -129,6 +129,7 @@
       <% end %>
     </div>
 
+    <div class="container">
     <div class="row banners visible-xs visible-sm">
       <%= link_to Rails.application.routes.url_helpers.send("page_path", 'binarytrader', locale: locale), target: '_self' do %>
         <div class="col-xs-12 col-sm-12">
@@ -155,7 +156,7 @@
     </div>
 
     <div class="row banners hidden-xs hidden-sm center-block">
-      <div class="col-md-10 col-md-offset-1 col-lg-10 col-ld-offset-1">
+      <!-- <div class="col&#45;md&#45;10 col&#45;md&#45;offset&#45;1 col&#45;lg&#45;10 col&#45;ld&#45;offset&#45;1"> -->
         <div class="row">
           <%= link_to Rails.application.routes.url_helpers.send("page_path", 'binarytrader', locale: locale), target: '_self' do %>
             <div class="col-md-4 col-lg-4">
@@ -180,7 +181,8 @@
             </div>
           <% end %>
         </div>
-      </div>
+      <!-- </div> -->
+    </div>
     </div>
 
     <%= yield %>
