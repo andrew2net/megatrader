@@ -1,6 +1,7 @@
 GIT
   remote: git://github.com/PerfectlyNormal/tinymce-rails-imageupload.git
   revision: 230416b793ad89df3618eee9c61770d652ff86d7
+  ref: 230416b
   specs:
     tinymce-rails-imageupload (4.0.17.beta)
       railties (>= 3.2, < 6)
