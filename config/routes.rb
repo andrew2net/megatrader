@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
   scope module: :application do
     root 'main#index'
+    get '/download-en', to: redirect('/download')
     scope :api do
       controller :api do
         get 'tools'
