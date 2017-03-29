@@ -20,7 +20,8 @@ class Application::MainController < ApplicationController
       {ru: {method: method_ru, params: {url: params[:url] || ''}},
        en: {method: method_en, params: {url: params[:url] || ''}}})
     @news = Page.news.page(params[:page]).per(5)
-    @news_html = render_to_string(partial: 'application/news/block', formats: :html)
+    @news_html = render_to_string(partial: 'application/news/block',
+                                  formats: :html)
     respond_to do |format|
       format.html do
         render 'not_found', status: :not_found
@@ -31,7 +32,7 @@ class Application::MainController < ApplicationController
   end
 
   def index
-    @page = Page.find_by!(url: params[:url] || '')
+    @page = Page.find_by!(url: params[:url] || '/')
     @text = @page.text
     @errors = {email: {}, question: {}}
     news_rgxp = /\[news_block\]/
@@ -41,48 +42,26 @@ class Application::MainController < ApplicationController
       @text.sub!(news_rgxp, @news_html)
     end
 
-    question_rgxp = /\[question_block\]/
-    @text.sub!(question_rgxp, render_to_string(
-      partial: 'application/question/new', locals: {data: nil}
-    )) if @text =~ question_rgxp
+    replace_tag tag: 'question_block', view_path: 'application/question/new',
+      locals: {data: nil}
 
-    how_to_pay_rgxp = /\[how_to_pay_block\]/
-    @text.sub!(how_to_pay_rgxp, render_to_string(
-      partial: 'application/question/pay')) if @text =~ how_to_pay_rgxp
+    replace_tag tag: 'how_to_pay_block', view_path: 'application/question/pay'
 
-    robokassa_rgxp = /\[robokassa_block\]/
-    @text.sub!(robokassa_rgxp, render_to_string(
-      partial: 'robokassa_block')) if @text =~ robokassa_rgxp
+    replace_tag tag: 'robokassa_block', view_path: 'robokassa_block'
 
-    tester_block_rgxp = /\[tester_block\]/
-    @text.sub!(tester_block_rgxp, render_to_string(
-      partial: 'tester_block')) if @text =~ tester_block_rgxp
+    replace_tag tag: 'tester_block', view_path: 'tester_block'
 
-    popup_video_rgxp = /\[popup_video\]/
-    @text.sub!(popup_video_rgxp, render_to_string(
-      partial: 'popup_video')) if @text =~ popup_video_rgxp
+    replace_tag tag: 'popup_video', view_path: 'popup_video'
 
-    contact_form_rgxp = /\[contact_form\]/
-    @text.sub!(contact_form_rgxp, render_to_string(
-      partial: 'contact_form', locals: {data: nil})
-              ) if @text =~ contact_form_rgxp
+    replace_tag tag: 'contact_form', view_path: 'contact_form', locals:{data:nil}
 
-    correlation_rgxp = /\[correlation\]/
-    @text.sub!(
-      correlation_rgxp, render_to_string(partial: 'correlation')
-    ) if @text =~ correlation_rgxp
+    replace_tag tag: 'correlation', view_path: 'correlation'
 
-    spread_rgxp = /\[spread\]/
-    @text.sub!(spread_rgxp, render_to_string(partial: 'spread')
-              )if @text =~ spread_rgxp
+    replace_tag tag: 'spread', view_path: 'spread'
 
-    pair_rgxp = /\[pairs\]/
-    @text.sub!(pair_rgxp, render_to_string(partial: 'pairs')
-              ) if @text =~ pair_rgxp
+    replace_tag tag: 'pairs', view_path: 'pairs'
 
-    download_rgxp = /\[download\]/
-    @text.sub!(download_rgxp, render_to_string(partial: 'download')
-              ) if @text =~ download_rgxp
+    replace_tag tag: 'download', view_path: 'download'
 
     @locale_sw = locale_sw(
         {
@@ -122,6 +101,8 @@ class Application::MainController < ApplicationController
 
   def article
     @article = Page.find_by! url: params[:url]
+    @text = @article.text
+    replace_tag tag: 'popup_video', view_path: 'popup_video'
     @news = Page.news.page(params[:page]).per(5)
     @news_html = render_to_string(partial: 'application/news/block')
 
@@ -140,6 +121,12 @@ class Application::MainController < ApplicationController
   end
 
   private
+  def replace_tag(tag:, view_path:, locals: {})
+    tag_rgxp = /\[#{tag}\]/
+    @text.sub!(tag_rgxp, render_to_string(
+      partial: view_path, locals: locals)) if @text =~ tag_rgxp
+  end
+
   def locale_sw(urls_data)
     case I18n.locale
       when :ru
