@@ -32,7 +32,8 @@ class Application::MainController < ApplicationController
   end
 
   def index
-    @page = Page.find_by!(url: params[:url] || '/')
+    url = params[:url].blank? ? '/' : params[:url]
+    @page = Page.find_by!(url: url)
     @text = @page.text
     @errors = {email: {}, question: {}}
     news_rgxp = /\[news_block\]/
@@ -63,12 +64,13 @@ class Application::MainController < ApplicationController
 
     replace_tag tag: 'download', view_path: 'download'
 
+    page_url = @page.url == '/' ? '' : @page.url
     @locale_sw = locale_sw(
         {
             ru: {method: :page_path,
-                 params: {url: Globalize.with_locale(:ru) { @page.url }}},
+                 params: {url: Globalize.with_locale(:ru) { page_url }}},
             en: {method: :page_path,
-                 params: {url: Globalize.with_locale(:en) { @page.url }}}
+                 params: {url: Globalize.with_locale(:en) { page_url }}}
         })
     respond_to do |format|
       format.html

@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :home_page, class: :page do
     type_id 1
     title 'Home'
-    url ''
+    url '/'
     text 'Home page text. [question_block]'
     keywords 'home, page'
     description 'This is a home page'
