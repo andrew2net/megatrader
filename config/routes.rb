@@ -70,7 +70,7 @@ Rails.application.routes.draw do
     get ':url' => 'main#index', as: :page
     if Rails.env.development?
       match '*path', to: 'main#not_found', via: :all,
-        constraints: {path: /(?!\/rails\/).*/}, as: :not_found
+        constraints: {path: /(?!rails\/).*/}, as: :not_found
     else
       match '*path', to: 'main#not_found', via: :all, as: :not_found
     end

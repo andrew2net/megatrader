@@ -5,10 +5,15 @@ class UserMailer < ApplicationMailer
     @question = data[:question]
     @phone = data[:phone] if data.has_key? :phone
     @subject = data[:subject] if data.has_key? :subject
-    email = %("#{@name}" <#{data[:email]}>) unless @name.blank?
+    unless data[:name].blank?
+      @email_name = %("#{@name}" <#{data[:email]}>)
+    else
+      @email_name = data[:email]
+    end
+    @email = data[:email]
     to = Setting.find_by(name: 'notify_email').value
 
-    mail(from: email, to: to, subject: 'Вопрос с сайта mgatrader.org')
+    mail(to: to, subject: 'Вопрос с сайта mgatrader.org')
   end
 
   def download_email(user)

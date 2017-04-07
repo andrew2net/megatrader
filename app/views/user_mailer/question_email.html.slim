@@ -1,0 +1,19 @@
+h5
+  |Вопрос от посетителя сайта 
+  = mail_to @email, @name, subject: @subject
+
+p
+  |Email: 
+  = @email
+
+- if @subject
+  p
+    |Тема: 
+    = @subject
+
+p = @question
+
+- if @phone
+  p
+    |Телефон: 
+    = @phone
