@@ -35,7 +35,9 @@ class Admin::GetSpreadWorker
               req_params.merge! DateFrom: first_date
             end
           end
-          resp = Faraday.post 'http://94.180.118.28:4100', req_params
+          resp = Faraday.post 'http://94.180.118.28:4100', req_params do |req|
+            req.options.timeout = 1200
+          end
           spread = JSON.parse(resp.body)['Chart']
           values = spread.map do |c|
             v = c[0]
