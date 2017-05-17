@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170306140001) do
+ActiveRecord::Schema.define(version: 20170517210038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -240,10 +240,10 @@ ActiveRecord::Schema.define(version: 20170306140001) do
   add_foreign_key "downloads", "users", on_delete: :cascade
   add_foreign_key "license_logs", "licenses"
   add_foreign_key "pairs", "time_frames"
-  add_foreign_key "pairs", "tool_symbols", column: "tool_symbol_1_id"
-  add_foreign_key "pairs", "tool_symbols", column: "tool_symbol_2_id"
+  add_foreign_key "pairs", "tool_symbols", column: "tool_symbol_1_id", on_delete: :cascade
+  add_foreign_key "pairs", "tool_symbols", column: "tool_symbol_2_id", on_delete: :cascade
   add_foreign_key "spreads", "time_frames"
-  add_foreign_key "spreads", "tool_symbols"
+  add_foreign_key "spreads", "tool_symbols", on_delete: :cascade
   add_foreign_key "user_webinars", "users"
   add_foreign_key "user_webinars", "webinars"
 end

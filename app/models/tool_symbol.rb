@@ -9,4 +9,5 @@ class ToolSymbol < ActiveRecord::Base
     class_name: Pair
   has_many :right_pairs, inverse_of: :left_tool_symbol,
     class_name: Pair
+  has_many :spreads, dependent: :delete_all
 end
