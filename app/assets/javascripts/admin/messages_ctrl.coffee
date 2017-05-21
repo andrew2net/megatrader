@@ -10,8 +10,15 @@ angular.module 'admin'
     columnDefs: [
       {field: 'name'}
       {field: 'email'}
-      {field: 'phone'}
+      {field: 'phone', width: '130'}
       {field: 'subject'}
+      {
+        name: 'Date'
+        field: 'created_at'
+        format: 'date'
+        cellFilter: 'date:"dd-MM-yyyy hh:mm"'
+        width: '130'
+      }
     ]
     data: 'messages'
     onRegisterApi: (gridApi)->
@@ -19,5 +26,8 @@ angular.module 'admin'
         $scope.text = row.entity.text
   }
   $http.get '/admin/messages/index.json'
-  .then (resp)-> $scope.messages = resp.data
+  .then (resp)->
+    $scope.messages = resp.data
+    for m in $scope.messages
+      m.created_at = new Date m.created_at
 ]
