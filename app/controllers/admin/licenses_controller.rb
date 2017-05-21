@@ -17,14 +17,6 @@ class Admin::LicensesController < ApplicationController
     license = License.new license_params
     license.user = user
     license.save if user.persisted?
-    # begin
-    #   license = License.create(license_params)
-    # rescue Exception => e
-    #   render json: license_params.merge({ error: e.message })
-    # else
-    #   render json: license,
-    #     only: [:id, :email, :product_id, :text, :blocked, :key, :date_end]
-    # end
     respond_to do |format|
       format.json {render partial: 'form', locals: { license: license }}
     end

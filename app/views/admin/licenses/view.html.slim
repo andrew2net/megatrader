@@ -20,7 +20,7 @@
               label for='input-email' E-mail
               input#input-email.form-control [name="email" type="email"
                 ng-model="license.email" ng-required="true" autocomplete="off"
-                uib-typeahead="user.email for user in users | filter:$viewValue"]
+                uib-typeahead="user.email for user in users | filter:$viewValue | limitTo:8"]
               span.help-block [ng-messages='license.errors.email'
                 ng-repeat='message in license.errors.email']
                 |{{message}}
