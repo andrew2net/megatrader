@@ -64,13 +64,18 @@ class Application::MainController < ApplicationController
 
     replace_tag tag: 'download', view_path: 'download'
 
-    page_url = @page.url == '/' ? '' : @page.url
+    if @page.url == '/'
+      page_url_ru = page_url_en = ''
+    else
+      page_url_ru = Globalize.with_locale(:ru) { @page.url }
+      page_url_en = Globalize.with_locale(:en) { @page.url }
+    end
     @locale_sw = locale_sw(
         {
             ru: {method: :page_path,
-                 params: {url: Globalize.with_locale(:ru) { page_url }}},
+                 params: {url: page_url_ru}},
             en: {method: :page_path,
-                 params: {url: Globalize.with_locale(:en) { page_url }}}
+                 params: {url: page_url_en}}
         })
     respond_to do |format|
       format.html
