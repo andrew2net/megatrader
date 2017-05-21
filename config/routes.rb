@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  # namespace :application do
-  # get 'static_pages/show'
-  # end
-
   filter :locale, exclude: /^\/(admin|tinymce_assets|admin_session|api\/|.*?\.(?!(json|js)).*$)/
 
   post 'admin_session/create', to: 'admin_session#create'
@@ -26,6 +22,7 @@ Rails.application.routes.draw do
     end
     get 'users/index'
     get 'webinars/index'
+    get 'messages/index'
   end
 
   scope module: :application do

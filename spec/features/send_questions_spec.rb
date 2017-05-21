@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'rails_helper'
 
 RSpec.feature "SendQuestions", type: :feature, js: true do
@@ -9,7 +10,7 @@ RSpec.feature "SendQuestions", type: :feature, js: true do
       fill_in 'name', with: 'John'
       fill_in 'email', with: 'android.2net@gmail.com'
       fill_in 'question', with: 'My question'
-      click_button I18n.t :ask
+      click_button I18n.t :ask, locale: :ru
     end
     expect(page).to have_text 'Сообщение отправлено.'
   end

@@ -30,6 +30,12 @@ class Application::QuestionController < ApplicationController
         begin
           UserMailer.question_email(params).deliver_later
           sent = true
+          user = User.find_or_initialize_by email: params[:email]
+          user.locale = I18n.locale
+          user.name = params[:name] unless params[:name].blank?
+          user.phone = params[:phone] unless params[:phone].blank?
+          user.save
+          Message.create user: user, subject:params[:subject], text: params[:question]
           # format.js { render 'message_sent' }
         rescue
           err = true

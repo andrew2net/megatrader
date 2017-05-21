@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
   layout 'admin'
   I18n.locale = :ru
   add_breadcrumb '', :admin_root_path, options: {class: 'glyphicon glyphicon-home'}
-  add_breadcrumb I18n.t :users
+  add_breadcrumb User.model_name.human #I18n.t :users
 
   def index
     respond_to do |format|

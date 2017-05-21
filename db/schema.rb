@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170517210038) do
+ActiveRecord::Schema.define(version: 20170520123601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,6 +110,16 @@ ActiveRecord::Schema.define(version: 20170517210038) do
   end
 
   add_index "menu_items", ["parent"], name: "index_menu_items_on_parent", using: :btree
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.string   "subject"
+    t.text     "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "page_translations", force: :cascade do |t|
     t.integer  "page_id",     null: false
@@ -210,11 +220,13 @@ ActiveRecord::Schema.define(version: 20170517210038) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                     null: false
-    t.boolean  "send_news",  default: true, null: false
-    t.string   "locale",     default: "en", null: false
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "email",                                null: false
+    t.boolean  "send_news",             default: true, null: false
+    t.string   "locale",                default: "en", null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.string   "name"
+    t.string   "phone",      limit: 20
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
@@ -239,6 +251,7 @@ ActiveRecord::Schema.define(version: 20170517210038) do
   add_foreign_key "correlations", "time_frames"
   add_foreign_key "downloads", "users", on_delete: :cascade
   add_foreign_key "license_logs", "licenses"
+  add_foreign_key "messages", "users"
   add_foreign_key "pairs", "time_frames"
   add_foreign_key "pairs", "tool_symbols", column: "tool_symbol_1_id", on_delete: :cascade
   add_foreign_key "pairs", "tool_symbols", column: "tool_symbol_2_id", on_delete: :cascade

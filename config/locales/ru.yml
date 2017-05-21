@@ -102,6 +102,7 @@ ru:
       menu_item: Меню
       user: Пользователи
       webinar: Вебинары
+      message: Сообщения
     attributes:
       admin:
         first_name: Имя

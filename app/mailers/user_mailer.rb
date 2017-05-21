@@ -1,3 +1,4 @@
+# encoding: utf-8
 class UserMailer < ApplicationMailer
 
   def question_email(data)

@@ -1,0 +1,7 @@
+.row ng-controller='MessagesCtrl'
+  .col-xs-9
+    #messages-grid [ui-grid='messagesGrid' ui-grid-selection]
+  .col-xs-3
+    .panel.panel-default
+      .panel-body style='height:330px'
+        |{{text}}
