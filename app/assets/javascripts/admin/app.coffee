@@ -1,4 +1,5 @@
 angular.module 'admin', [
+  'ngMessages'
   'ngResource'
   'ui.grid'
   'ui.grid.selection'

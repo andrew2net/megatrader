@@ -7,7 +7,7 @@ RSpec.describe Admin::LicensesController, type: :controller do
     it "returns http success" do
       admin = create :admin
       AdminSession.create admin
-      get :index
+      get :index, format: :json
       expect(response).to have_http_status(:success)
     end
   end

@@ -136,6 +136,10 @@ ru:
           attributes:
             url:
               taken: Этот url уже занят
+        user:
+          attributes:
+            email:
+              invalid_email_address: Неверный формат email
   authlogic:
     error_messages:
       email_invalid: Значение должно быть email адресом

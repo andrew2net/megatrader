@@ -6,24 +6,39 @@ class Admin::LicensesController < ApplicationController
   add_breadcrumb I18n.t(:licenses)
 
   def index
-    render json: License.select(:id, :email, :product_id, :text, :blocked, :key,
-                               :date_end)
+    @licenses = License.all
+    respond_to do |format|
+      format.json
+    end
   end
 
   def create
-    begin
-      license = License.create(license_params)
-    rescue Exception => e
-      render json: license_params.merge({ error: e.message })
-    else
-      render json: license,
-        only: [:id, :email, :product_id, :text, :blocked, :key, :date_end]
+    user = User.find_or_create_by email: params[:email]
+    license = License.new license_params
+    license.user = user
+    license.save if user.persisted?
+    # begin
+    #   license = License.create(license_params)
+    # rescue Exception => e
+    #   render json: license_params.merge({ error: e.message })
+    # else
+    #   render json: license,
+    #     only: [:id, :email, :product_id, :text, :blocked, :key, :date_end]
+    # end
+    respond_to do |format|
+      format.json {render partial: 'form', locals: { license: license }}
     end
   end
 
   def update
-    render json: License.update(params[:id], license_params),
-      only: [:id, :email, :product_id, :text, :blocked, :key, :date_end]
+    user = User.find_or_create_by email: params[:email]
+    license = License.find params[:id]
+    license.attributes = license_params
+    license.user = user
+    license.save if user.persisted?
+    respond_to do |format|
+      format.json { render partial: 'form', locals: { license: license}}
+    end
   end
 
   def destroy
@@ -46,7 +61,7 @@ class Admin::LicensesController < ApplicationController
 
   private
   def license_params
-    params.require(:license).permit(:email, :text, :product_id, :blocked, :key,
+    params.require(:license).permit(:text, :product_id, :blocked, :key,
                                    :date_end)
   end
 end

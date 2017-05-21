@@ -8,7 +8,8 @@ RSpec.describe Application::ApiController, type: :controller do
 
     it 'respond successfully with valid license' do
       create :setting_salt
-      license = create :license, key: 'da4c1932-8e99-c5fb-01b0-a5b1585fa8cc'
+      user = create :user
+      license = create :license, user: user, key: 'da4c1932-8e99-c5fb-01b0-a5b1585fa8cc'
       post :license, a: a, l: license.text, k: license.key
       expect(response).to have_http_status 200
       expect(response.body).to include_json(b: b)

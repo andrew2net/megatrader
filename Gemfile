@@ -67,6 +67,7 @@ gem 'sidekiq-scheduler', '~> 2.0'
 gem 'slim'
 gem 'angular_rails_csrf'
 gem 'ffi'
+gem 'validates_email_format_of'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

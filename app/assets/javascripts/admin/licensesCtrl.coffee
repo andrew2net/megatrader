@@ -25,9 +25,7 @@ angular.module 'admin'
       if $scope.license.id
         idx = $scope.licenses.indexOf $scope.selectedLicense
         $scope.license.$update (val)->
-          if val.error
-            alert val.error
-          else
+          if angular.equals {}, val.errors
             val.date_end = new Date val.date_end if val.date_end
             $scope.licenses.splice idx, 1, val
             $scope.selectedLicense = null
@@ -35,9 +33,7 @@ angular.module 'admin'
           return
       else
         $scope.license.$save (val)->
-          if val.error
-            alert val.error
-          else
+          if angular.equals {}, val.errors
             val.date_end = new Date val.date_end if val.date_end
             $scope.licenses.push val
             $scope.license = null
@@ -100,10 +96,12 @@ angular.module 'admin'
           $scope.license = null
           return
     }
+
     $http.get '/admin/licenses/products'
-      .then (resp)->
-        $scope.products = resp.data
-        return
+      .then (resp)-> $scope.products = resp.data
+
+    $http.get '/admin/users/index.json'
+    .then (resp)-> $scope.users = resp.data
 
     $scope.logs = []
     $scope.logsGridOptions = {
@@ -128,11 +126,10 @@ angular.module 'admin'
           $scope.loadingLogs = false
           return
       return
-
     return
 ]
 .factory 'Licenses', ['$resource', ($resource)->
-  $resource '/admin/licenses/:id', {id: '@id'}, {
+  $resource '/admin/licenses/:id.json', {id: '@id'}, {
     update: { method: 'PUT' }
   }
 ]

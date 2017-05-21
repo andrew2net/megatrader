@@ -1,6 +1,7 @@
 class License < ActiveRecord::Base
   has_many :license_logs, dependent: :delete_all
   belongs_to :product
+  belongs_to :user, inverse_of: :licenses
 
   def resp_data(a)
     begin

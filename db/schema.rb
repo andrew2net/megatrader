@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170520123601) do
+ActiveRecord::Schema.define(version: 20170521135710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,17 +77,18 @@ ActiveRecord::Schema.define(version: 20170520123601) do
 
   create_table "licenses", force: :cascade do |t|
     t.text     "text"
-    t.string   "email",                      null: false
     t.boolean  "blocked",    default: false, null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.integer  "product_id"
     t.uuid     "key"
     t.date     "date_end"
+    t.integer  "user_id",                    null: false
   end
 
   add_index "licenses", ["product_id"], name: "index_licenses_on_product_id", using: :btree
   add_index "licenses", ["text"], name: "index_licenses_on_text", unique: true, using: :btree
+  add_index "licenses", ["user_id"], name: "index_licenses_on_user_id", using: :btree
 
   create_table "menu_item_translations", force: :cascade do |t|
     t.integer  "menu_item_id", null: false
@@ -251,6 +252,7 @@ ActiveRecord::Schema.define(version: 20170520123601) do
   add_foreign_key "correlations", "time_frames"
   add_foreign_key "downloads", "users", on_delete: :cascade
   add_foreign_key "license_logs", "licenses"
+  add_foreign_key "licenses", "users"
   add_foreign_key "messages", "users"
   add_foreign_key "pairs", "time_frames"
   add_foreign_key "pairs", "tool_symbols", column: "tool_symbol_1_id", on_delete: :cascade

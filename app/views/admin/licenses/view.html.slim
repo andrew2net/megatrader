@@ -8,23 +8,26 @@
           .btn-group
             button.btn.btn-default ng-click='addLicense()' Add license
           |&nbsp;
-          .btn-group ng-show='selectedLicense'
+          span ng-show='selectedLicense'
             button.btn.btn-default ng-click='editLicense()' Edit license
-          |&nbsp;
-          .btn-group ng-show='selectedLicense'
+            |&nbsp;
             button.btn.btn-default ng-click='delLicense()' Delete license
       .row
         .col-md-12 ng-show='license'
           form name='form'
             .form-group [
-              ng-class='{"has-error": form.email.$invalid && form.email.$touched}']
+              ng-class="{'has-error': form.email.$invalid && form.email.$touched || license.errors.email}"]
               label for='input-email' E-mail
-              input#input-email.form-control [name='email' type='email'
-              ng-model='license.email' ng-required='true']
+              input#input-email.form-control [name="email" type="email"
+                ng-model="license.email" ng-required="true" autocomplete="off"
+                uib-typeahead="user.email for user in users | filter:$viewValue"]
+              span.help-block [ng-messages='license.errors.email'
+                ng-repeat='message in license.errors.email']
+                |{{message}}
             .form-group
               label for='input-product' Product
               select#input-product.form-control [ng-model='license.product_id'
-              ng-options='product.id as product.name for product in products']
+              ng-options="product.id as product.name for product in products"]
             .checkbox
               label
                 input type='checkbox' ng-model='license.blocked'
