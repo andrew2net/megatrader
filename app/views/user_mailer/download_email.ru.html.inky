@@ -161,7 +161,7 @@
       </p>
       <row>
         <columns small="9" valign="middle">
-          <p>Пример торговли с Binarytrader</p>
+          <p>Пример торговли с <strong>Binarytrader</strong></p>
         </columns>
         <columns small="1">
           <%= link_to 'https://www.youtube.com/watch?v=3G-6eOPKiaI' do %>
