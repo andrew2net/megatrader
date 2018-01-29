@@ -20,10 +20,12 @@
       <% end %>
     </columns>
     <columns small="12" large="8">
-      <%= link_to 'https://megatrader.org/ru/primery-i-obzor-programmy' do %>
-        <p><strong>Megatrader</strong>
-      <% end %>
-      - программа для арбитражной торговли  (на терминалах MT4/5) и торговли спредом (на терминале MT4).</p>
+      <p>
+        <%= link_to 'https://megatrader.org/ru/primery-i-obzor-programmy' do %>
+          <strong>Megatrader</strong>
+        <% end %>
+        - программа для арбитражной торговли  (на терминалах MT4/5) и торговли спредом (на терминале MT4).
+      </p>
       <row>
         <columns small="10" valign="middle">
           <p>Принцип работы арбитражной торговли</p>
