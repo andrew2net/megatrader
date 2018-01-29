@@ -85,22 +85,6 @@
   </row>
 
   <row>
-    <columns>  
-      <p>
-        Пример торговли:
-        <br/>
-        Forex4you
-        <br/>
-        Login: 3623564
-        <br/>
-        Server: EGlobal-Classic3
-        <br/>
-        Pass: rFdXhHg9
-      </p>
-    </columns>
-  </row>
-
-  <row>
     <columns small="12" large="3">
       <%= link_to 'https://megatrader.org/ru/megatrader_pairtrading' do %>
         <%= image_tag attachments['pair_trading.png'].url, width: 161, height: 143, alt: 'PairTrading', class: 'small-float-center' %>
@@ -195,22 +179,6 @@
           <% end %>
         </columns>
       </row>
-    </columns>
-  </row>
-
-  <row>
-    <columns>
-      <p>
-        один из торговых отчетов:
-        <br/>
-        Forex4you
-        <br/>
-        Login: 3623564
-        <br/>
-        Server: EGlobal-Classic3
-        <br/>
-        Pass: rFdXhHg9
-      </p>
     </columns>
   </row>
 
