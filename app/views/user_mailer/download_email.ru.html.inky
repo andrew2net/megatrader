@@ -1,0 +1,231 @@
+<container>
+  <row><columns><h1>Здравствуй дорогой друг!</h1></columns></row>
+  
+  <row>
+    <columns>
+      <p>
+        Вы можете загрузить демонстрационные версии по адресу:
+        <% link = page_url(url: :download, locale: @user.locale, token: @user.download.token) %>
+        <%= link_to link, link %>
+        <br/>
+        Ссылка будет доступна в течении 24 часов.
+      </p>
+    </columns>
+  </row>
+
+  <row>
+    <columns small="12" large="3">
+      <%= link_to 'https://megatrader.org/ru/primery-i-obzor-programmy' do %>
+        <%= image_tag attachments['megatrader.png'].url, width: 161, height: 143, alt: 'Megatrader', class: 'small-float-center' %>
+      <% end %>
+    </columns>
+    <columns small="12" large="8">
+      <%= link_to 'https://megatrader.org/ru/primery-i-obzor-programmy' do %>
+        <p><strong>Megatrader</strong>
+      <% end %>
+      - программа для арбитражной торговли  (на терминалах MT4/5) и торговли спредом (на терминале MT4).</p>
+      <row>
+        <columns small="10" valign="middle">
+          <p>Принцип работы арбитражной торговли</p>
+        </columns>
+        <columns small="1">
+          <%= link_to 'https://yadi.sk/i/9UD8I7RbifEpS' do %>
+            <% image_tag attachments['play.png'].url, width: 24, height: 24, alt: 'Видео', class: 'float-right' %>
+          <% end %>
+        </columns>
+        <columns small="1"></columns>
+      </row>
+      <row>
+        <columns small="10" valign="middle">
+          <p>Быстрая настройка арбитражной торговли</p>
+        </columns>
+        <columns small="1">
+          <%= link_to 'https://yadi.sk/i/ak2HxL8xifEpL' do %>
+            <% image_tag attachments['play.png'].url, width: 24, height: 24, alt: 'Видео', class: 'float-right' %>
+          <% end %>
+        </columns>
+        <columns small="1">
+          <%= link_to 'https://yadi.sk/i/NLQdZGQyifEpQ' do %>
+            <% image_tag attachments['paper.png'].url, width: 24, height: 24, alt: 'Док', class: 'float-right' %>
+          <% end %>
+        </columns>
+      </row>
+    </columns>
+  </row>
+
+  <row>
+    <columns small="12" large="3">
+      <%= link_to 'https://megatrader.org/ru/megaclicker' do %>
+        <%= image_tag attachments['megaclicker.png'].url, width: 161, height: 143, alt: 'Megaclicker', class: 'small-float-center' %>
+      <% end %>
+    </columns>
+    <columns small="12" large="8">
+      <p>
+        <%= link_to 'https://megatrader.org/ru/megaclicker' do %>
+          <strong>Megaclicker</strong>
+        <% end %>
+        - модуль для <strong>Megatrader</strong>. Используется с теми брокерами, у которых запрещена автоторговля/советники.
+        Позволяет автоматически считывать котировку, открывать/закрывать сделки без использования советника.
+        Применяется только совместно с программой <strong>Megatrader</strong>.
+      </p>
+      <row>
+        <columns small="10" valign="middle">
+          <p>Настройка <strong>Megaclicker</strong></p>
+        </columns>
+        <columns small="1">
+          <%= link_to 'https://yadi.sk/i/VYKcByCnifEpC' do %>
+            <% image_tag attachments['play.png'].url, width: 24, height: 24, alt: 'Видео', style: 'display: inline' %>
+          <% end %>
+        </columns>
+        <columns small="1"></columns>
+      </row>
+    </columns>
+  </row>
+
+  <row>
+    <columns>  
+      <p>
+        Пример торговли:
+        <br/>
+        Forex4you
+        <br/>
+        Login: 3623564
+        <br/>
+        Server: EGlobal-Classic3
+        <br/>
+        Pass: rFdXhHg9
+      </p>
+    </columns>
+  </row>
+
+  <row>
+    <columns small="12" large="3">
+      <%= link_to 'https://megatrader.org/ru/megatrader_pairtrading' do %>
+        <%= image_tag attachments['pair_trading.png'].url, width: 161, height: 143, alt: 'PairTrading', class: 'small-float-center' %>
+      <% end %>
+    </columns>
+    <columns small="12" large="8">
+      <p>
+        <%= link_to 'https://megatrader.org/ru/megatrader_pairtrading' do %>
+          <strong>Megatrader PairTrading</strong>
+        <% end %>
+        - программа для реализации стратегий парного трейдинга.
+        Автоматизирует весь процесс создания торговой системы: импортирует исторические данные из терминала MT4,
+        самостоятельно рассчитывает коэффициенты для торговых инструментов и автоматически формирует торговый алгоритм.
+      </p>
+      <row>
+        <columns small="10" valign="middle">
+          <p>Создание торговой системы</p>
+        </columns>
+        <columns small="1">
+          <%= link_to 'https://yadi.sk/i/xd38FyjRizbkQ' do %>
+            <% image_tag attachments['play.png'].url, width: 24, height: 24, alt: 'Видео', style: 'display: inline' %>
+          <% end %>
+        </columns>
+        <columns small="1"></columns>
+      </row>
+    </columns>
+  </row>
+
+  <row>
+    <columns small="12" large="3">
+      <%= link_to 'https://megatrader.org/ru/spreadbuilder' do %>
+        <%= image_tag attachments['spread_builder.png'].url, width: 161, height: 143, alt: 'SpreadBuilder', class: 'small-float-center' %>
+      <% end %>
+    </columns>
+    <columns small="12" large="8">
+      <p>
+        <%= link_to 'https://megatrader.org/ru/spreadbuilder' do %>
+          <strong>SpreadBuilder</strong>
+        <% end %>
+        - программа предназначена для автоматического поиска наиболее прибыльных комбинаций инструментов
+        (спредовых портфелей) для стратегий торговли спредом, включая парный трейдинг, статистический арбитраж и баскет-трейдинг.
+        Созданные спреды могут быть перенесены в программу Megatrader для автоматической торговли.
+      </p>
+      <p><strong>SpreadBuilder</strong> работает с торговым терминалом MT4</p>
+      <row>
+        <columns small="10" valign="middle">
+          <p>Применение <strong>SpreadBuilder</strong></p>
+        </columns>
+        <columns small="1">
+          <%= link_to 'https://youtu.be/C7DLsXlpOzM' do %>
+            <% image_tag attachments['play.png'].url, width: 24, height: 24, alt: 'Видео', style: 'display: inline' %>
+          <% end %>
+        </columns>
+        <columns small="1"></columns>
+      </row>
+    </columns>
+  </row>
+
+  <row>
+    <columns small="12" large="3">
+      <%= link_to 'https://megatrader.org/ru/binarytrader' do %>
+        <%= image_tag attachments['binarytrader.png'].url, width: 161, height: 143, alt: 'Binarytrader', class: 'small-float-center' %>
+      <% end %>
+    </columns>
+    <columns small="12" large="8">
+      <p>
+        <%= link_to 'https://megatrader.org/ru/binarytrader' do %>
+          <strong>Binarytrader</strong>
+        <% end %>
+        - программа, предназначенная для арбитража бинарных опционов.
+        Это уникальная торговая стратегия, суть которой заключается в отслеживании ситуаций,
+        когда котировки бинарного опциона отстают от котировок опережающего источника,
+        и совершении сделок с опционами в направлении опережающей цены.
+      </p>
+      <row>
+        <columns small="9" valign="middle">
+          <p>Пример торговли с Binarytrader</p>
+        </columns>
+        <columns small="1">
+          <%= link_to 'https://www.youtube.com/watch?v=3G-6eOPKiaI' do %>
+            <% image_tag attachments['play.png'].url, width: 24, height: 24, alt: 'Видео', style: 'display: inline' %>
+          <% end %>
+        </columns>
+        <columns small="1">
+          <%= link_to 'https://www.youtube.com/watch?v=bHHCIAWOsss' do %>
+            <% image_tag attachments['play.png'].url, width: 24, height: 24, alt: 'Видео', style: 'display: inline' %>
+          <% end %>
+        </columns>
+        <columns small="1">
+          <%= link_to 'https://www.youtube.com/watch?v=iIyCp59GdDU' do %>
+            <% image_tag attachments['play.png'].url, width: 24, height: 24, alt: 'Видео', style: 'display: inline' %>
+          <% end %>
+        </columns>
+      </row>
+    </columns>
+  </row>
+
+  <row>
+    <columns>
+      <p>
+        один из торговых отчетов:
+        <br/>
+        Forex4you
+        <br/>
+        Login: 3623564
+        <br/>
+        Server: EGlobal-Classic3
+        <br/>
+        Pass: rFdXhHg9
+      </p>
+    </columns>
+  </row>
+
+  <row>
+    <columns
+      <p>
+        <%= link_to 'https://megatrader.org/ru/webinar' do %>
+          <strong>Посетите наш бесплатный вебинар</strong>
+        <% end %>
+      <p/>
+      <p>Спасибо что уделили время нашему сайту.<p/>
+      <p>
+        Команда Megatrader.
+        <br/>
+        E-mail: <%= mail_to 'info@megatrader.org', nil, subject: 'Megatrader demoversoins' %>
+        Вебсайт: <%= link_to root_url, root_url %>
+      </p>
+    </columns>
+  </row>
+</container>

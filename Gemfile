@@ -68,6 +68,10 @@ gem 'slim'
 gem 'angular_rails_csrf'
 gem 'ffi'
 gem 'validates_email_format_of'
+# Foundation for email
+gem 'inky-rb', require: 'inky'
+# Stylesheet inlining for email
+gem 'premailer-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
