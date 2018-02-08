@@ -31,26 +31,26 @@
           <p>Принцип работы арбитражной торговли</p>
         </columns>
         <columns small="1">
-          <%= link_to 'https://yadi.sk/i/9UD8I7RbifEpS' do %>
+          <%= link_to 'https://www.youtube.com/watch?v=UykDRo9iC9Q' do %>
             <% image_tag attachments['play.png'].url, width: 24, height: 24, alt: 'Видео', class: 'float-right' %>
           <% end %>
         </columns>
-        <columns small="1"></columns>
+        <columns small="1">
+          <%= link_to 'https://www.youtube.com/watch?v=UQpcA2QKU5M' do %>
+            <% image_tag attachments['play.png'].url, width: 24, height: 24, alt: 'Видео', class: 'float-right' %>
+          <% end %>
+        </columns>
       </row>
       <row>
         <columns small="10" valign="middle">
           <p>Быстрая настройка арбитражной торговли</p>
         </columns>
         <columns small="1">
-          <%= link_to 'https://yadi.sk/i/ak2HxL8xifEpL' do %>
+          <%= link_to 'https://www.youtube.com/watch?v=05W33fdbizg' do %>
             <% image_tag attachments['play.png'].url, width: 24, height: 24, alt: 'Видео', class: 'float-right' %>
           <% end %>
         </columns>
-        <columns small="1">
-          <%= link_to 'https://yadi.sk/i/NLQdZGQyifEpQ' do %>
-            <% image_tag attachments['paper.png'].url, width: 24, height: 24, alt: 'Док', class: 'float-right' %>
-          <% end %>
-        </columns>
+        <columns small="1"></columns>
       </row>
     </columns>
   </row>
@@ -75,7 +75,7 @@
           <p>Настройка <strong>Megaclicker</strong></p>
         </columns>
         <columns small="1">
-          <%= link_to 'https://yadi.sk/i/VYKcByCnifEpC' do %>
+          <%= link_to 'https://www.youtube.com/watch?v=GXm5CRMapY8' do %>
             <% image_tag attachments['play.png'].url, width: 24, height: 24, alt: 'Видео', style: 'display: inline' %>
           <% end %>
         </columns>
@@ -104,7 +104,7 @@
           <p>Создание торговой системы</p>
         </columns>
         <columns small="1">
-          <%= link_to 'https://yadi.sk/i/xd38FyjRizbkQ' do %>
+          <%= link_to 'https://www.youtube.com/watch?v=0RbdidHogpU' do %>
             <% image_tag attachments['play.png'].url, width: 24, height: 24, alt: 'Видео', style: 'display: inline' %>
           <% end %>
         </columns>
@@ -164,17 +164,17 @@
           <p>Пример торговли с <strong>Binarytrader</strong></p>
         </columns>
         <columns small="1">
+          <%= link_to 'https://www.youtube.com/watch?v=iIyCp59GdDU' do %>
+            <% image_tag attachments['play.png'].url, width: 24, height: 24, alt: 'Видео', style: 'display: inline' %>
+          <% end %>
+        </columns>
+        <columns small="1">
           <%= link_to 'https://www.youtube.com/watch?v=3G-6eOPKiaI' do %>
             <% image_tag attachments['play.png'].url, width: 24, height: 24, alt: 'Видео', style: 'display: inline' %>
           <% end %>
         </columns>
         <columns small="1">
           <%= link_to 'https://www.youtube.com/watch?v=bHHCIAWOsss' do %>
-            <% image_tag attachments['play.png'].url, width: 24, height: 24, alt: 'Видео', style: 'display: inline' %>
-          <% end %>
-        </columns>
-        <columns small="1">
-          <%= link_to 'https://www.youtube.com/watch?v=iIyCp59GdDU' do %>
             <% image_tag attachments['play.png'].url, width: 24, height: 24, alt: 'Видео', style: 'display: inline' %>
           <% end %>
         </columns>
@@ -193,7 +193,7 @@
       <p>
         Команда Megatrader.
         <br/>
-        E-mail: <%= mail_to 'info@megatrader.org', nil, subject: 'Megatrader demoversoins' %>
+        E-mail: <%= mail_to 'info@megatrader.org', nil, subject: 'Megatrader demoversions' %>
         Вебсайт: <%= link_to root_url, root_url %>
       </p>
     </columns>

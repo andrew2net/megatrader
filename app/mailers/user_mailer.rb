@@ -26,7 +26,7 @@ class UserMailer < ApplicationMailer
     attachments.inline['spread_builder.png'] = File.read 'app/assets/images/spread_builder.png'
     attachments.inline['binarytrader.png'] = File.read 'app/assets/images/binarytrader.png'
     attachments.inline['play.png'] = File.read 'app/assets/images/play-24.png'
-    attachments.inline['paper.png'] = File.read 'app/assets/images/paper-24.png'
+    # attachments.inline['paper.png'] = File.read 'app/assets/images/paper-24.png'
     mail(to: @user.email, subject: t(:demoversions))
   end
 

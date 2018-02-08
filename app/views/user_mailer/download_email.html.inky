@@ -1,0 +1,201 @@
+<container>
+  <row><columns><h1>Hello, Dear Friend!</h1></columns></row>
+  
+  <row>
+    <columns>
+      <p>
+        You can download demo versions of our software through this link:
+        <% link = page_url(url: :download, locale: @user.locale, token: @user.download.token) %>
+        <%= link_to link, link %>
+        <br/>
+        The link will be available for 24 hours.
+      </p>
+    </columns>
+  </row>
+
+  <row>
+    <columns small="12" large="3">
+      <%= link_to 'https://megatrader.org/en/primery-i-obzor-programmy' do %>
+        <%= image_tag attachments['megatrader.png'].url, width: 161, height: 143, alt: 'Megatrader', class: 'small-float-center' %>
+      <% end %>
+    </columns>
+    <columns small="12" large="8">
+      <p>
+        <%= link_to 'https://megatrader.org/en/primery-i-obzor-programmy' do %>
+          <strong>Megatrader</strong>
+        <% end %>
+        - software for arbitrage trading (on terminals MT4/5) and spread trading (On terminal MT4).
+      </p>
+      <row>
+        <columns small="10" valign="middle">
+          <p>Principle of arbitrage trading</p>
+        </columns>
+        <columns small="1">
+          <%= link_to 'https://www.youtube.com/watch?v=_R6yMf8Fv6Q' do %>
+            <% image_tag attachments['play.png'].url, width: 24, height: 24, alt: 'Video', class: 'float-right' %>
+          <% end %>
+        </columns>
+        <columns small="1">
+          <%= link_to 'https://www.youtube.com/watch?v=UUbYzgye4W8' do %>
+            <% image_tag attachments['play.png'].url, width: 24, height: 24, alt: 'Video', class: 'float-right' %>
+          <% end %>
+        </columns>
+      </row>
+      <row>
+        <columns small="10" valign="middle">
+          <p>Fast setting of arbitrage strategy</p>
+        </columns>
+        <columns small="1">
+          <%= link_to 'https://www.youtube.com/watch?v=sMpjmZYA4vU' do %>
+            <% image_tag attachments['play.png'].url, width: 24, height: 24, alt: 'Video', class: 'float-right' %>
+          <% end %>
+        </columns>
+        <columns small="1"></columns>
+      </row>
+    </columns>
+  </row>
+
+  <row>
+    <columns small="12" large="3">
+      <%= link_to 'https://megatrader.org/en/megaclicker' do %>
+        <%= image_tag attachments['megaclicker.png'].url, width: 161, height: 143, alt: 'Megaclicker', class: 'small-float-center' %>
+      <% end %>
+    </columns>
+    <columns small="12" large="8">
+      <p>
+        <%= link_to 'https://megatrader.org/en/megaclicker' do %>
+          <strong>Megaclicker</strong>
+        <% end %>
+        - is an additional module for <strong>Megatrader</strong>. It is used on brokers, where autotrading is forbidden.
+        It allows to read quotation and open/close deals without usage of Expert Advisor.
+        It is used only with <strong>Megatrader</strong> program.
+      </p>
+      <row>
+        <columns small="10" valign="middle">
+          <p>Setup <strong>Megaclicker</strong></p>
+        </columns>
+        <columns small="1">
+          <%= link_to 'https://www.youtube.com/watch?v=Sb0Dv_ZHCjU' do %>
+            <% image_tag attachments['play.png'].url, width: 24, height: 24, alt: 'Video', style: 'display: inline' %>
+          <% end %>
+        </columns>
+        <columns small="1"></columns>
+      </row>
+    </columns>
+  </row>
+
+  <row>
+    <columns small="12" large="3">
+      <%= link_to 'https://megatrader.org/en/megatrader_pairtrading' do %>
+        <%= image_tag attachments['pair_trading.png'].url, width: 161, height: 143, alt: 'PairTrading', class: 'small-float-center' %>
+      <% end %>
+    </columns>
+    <columns small="12" large="8">
+      <p>
+        <%= link_to 'https://megatrader.org/en/megatrader_pairtrading' do %>
+          <strong>Megatrader PairTrading</strong>
+        <% end %>
+        - program for the implementation of spread trading strategies.
+        The process of building a trading system is significantly automated: loads historical data from the terminal MT4,
+        automatically calculates the coefficients for trading instruments and trading algorithms.
+      </p>
+      <row>
+        <columns small="10" valign="middle">
+          <p>Creating a Trading System</p>
+        </columns>
+        <columns small="1">
+          <%= link_to 'https://www.youtube.com/watch?v=k1GfFFLIfOc' do %>
+            <% image_tag attachments['play.png'].url, width: 24, height: 24, alt: 'Video', style: 'display: inline' %>
+          <% end %>
+        </columns>
+        <columns small="1"></columns>
+      </row>
+    </columns>
+  </row>
+
+  <row>
+    <columns small="12" large="3">
+      <%= link_to 'https://megatrader.org/en/spreadbuilder' do %>
+        <%= image_tag attachments['spread_builder.png'].url, width: 161, height: 143, alt: 'SpreadBuilder', class: 'small-float-center' %>
+      <% end %>
+    </columns>
+    <columns small="12" large="8">
+      <p>
+        <%= link_to 'https://megatrader.org/en/spreadbuilder' do %>
+          <strong>SpreadBuilder</strong>
+        <% end %>
+        - This program is designed to automatically find the most profitable combinations of trading tools
+        (Spread portfolios) for trading strategies for spreads, including pair trading, statistical arbitration and basket trading.
+        Finished spreads can be imported into Megatrader for automatic trading.
+      </p>
+      <p><strong>SpreadBuilder</strong> works with the MT4 terminal</p>
+      <row>
+        <columns small="10" valign="middle">
+          <p><strong>SpreadBuilder</strong> application</p>
+        </columns>
+        <columns small="1">
+          <%= link_to 'https://www.youtube.com/watch?v=4ZNAEcP4Rog' do %>
+            <% image_tag attachments['play.png'].url, width: 24, height: 24, alt: 'Video', style: 'display: inline' %>
+          <% end %>
+        </columns>
+        <columns small="1"></columns>
+      </row>
+    </columns>
+  </row>
+
+  <row>
+    <columns small="12" large="3">
+      <%= link_to 'https://megatrader.org/en/binarytrader' do %>
+        <%= image_tag attachments['binarytrader.png'].url, width: 161, height: 143, alt: 'Binarytrader', class: 'small-float-center' %>
+      <% end %>
+    </columns>
+    <columns small="12" large="8">
+      <p>
+        <%= link_to 'https://megatrader.org/en/binarytrader' do %>
+          <strong>Binarytrader</strong>
+        <% end %>
+        - program, which is made for binary options arbitrage.
+        It is unique trading strategy, the essence of which is in looking for situations,
+        where quotations, delivered from broker are slower than quotations from source of leading quotations,
+        and making deals in a direction of advancing price.
+      </p>
+      <row>
+        <columns small="9" valign="middle">
+          <p>Trade with the <strong>Binarytrader</strong></p>
+        </columns>
+        <columns small="1">
+          <%= link_to 'https://www.youtube.com/watch?v=jWkowI204nU' do %>
+            <% image_tag attachments['play.png'].url, width: 24, height: 24, alt: 'Video', style: 'display: inline' %>
+          <% end %>
+        </columns>
+        <columns small="1">
+          <%= link_to 'https://www.youtube.com/watch?v=G1Rf_ieWgpk' do %>
+            <% image_tag attachments['play.png'].url, width: 24, height: 24, alt: 'Video', style: 'display: inline' %>
+          <% end %>
+        </columns>
+        <columns small="1">
+          <%= link_to 'https://www.youtube.com/watch?v=VsJDGNmY1M0' do %>
+            <% image_tag attachments['play.png'].url, width: 24, height: 24, alt: 'Video', style: 'display: inline' %>
+          <% end %>
+        </columns>
+      </row>
+    </columns>
+  </row>
+
+  <row>
+    <columns
+      <p>
+        <%= link_to 'https://megatrader.org/en/webinar' do %>
+          <strong>Visit our free webinar</strong>
+        <% end %>
+      <p/>
+      <p>Thank you for going through our website.<p/>
+      <p>
+        Megatrader team.
+        <br/>
+        E-mail: <%= mail_to 'info@megatrader.org', nil, subject: 'Megatrader demoversions' %>
+        Website: <%= link_to root_url, root_url %>
+      </p>
+    </columns>
+  </row>
+</container>
