@@ -46,8 +46,11 @@ RSpec.describe Application::ApiController, type: :controller do
 
     b.map! { |a1| a1.map { |a2| a2.map(&:to_s) } }
 
-    it 'respond successfully with valid license' do
+    before :each do
       create :setting_salt
+    end
+
+    it 'respond successfully with valid license' do
       user = create :user
       license = create :license, user: user,
                                  key: 'da4c1932-8e99-c5fb-01b0-a5b1585fa8cc'
@@ -61,7 +64,7 @@ RSpec.describe Application::ApiController, type: :controller do
     end
 
     it 'respond successfully with walid license for NeuroMachine' do
-      create :setting_salt
+      create :product, id: 7
       user = create :user
       license = create :license, user: user, product_id: 7,
                                  key: 'da4c1932-8e99-c5fb-01b0-a5b1585fa8cc'
@@ -75,7 +78,6 @@ RSpec.describe Application::ApiController, type: :controller do
     end
 
     it 'respond with empty array "b" when "a" is null' do
-      create :setting_salt
       license = create :license, key: 'da4c1932-8e99-c5fb-01b0-a5b1585fa8cc'
       post :license, a: nil, l: license.text, k: license.key
       expect(response).to have_http_status 200
@@ -83,7 +85,6 @@ RSpec.describe Application::ApiController, type: :controller do
     end
 
     it 'respond not found with blocked license' do
-      create :setting_salt
       license = create :license, blocked: true
       post :license, a: a, l: license.text, k: ''
       expect(response).to have_http_status 404
@@ -91,11 +92,26 @@ RSpec.describe Application::ApiController, type: :controller do
     end
 
     it 'respond bad key with invalid key' do
-      create :setting_salt
       license = create :license, key: 'da4c1932-8e99-c5fb-01b0-a5b1585fa8cc'
       post :license, a: a, l: license.text, k: ''
       expect(response).to have_http_status 404
       expect(response.body).to include_json(m: 'Bad key')
+    end
+
+    it 'respond 3 times successfully with prev key' do
+      user = create :user
+      license = create :license, user: user,
+                                 key: 'da4c1932-8e99-c5fb-01b0-a5b1585fa8cc'
+      post :license, a: a, l: license.text, k: license.key
+      expect(response).to have_http_status :success
+      post :license, a: a, l: license.text, k: license.key
+      expect(response).to have_http_status :success
+      post :license, a: a, l: license.text, k: license.key
+      expect(response).to have_http_status :success
+      post :license, a: a, l: license.text, k: license.key
+      expect(response).to have_http_status :success
+      post :license, a: a, l: license.text, k: license.key
+      expect(response).to have_http_status :not_found
     end
 
     it 'response expired with expired license' do

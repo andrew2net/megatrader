@@ -4,16 +4,19 @@ class License < ActiveRecord::Base
   belongs_to :product
   belongs_to :user, inverse_of: :licenses
 
-  def resp_data(prod_id, aaa, kkk)
-    b = if prod_id.to_i == 7
-          transform aaa, kkk
-        else aaa.map { |el| inverse_transform el }
-        end
+  def key_bad?(kkk)
+    # Key is issued and does not match and there are 3 errors.
+    return true if key.present? && key != kkk && key_errors.to_i > 2
+    !match_key? kkk
+  end
+
+  def resp_data(prod_id, aaa, kkk, req_ip)
+    b = calc_b prod_id, aaa, kkk
   rescue StandardError
     b = []
   ensure
-    update key: key_gen
-    reload
+    update_key kkk
+    LicenseLog.create ip: req_ip, created_at: Time.now, license_id: id
     b
   end
 
@@ -26,6 +29,27 @@ class License < ActiveRecord::Base
   end
 
   private
+
+  def match_key?(kkk)
+    key.present? && key == kkk || prev_key.present? && prev_key == kkk
+  end
+
+  def update_key(kkk)
+    if key == kkk
+      update key: key_gen, prev_key: key, key_errors: 0
+    else
+      update key: key_gen, key_errors: key_errors.to_i + 1
+    end
+    reload
+  end
+
+  def calc_b(prod_id, aaa, kkk)
+    if prod_id.to_i == 7
+      transform aaa, kkk
+    else
+      aaa.map { |el| inverse_transform el }
+    end
+  end
 
   def key_gen
     ts = Time.now.to_s

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180503135543) do
+ActiveRecord::Schema.define(version: 20180506163015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,10 +84,12 @@ ActiveRecord::Schema.define(version: 20180503135543) do
     t.uuid     "key"
     t.date     "date_end"
     t.integer  "user_id",                    null: false
+    t.uuid     "prev_key"
+    t.integer  "key_errors"
   end
 
   add_index "licenses", ["product_id"], name: "index_licenses_on_product_id", using: :btree
-  add_index "licenses", ["text"], name: "index_licenses_on_text", unique: true, using: :btree
+  add_index "licenses", ["text", "blocked"], name: "index_licenses_on_text_and_blocked", using: :btree
   add_index "licenses", ["user_id"], name: "index_licenses_on_user_id", using: :btree
 
   create_table "menu_item_translations", force: :cascade do |t|

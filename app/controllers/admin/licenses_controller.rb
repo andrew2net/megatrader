@@ -1,8 +1,10 @@
+# Admin license controller
 class Admin::LicensesController < ApplicationController
   load_and_authorize_resource param_method: :admin_params
   layout 'admin'
   I18n.locale = :ru
-  add_breadcrumb '', :admin_root_path, options: {class: 'glyphicon glyphicon-home'}
+  add_breadcrumb '', :admin_root_path,
+                 options: { class: 'glyphicon glyphicon-home' }
   add_breadcrumb I18n.t(:licenses)
 
   def index
@@ -18,7 +20,7 @@ class Admin::LicensesController < ApplicationController
     license.user = user
     license.save if user.persisted?
     respond_to do |format|
-      format.json {render partial: 'form', locals: { license: license }}
+      format.json { render partial: 'form', locals: { license: license } }
     end
   end
 

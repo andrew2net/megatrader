@@ -65,12 +65,10 @@ class Application::ApiController < ApplicationController
     if lic
       if lic.date_end && lic.date_end < Date.today
         render json: { m: 'License is expired' }, status: :not_found
-      elsif lic.key.present? && lic.key != params[:k]
+      elsif lic.key_bad?(params[:k])
         render json: { m: 'Bad key' }, status: :not_found
       else
-        b = lic.resp_data params[:p], params[:a], params[:k]
-        LicenseLog.create ip: request.remote_ip, created_at: Time.now,
-                          license_id: lic.id
+        b = lic.resp_data params[:p], params[:a], params[:k], request.remote_ip
         render json: { b: b, k: lic.key }
       end
     else

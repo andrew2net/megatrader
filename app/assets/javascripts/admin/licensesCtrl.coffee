@@ -70,13 +70,15 @@ angular.module 'admin'
           </div>
           """
         }
+        { name: 'Key errors', field: 'key_errors', width: 100 }
         {
           name: 'Blocked'
           field: 'blocked'
           type: 'boolean'
+          width: 100
           cellTemplate: """
           <div class="ui-grid-cell-contents text-center" title="TOOLTIP">
-            {{row.entity.blocked ? '&#10004' : ''}}
+            {{row.entity.blocked ? '&\#10004' : ''}}
           </div>
           """
         }
@@ -84,6 +86,7 @@ angular.module 'admin'
           name: 'Date end'
           field: 'date_end'
           type: 'date'
+          width: 100
           cellFilter: 'date : "dd-MM-yyyy"'
         }
       ]
