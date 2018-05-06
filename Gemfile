@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use postgresql as the database for Active Record
@@ -44,29 +43,31 @@ end
 gem 'sprockets-rails'
 
 gem 'rails-i18n', '~> 4.0.0'
-gem 'routing-filter'
-gem 'http_accept_language'
+
 gem 'authlogic'
-gem 'cancancan'
 gem 'bootstrap-sass', '~> 3.3.6'
-gem 'simple-navigation'
-gem 'simple_navigation_renderers'
-gem 'wice_grid'
-gem 'simple_form'
 gem 'breadcrumbs_on_rails', git: 'https://github.com/weppos/breadcrumbs_on_rails.git'
+gem 'cancancan'
 gem 'gritter'
+gem 'http_accept_language'
+gem 'routing-filter'
+gem 'simple-navigation'
+gem 'simple_form'
+gem 'simple_navigation_renderers'
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
+gem 'wice_grid'
+
 # gem 'tinymce-rails-imageupload'
-gem 'globalize', '~> 5.0.0'
-gem 'jquery-ui-rails'
+gem 'angular_rails_csrf'
 gem 'email_validator'
 gem 'faraday'
+gem 'ffi'
+gem 'globalize', '~> 5.0.0'
+gem 'jquery-ui-rails'
 gem 'sidekiq'
 gem 'sidekiq-scheduler', '~> 2.0'
 gem 'slim'
-gem 'angular_rails_csrf'
-gem 'ffi'
 gem 'validates_email_format_of'
 # Foundation for email
 gem 'inky-rb', require: 'inky'
@@ -74,32 +75,30 @@ gem 'inky-rb', require: 'inky'
 gem 'premailer-rails'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  # gem 'byebug'
-  # gem 'pry'
-  gem 'pry-rails'
   gem 'pry-byebug'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  # Spring speeds up development by keeping your application running in the
+  # background. Read more: https://github.com/rails/spring
   gem 'spring'
 
   # gem 'debugger-xml'
   # gem 'debugger'
   # gem 'ruby-debug-ide19'
 
-  gem 'rspec-rails'
-  gem 'rspec-json_expectations'
   gem 'factory_girl_rails'
+  gem 'rspec-json_expectations'
+  gem 'rspec-rails'
 end
 
 group :test do
   gem 'capybara'
   gem 'capybara-webkit'
+  gem 'database_cleaner'
   gem 'poltergeist'
   # gem 'selenium-webdriver'
   gem 'shoulda-matchers'
-  gem 'database_cleaner'
+  gem 'simplecov', require: false
 end

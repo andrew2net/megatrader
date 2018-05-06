@@ -1,3 +1,5 @@
+require 'simplecov'
+SimpleCov.start
 require 'rspec/json_expectations'
 require 'factory_girl'
 require 'database_cleaner'

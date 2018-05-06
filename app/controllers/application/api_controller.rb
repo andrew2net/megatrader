@@ -1,3 +1,4 @@
+# API controller
 class Application::ApiController < ApplicationController
   skip_before_action :authenticate
   protect_from_forgery except: :license
@@ -5,8 +6,8 @@ class Application::ApiController < ApplicationController
   def tools
     g = ToolGroup.order(:position).select :id, :name
     t = ToolSymbol.joins(:tool_group).reorder('position, tool_symbols.name')
-      .select(%{ tool_symbols.id, tool_symbols.name, tool_symbols.full_name,
-    tool_group_id g_id })
+                  .select(%( tool_symbols.id, tool_symbols.name,
+                    tool_symbols.full_name, tool_group_id g_id ))
     render json: { groups: g, tools: t }
   end
 
@@ -24,22 +25,17 @@ class Application::ApiController < ApplicationController
     JOIN tool_symbols tc ON tc.id=col_tool_symbol_id
     WHERE cr.time_frame_id=:time_frame_id}
     query = ActiveRecord::Base.send('sanitize_sql_array',
-                                    [sql, {time_frame_id: time_frame.id}])
+                                    [sql, { time_frame_id: time_frame.id }])
     correlations = {}
-    # Correlation.select('row_tool_symbol_id r, col_tool_symbol_id c, value')
-    #   .where(time_frame_id: time_frame.id).each do |corr|
     ActiveRecord::Base.connection.send('select_all', query).each do |corr|
-      # s_ids = [corr.r, corr.c]
-      # pair = Pair.where(time_frame_id: time_frame.id, tool_symbol_1_id: s_ids,
-      #           tool_symbol_2_id: s_ids).first
       correlations[corr['r']] = {} unless correlations[corr['r']]
       d = { value: corr['value'] }
-      d.merge!({
+      d.merge!(
         symbol_1: corr['symbol_1'],
         weight_1: corr['weight_1'],
         symbol_2: corr['symbol_2'],
         weight_2: corr['weight_2']
-      }) # if pair
+      )
       correlations[corr['r']][corr['c']] = d
     end
     render json: correlations
@@ -65,20 +61,20 @@ class Application::ApiController < ApplicationController
   end
 
   def license
-    license = License.where(blocked: false).find_by(text: params[:l])
-    if license
-      if license.date_end and license.date_end < Date.today
+    lic = License.search_license license: params[:l], prod_id: params[:p]
+    if lic
+      if lic.date_end && lic.date_end < Date.today
         render json: { m: 'License is expired' }, status: :not_found
-      elsif license.key.present? and license.key != params[:k]
-        render json: {m: 'Bad key'}, status: :not_found
+      elsif lic.key.present? && lic.key != params[:k]
+        render json: { m: 'Bad key' }, status: :not_found
       else
-        b = license.resp_data params[:a]
-        LicenseLog.create ip: request.remote_ip, created_at: DateTime.now,
-          license_id: license.id
-        render json: {b: b, k: license.key}
+        b = lic.resp_data params[:p], params[:a], params[:k]
+        LicenseLog.create ip: request.remote_ip, created_at: Time.now,
+                          license_id: lic.id
+        render json: { b: b, k: lic.key }
       end
     else
-      render json: {m: 'License not found'}, status: :not_found
+      render json: { m: 'License not found' }, status: :not_found
     end
   end
 
@@ -106,12 +102,13 @@ class Application::ApiController < ApplicationController
     user.send_news = params[:send_news]
     user.save
     user_webinar = UserWebinar.create user_id: user.id,
-      webinar_id: params[:webinar_id]
+                                      webinar_id: params[:webinar_id]
     UserMailer.webinar_reg_email(user_webinar).deliver_later
     head :ok
   end
 
   private
+
   def download_params
     params.permit(:token, :file).symbolize_keys
   end
