@@ -5,6 +5,8 @@ class License < ActiveRecord::Base
   belongs_to :user, inverse_of: :licenses
 
   def key_bad?(kkk)
+    # Create new key if emply.
+    return false unless key.present?
     # Key is issued and does not match and there are 3 errors.
     return true if key.present? && key != kkk && key_errors.to_i > 2
     !match_key? kkk

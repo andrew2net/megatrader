@@ -50,6 +50,15 @@ RSpec.describe Application::ApiController, type: :controller do
       create :setting_salt
     end
 
+    it 'create new key' do
+      user = create :user
+      license = create :license, user: user, key: ''
+      post :license, a: a, l: license.text, k: ''
+      expect(response).to have_http_status 200
+      license.reload
+      expect(response.body).to include_json(k: license.key)
+    end
+
     it 'respond successfully with valid license' do
       user = create :user
       license = create :license, user: user,
