@@ -21,6 +21,6 @@ class CreateAdmins < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    Admin.create!(email: 'admins@local.loc', password: 'admins', password_confirmation: 'admins')
+    Admin.create(email: 'admins@local.loc', password: 'admin123', password_confirmation: 'admin123')
   end
 end
