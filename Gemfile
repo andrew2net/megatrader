@@ -36,6 +36,7 @@ group :development do
   # gem 'capistrano-rails'
   # gem 'capistrano-rvm'
   # gem 'capistrano-sidekiq'
+  gem 'mina'
   gem 'rails-erd'
 end
 
