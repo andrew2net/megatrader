@@ -82,6 +82,7 @@ desc "Deploys the current version to the server."
 task :deploy => :environment do
   on :before_hook do
     # Put things to run locally before ssh
+    command 'sudo systemctl stop sidekiq.service'
   end
   deploy do
     # Put things that will set up an empty directory into a fully set-up
@@ -95,10 +96,8 @@ task :deploy => :environment do
     invoke :'deploy:cleanup'
 
     on :launch do
-      # command "mkdir -p #{deploy_to}/#{current_path}/tmp/"
-      # command "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
       command 'sudo service nginx reload'
-      command 'sudo restart sidekiq'
+      command 'sudo systemctl start sidekiq.service'
     end
   end
 end
