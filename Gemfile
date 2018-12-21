@@ -26,7 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
-# gem 'unicorn', group: :production
+gem 'unicorn', group: :production
 gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler", group: :production
 
 # Use Capistrano for deployment
