@@ -9,7 +9,7 @@ if Rails.env == 'production' && (defined?(Rails::Server) || defined?(Unicorn))
 
     config.on(:startup) do
       Sidekiq.schedule = YAML
-        .load_file(File.expand_path('../../../config/scheduler.yml', __FILE__))
+        .load_file(File.expand_path('../../../current/config/scheduler.yml', __FILE__))
       Sidekiq::Scheduler.reload_schedule!
     end
   end

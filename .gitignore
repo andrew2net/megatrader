@@ -26,5 +26,8 @@ megatrader.csr
 megatrader.key
 public/
 www_megatrader_org.zip
+megatrader.sql.gz
+sidekiq.conf
+.certs/
 .vscode/
 coverage/
