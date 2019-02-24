@@ -72,6 +72,62 @@ RSpec.describe Application::ApiController, type: :controller do
       expect(LicenseLog.count).to eq 2
     end
 
+    it 'respond successfully with walid license for MegaTrader' do
+      create :product, id: 1
+      user = create :user
+      license = create :license, user: user, product_id: 1,
+                                 key: 'da4c1932-8e99-c5fb-01b0-a5b1585fa8cc'
+      post :license, a: [[5, 7], [7, 2]], l: license.text, k: license.key, p: 1
+      expect(response).to have_http_status 200
+      expect(response.body).to include_json(b: [[4, 0, 1, 2, 3],
+                                                [3, 2, 0, 4, 1],
+                                                [0, 1, 4, 2, 3],
+                                                [0, 6, 4, 5, 2, 1, 3],
+                                                [1, 0, 2, 4, 6, 5, 3]])
+    end
+
+    it 'respond successfully with walid license for MegaTrader (Quik)' do
+      create :product, id: 2
+      user = create :user
+      license = create :license, user: user, product_id: 2,
+                                 key: 'da4c1932-8e99-c5fb-01b0-a5b1585fa8cc'
+      post :license, a: [[5, 7], [7, 2]], l: license.text, k: license.key, p: 2
+      expect(response).to have_http_status 200
+      expect(response.body).to include_json(b: [[4, 0, 1, 2, 3],
+                                                [3, 2, 0, 4, 1],
+                                                [0, 1, 4, 2, 3],
+                                                [0, 6, 4, 5, 2, 1, 3],
+                                                [1, 0, 2, 4, 6, 5, 3]])
+    end
+
+    it 'respond successfully with walid license for MegaTrader (Forex)' do
+      create :product, id: 3
+      user = create :user
+      license = create :license, user: user, product_id: 3,
+                                 key: 'da4c1932-8e99-c5fb-01b0-a5b1585fa8cc'
+      post :license, a: [[5, 7], [7, 2]], l: license.text, k: license.key, p: 3
+      expect(response).to have_http_status 200
+      expect(response.body).to include_json(b: [[4, 0, 1, 2, 3],
+                                                [3, 2, 0, 4, 1],
+                                                [0, 1, 4, 2, 3],
+                                                [0, 6, 4, 5, 2, 1, 3],
+                                                [1, 0, 2, 4, 6, 5, 3]])
+    end
+
+    it 'respond successfully with walid license for MegaTrader (Complex)' do
+      create :product, id: 4
+      user = create :user
+      license = create :license, user: user, product_id: 4,
+                                 key: 'da4c1932-8e99-c5fb-01b0-a5b1585fa8cc'
+      post :license, a: [[5, 7], [7, 2]], l: license.text, k: license.key, p: 4
+      expect(response).to have_http_status 200
+      expect(response.body).to include_json(b: [[4, 0, 1, 2, 3],
+                                                [3, 2, 0, 4, 1],
+                                                [0, 1, 4, 2, 3],
+                                                [0, 6, 4, 5, 2, 1, 3],
+                                                [1, 0, 2, 4, 6, 5, 3]])
+    end
+
     it 'respond successfully with walid license for NeuroMachine' do
       create :product, id: 7
       user = create :user

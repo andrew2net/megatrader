@@ -46,7 +46,8 @@ class License < ActiveRecord::Base
   end
 
   def calc_b(prod_id, aaa, kkk)
-    if prod_id.to_i == 7
+    case prod_id.to_i
+    when 1, 2, 3, 4, 7
       transform aaa, kkk
     else
       aaa.map { |el| inverse_transform el }
